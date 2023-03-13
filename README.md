@@ -1,10 +1,10 @@
 # prjctX
 
-A community management system and tools for art collectors
+A community management system and tools for art collectors.
 
 The project consists of:
-- A progessive web app (PWA), and
-- A RESTful API built with Slim Framework [4.11.0][slim], PHP [8.1.2][php] and MariaDB [10.6.12][mariadb].
+- Front-end: Progessive web app (PWA),
+- Back-end: RESTful API built with Slim Framework [4.11.0][slim], PHP [8.1.2][php], and MariaDB [10.6.12][mariadb].
 
 ```bash
 $ composer show --direct 
@@ -16,8 +16,9 @@ slim/slim          4.11.0 Slim is a PHP micro framework that helps you quickly w
 ## Local development
 
 ```bash
-# Start PHP built-in web server
-sudo php -S localhost:7654 -c php.ini -t public public/index.php
+# Start PHP built-in web server to run an API
+cd ./apis/collectors/
+sudo php -S localhost:7654 -t public public/index.php
 ```
 
 ### Resources
