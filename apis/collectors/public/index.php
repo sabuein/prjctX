@@ -37,7 +37,7 @@ $app->get("/", function (Request $request, Response $response): Response {
         </main>
         <footer>
             <p>Copyright © 2023 prjctX. All rights reserved.</p>
-            <p><a href="#" target="_top">Homepage</a> | <a href="#" target="_blank">Source code</a></p>
+            <p><a href="#" target="_top">Homepage</a> | <a href="https://github.com/sabuein/prjctX" target="_blank">Source code</a></p>
         </footer>
     </body>
     </html>
