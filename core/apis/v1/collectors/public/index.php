@@ -8,17 +8,31 @@ use Selective\BasePath\BasePathMiddleware;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-$app = AppFactory::create();
+$api = AppFactory::create();
 
 /* Creating a route for a POST request. However, Slim's implementation of PSR-7 does not support the sending of data in a JSON format, instead, they provide a BodyParsingMiddleware that handles this task. */
-$app->addBodyParsingMiddleware();
+$api->addBodyParsingMiddleware();
 
-$app->addRoutingMiddleware();
-$app->add(new BasePathMiddleware($app));
-$app->addErrorMiddleware(true, true, true);
+$api->addRoutingMiddleware();
+$api->add(new BasePathMiddleware($api));
+$api->addErrorMiddleware(true, true, true);
 
-$app->get("/", function (Request $request, Response $response): Response {
-    $output = <<<TXT
+function handleErrors(PDOException $e, Response $response): Response {
+    $error = array(
+        "message" => $e->getMessage()
+    );
+    $codes = [
+        500, // Internal server error
+        600
+    ];
+    $response->getBody()->write(json_encode($error));
+    return $response
+        ->withHeader("content-type", "application/json")
+        ->withStatus($codes[0]);
+}
+
+$api->get("/", function (Request $request, Response $response): Response {
+    $html = <<<TXT
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -42,11 +56,11 @@ $app->get("/", function (Request $request, Response $response): Response {
     </body>
     </html>
     TXT;
-    $response->getBody()->write($output);
+    $response->getBody()->write($html);
     return $response;
 });
 
-$app->get("/collectors/all", function (Request $request, Response $response): Response {
+$api->get("/collectors/all", function (Request $request, Response $response): Response {
     $sql = "SELECT * FROM collectors";
 
     try {
@@ -61,18 +75,11 @@ $app->get("/collectors/all", function (Request $request, Response $response): Re
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
     } catch (PDOException $e) {
-        $error = array(
-            "message" => $e->getMessage()
-        );
-
-        $response->getBody()->write(json_encode($error));
-        return $response
-            ->withHeader("content-type", "application/json")
-            ->withStatus(500);
+        return handleErrors($e, $response);
     }
 });
 
-$app->post("/", function (Request $request, Response $response, $args): Response {
+$api->post("/", function (Request $request, Response $response, array $args): Response {
     $data = $request->getParsedBody();
 
     $html = var_export($data, true);
@@ -81,7 +88,7 @@ $app->post("/", function (Request $request, Response $response, $args): Response
     return $response;
 });
 
-$app->post("/collectors/add", function (Request $request, Response $response, array $args): Response {
+$api->post("/collectors/add", function (Request $request, Response $response, array $args): Response {
     $data = $request->getParsedBody();
     $name = $data["name"];
     $email = $data["email"];
@@ -106,18 +113,24 @@ $app->post("/collectors/add", function (Request $request, Response $response, ar
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
     } catch (PDOException $e) {
-        $error = array(
-            "message" => $e->getMessage()
-        );
-
-        $response->getBody()->write(json_encode($error));
-        return $response
-            ->withHeader("content-type", "application/json")
-            ->withStatus(500);
+        return handleErrors($e, $response);
     }
 });
 
-$app->put("/collectors/update/{id}", function (Request $request, Response $response, array $args): Response {
+$api->post("/collectors/upload", function (Request $request, Response $response, array $args): Response {
+    try {
+        $result = "Form submission succeed";
+        $response->getBody()->write(json_encode($args));
+        return $response
+            ->withHeader("content-type", "application/json")
+            ->withStatus(200);
+    } catch (PDOException $e) {
+        $message = "Form submission failed";
+        return handleErrors($e, $response);
+    }
+});
+
+$api->put("/collectors/update/{id}", function (Request $request, Response $response, array $args): Response {
         $id = $request->getAttribute("id");
         $data = $request->getParsedBody();
         $name = $data["name"];
@@ -148,19 +161,12 @@ $app->put("/collectors/update/{id}", function (Request $request, Response $respo
                 ->withHeader("content-type", "application/json")
                 ->withStatus(200);
         } catch (PDOException $e) {
-            $error = array(
-                "message" => $e->getMessage()
-            );
-
-            $response->getBody()->write(json_encode($error));
-            return $response
-                ->withHeader("content-type", "application/json")
-                ->withStatus(500);
+            return handleErrors($e, $response);
         }
     }
 );
 
-$app->delete("/collectors/delete/{id}", function (Request $request, Response $response, array $args): Response {
+$api->delete("/collectors/delete/{id}", function (Request $request, Response $response, array $args): Response {
     $id = $args["id"];
 
     $sql = "DELETE FROM collectors WHERE id = $id";
@@ -178,15 +184,8 @@ $app->delete("/collectors/delete/{id}", function (Request $request, Response $re
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
     } catch (PDOException $e) {
-        $error = array(
-            "message" => $e->getMessage()
-        );
-
-        $response->getBody()->write(json_encode($error));
-        return $response
-            ->withHeader("content-type", "application/json")
-            ->withStatus(500);
+        return handleErrors($e, $response);
     }
 });
 
-$app->run();
+$api->run();
