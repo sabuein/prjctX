@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prjctX - Signin</title>
+    <link rel="stylesheet" href="https://sabuein.github.io/style/prjctX.min.css">
+</head>
+<body>
+    <header>
+        <h1>prjctX</h1>
+    </header>
+    <main>
+        <header>
+            <h2>Upload file(s)</h2>
+        </header>
+        <section>
+            <div>
+                <form id="upload" enctype="multipart/form-data" action="http://0.0.0.0:8888/collectors/upload" method="post">
+                    <p>
+                        <!-- MAX_FILE_SIZE must precede the file input field -->
+                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                        <!-- Name of input element determines name in $_FILES array -->
+                        <label>Add file (single): </label><br />
+                        <input name="photo" type="file" />
+                    </p>
+                    <p>
+                        <label>Add files (up to 2): </label><br />
+                        <input type="file" name="example2[]" /><br />
+                        <input type="file" name="example2[]" />
+                    </p>
+                    <p>
+                        <label>Add files (multiple): </label><br />
+                        <input type="file" name="example3[]" multiple="multiple" />
+                    </p>
+                    <p>
+                        <input type="submit" value="Send Image" />
+                    </p>
+                </form>
+            </div>
+        </section>
+        <div><a href="checkout.html" target="_top">Checkout</a></div>
+        <div><a href="signup.html" target="_top">Sign Up</a></div>
+    </main>
+    <footer>
+        <p>Copyright © 2023 prjctX. All rights reserved.</p>
+    </footer>
+</body>
+</html>

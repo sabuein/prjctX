@@ -4,7 +4,7 @@ namespace App\Models;
 
 class MoveUploadedFile
 {
-    public function start($directory, $uploadedFile)
+    public function start($directory, $uploadedFile): string
 {
     $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
     $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
