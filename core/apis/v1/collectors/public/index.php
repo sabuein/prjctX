@@ -1,10 +1,12 @@
 <?php
 
-use App\Models\Database as DB;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Selective\BasePath\BasePathMiddleware;
+
+use App\Models\Database as DB;
+use App\Models\Forms as Form;
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
@@ -16,6 +18,8 @@ $api->addBodyParsingMiddleware();
 $api->addRoutingMiddleware();
 $api->add(new BasePathMiddleware($api));
 $api->addErrorMiddleware(true, true, true);
+
+$container = $api->getContainer();
 
 function handleErrors(PDOException $e, Response $response): Response {
     $error = array(
@@ -119,13 +123,15 @@ $api->post("/collectors/add", function (Request $request, Response $response, ar
 
 $api->post("/collectors/upload", function (Request $request, Response $response, array $args): Response {
     try {
-        $result = "Form submission succeed";
-        $response->getBody()->write(json_encode($args));
+        $container["upload_directory"] = "../../var/www/uploads/";
+        $directory = $this->get("upload_directory");
+        $files = $request->getUploadedFiles();
+        $form = new Form();
+        $form->process($files, $directory, $response);
         return $response
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
     } catch (PDOException $e) {
-        $message = "Form submission failed";
         return handleErrors($e, $response);
     }
 });
