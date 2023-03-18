@@ -17,7 +17,7 @@ slim/slim          4.11.0 Slim is a PHP micro framework that helps you quickly w
 
 ```bash
 # Start PHP built-in web server to run an API
-cd ./core/apis/v1/collectors/ && sudo php -S localhost:7654 -t public public/index.php
+cd ./core/apis/v1/collectors/ && sudo php -S 0.0.0.0:8888 -t public public/index.php
 ```
 
 ### Web resources:
@@ -30,6 +30,7 @@ cd ./core/apis/v1/collectors/ && sudo php -S localhost:7654 -t public public/ind
 
 ### PHP resources:
 
+- [rfc:request_response][rfc_rr]
 - [PSR-4: Autoloader][psr4]
 - [PSR-7: HTTP message interfaces][psr7]
 - [PSR-15: HTTP Server Request Handlers][psr15]
@@ -54,3 +55,4 @@ cd ./core/apis/v1/collectors/ && sudo php -S localhost:7654 -t public public/ind
 [stripephp]: https://github.com/stripe/stripe-php "stripe/stripe-php: PHP library for the Stripe API"
 [paygoogle]: https://developers.google.com/pay/api/web/overview "Overview  |  Google Pay API  |  Google Developers"
 [payfreecode]: https://www.freecodecamp.org/news/payment-request-api-javascript/ "How to Use the Payment Request API in JavaScript"
+[rfc_rr]: https://wiki.php.net/rfc/request_response "PHP: rfc:request_response"
