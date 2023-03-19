@@ -86,16 +86,18 @@ function getHome(Request $request, Response $response, array $args): Response {
     return $this->renderer->render($response, "form.phtml", $args);
 }
 function getAll(Request $request, Response $response): Response {
-    $sql = "SELECT * FROM collectors";
+    $start = 0;
+    $count = 20;
+    $sql = "SELECT * FROM collectors ORDER BY id ASC"; // LIMIT $start, $count
 
     try {
         $db = new DB();
         $conn = $db->connect();
         $stmt = $conn->query($sql);
-        $customers = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $members = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         
-        $response->getBody()->write(json_encode($customers));
+        $response->getBody()->write(json_encode($members));
         return $response
             ->withAddedHeader("access-control-allow-origin", "*")
             ->withHeader("content-type", "application/json")
