@@ -3,8 +3,8 @@
 A community management system and tools for art collectors.
 
 The project consists of:
-- Front-end: Progessive web app (PWA),
-- Back-end: RESTful API built with Slim Framework [4.11.0][slim], PHP [8.1.2][php], and MariaDB [10.6.12][mariadb].
+- Front-end: Progessive web app (PWA) built with Bootstrap v[5.3.0-alpha1][bootstrap],
+- Back-end: RESTful API built with Slim Framework v[4.11.0][slim], PHP v[8.1.2][php], and MariaDB v[10.6.12][mariadb].
 
 ```bash
 $ composer show --direct 
@@ -17,7 +17,8 @@ slim/slim          4.11.0 Slim is a PHP micro framework that helps you quickly w
 
 ```bash
 # Start PHP built-in web server to run an API
-cd ./core/apis/v1/collectors/ && sudo php -S 0.0.0.0:8888 -t public public/index.php
+cd ./core/apis/v1/collectors/ && sudo php -S localhost:8888 -t public public/index.php
+cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S localhost:8888 -t public public/index.php
 ```
 
 ### Web resources:
@@ -56,3 +57,4 @@ cd ./core/apis/v1/collectors/ && sudo php -S 0.0.0.0:8888 -t public public/index
 [paygoogle]: https://developers.google.com/pay/api/web/overview "Overview  |  Google Pay API  |  Google Developers"
 [payfreecode]: https://www.freecodecamp.org/news/payment-request-api-javascript/ "How to Use the Payment Request API in JavaScript"
 [rfc_rr]: https://wiki.php.net/rfc/request_response "PHP: rfc:request_response"
+[bootstrap]: https://getbootstrap.com/docs/5.3/getting-started/introduction/ "Get started with Bootstrap · Bootstrap v5.3"
