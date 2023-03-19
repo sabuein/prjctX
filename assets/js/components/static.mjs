@@ -59,7 +59,7 @@ class AppNav extends HTMLElement {
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.html">Homepage</a></li>
-                    <li><a href="members.html">Members</a></li>
+                    <li><a href="members.html">Members list</a></li>
                     <li><a href="upload.html">Upload</a></li>
                     <li><a href="forums.html">Forums</a></li>
                 </ul>
