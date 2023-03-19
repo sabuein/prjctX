@@ -1,8 +1,32 @@
-if (window.fetch) {
-    // run my fetch request here
-} else {
-    // do something with XMLHttpRequest?
-}
+import { cl, id } from "./modules/helpers.mjs";
+import { loadMembers, renderMembers } from "./modules/fetching.mjs";
+import { setCustomComponent } from "./modules/customComponent.mjs";
+import { AppHeading } from "./modules/components.mjs";
+
+setCustomComponent(AppHeading, "app-heading");
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const request = new Request("http://localhost:8888/collectors/all"), output = id("membersBody");
+
+    if (window.fetch) {
+        try {
+            // members = await loadMembers(url);
+            const members = await loadMembers(request, output);
+            renderMembers(members, output);
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        cl("do something with XMLHttpRequest");
+    }    
+});
+
+// const object = { a: 1, b: 2, c: 3 };
+
+// for (const property in object) {
+//   console.log(`${property}: ${object[property]}`);
+// }
 
 // <!-- Collectos API: http://localhost:8666/collectors/ -->
 
