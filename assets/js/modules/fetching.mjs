@@ -18,7 +18,7 @@ const handleError = (error) => {
   return new Response(
     JSON.stringify({
       code: 400,
-      message: "Network error"
+      message: "There has been a problem with fetch operation"
     })
   );
 }
@@ -27,15 +27,17 @@ const renderMembers = (input, output) => {
   const members = JSON.parse(input);
   for (const member of members) {
     const row = document.createElement("tr");
-    row.appendChild(document.createElement("td")).textContent = member.id;
+    row.appendChild(document.createElement("th")).textContent = member.id;
     row.appendChild(document.createElement("td")).textContent = member.name;
     row.appendChild(document.createElement("td")).textContent = member.email;
     row.appendChild(document.createElement("td")).textContent = member.phone;
+    row.firstElementChild.setAttribute("scope", "row");
     output.appendChild(row);
   }
   const row = document.createElement("tr");
   const final = document.createElement("td");
   final.setAttribute("colspan", 4);
+  final.setAttribute("scope", "row");
   final.textContent = `Our community is made up of ${output.childElementCount} members — and counting.`;
   row.appendChild(final);
   output.appendChild(row);
