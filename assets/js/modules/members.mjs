@@ -1,9 +1,9 @@
-import { cl } from "./helpers.mjs";
-
 async function loadMembers(request) {
   let headersList = {
     "Accept": "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+    "User-Agent": "prjctX (https://github.com/sabuein/prjctX)",
+    "Accept-Charset": "utf-8",
+    "Connection": "keep-alive",
   }
 
   return await (await fetch(request, {
@@ -29,8 +29,8 @@ const renderMembers = (input, output) => {
     const row = document.createElement("tr");
     row.appendChild(document.createElement("th")).textContent = member.id;
     row.appendChild(document.createElement("td")).textContent = member.name;
-    row.appendChild(document.createElement("td")).textContent = member.email;
-    row.appendChild(document.createElement("td")).textContent = member.phone;
+    row.appendChild(document.createElement("td")).innerHTML = `<a href="mailto:${member.email}">${member.email}</a>`;
+    row.appendChild(document.createElement("td")).innerHTML = `<a href="tel:${member.phone}">${member.phone}</a>`;
     row.firstElementChild.setAttribute("scope", "row");
     output.appendChild(row);
   }
@@ -38,7 +38,7 @@ const renderMembers = (input, output) => {
   const final = document.createElement("td");
   final.setAttribute("colspan", 4);
   final.setAttribute("scope", "row");
-  final.textContent = `Our community is made up of ${output.childElementCount} members — and counting.`;
+  final.textContent = `Our community is made up of ${output.childElementCount} members — and counting...`;
   row.appendChild(final);
   output.appendChild(row);
 }

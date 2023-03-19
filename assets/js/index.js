@@ -1,8 +1,12 @@
-import { cl, id, setCustomComponent} from "./modules/helpers.mjs";
-import { loadMembers, renderMembers } from "./modules/fetching.mjs";
-import { AppHeading } from "./components/AppHeading.mjs";
+"use strict";
 
-setCustomComponent(AppHeading, "app-heading");
+import { cl, ce, cw, id, setCustomComponent as component} from "./modules/helpers.mjs";
+import { loadMembers, renderMembers } from "./modules/members.mjs";
+import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
+
+component(AppHeader, "app-header");
+component(AppNav, "app-nav");
+component(AppFooter, "app-footer");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -14,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const members = await loadMembers(request, output);
             renderMembers(members, output);
         } catch (error) {
-            console.error(error);
+            cl(error) || ce(error) || cw(error);
         }
     } else {
         cl("do something with XMLHttpRequest");
