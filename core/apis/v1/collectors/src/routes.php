@@ -94,9 +94,10 @@ function getAll(Request $request, Response $response): Response {
         $stmt = $conn->query($sql);
         $customers = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-
+        
         $response->getBody()->write(json_encode($customers));
         return $response
+            ->withAddedHeader("access-control-allow-origin", "*")
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
     } catch (PDOException $e) {
@@ -116,16 +117,16 @@ function postHome(Request $request, Response $response, array $args): Response {
 }
 function postAdd(Request $request, Response $response, array $args): Response {
     $data = $request->getParsedBody();
-    $name = $data["name"];
-    $email = $data["email"];
-    $phone = $data["phone"];
-
-    $sql = "INSERT INTO collectors (name, email, phone) VALUES (:name, :email, :phone)";
-
+    
     try {
         $db = new DB();
         $conn = $db->connect();
 
+        $name = $data["name"];
+        $email = $data["email"];
+        $phone = $data["phone"];
+        $sql = "INSERT INTO collectors (name, email, phone) VALUES (:name, :email, :phone)";
+        
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":email", $email);
@@ -152,14 +153,13 @@ function postAddAll(Request $request, Response $response, array $args): Response
         if (!$conn) :
             die("Connection failed: " . !$conn);
         endif;
-
+        
         // TO-DO "(?, ?,UTC_TIMESTAMP(),?)"
         $sql = "INSERT INTO collectors (name, email, phone) VALUES ";
         $values = array_fill(0, count($data), "(:name, :email, :phone)");
         $sql .= implode(", ", $values);
-
-        $stmt = $conn->prepare($sql);
         
+        $stmt = $conn->prepare($sql);
         $i = 1;
         foreach($data as $record):
             $name = $record["name"];
@@ -169,7 +169,6 @@ function postAddAll(Request $request, Response $response, array $args): Response
             $stmt->bindValue( ":email", $email, PDO::PARAM_STR );
             $stmt->bindValue( ":phone", $phone, PDO::PARAM_STR );
         endforeach;
-        // $values = rtrim($values, ", ");
         
         $result = $stmt->execute();
 
