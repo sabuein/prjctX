@@ -9,20 +9,20 @@
     <script src="/assets/js/index.js" type="module"></script>
 </head>
 <body>
-    <app-heading title="prjctX - Members page"></app-heading>
+    <app-heading title="prjctX - Members"></app-heading>
     <main>
         <header>
             <h2>Members table</h2>
         </header>
         <section>
-            <div>
-                <table>
+            <div class="table-responsive">
+                <table class="table  table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
                         </tr>
                     </thead>
                     <tbody id="membersBody"></tbody>
