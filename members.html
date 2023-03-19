@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prjctX - Members</title>
+    <title>prjctX - Members list</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="/assets/js/index.js" type="module"></script>
 </head>
-<body>
-    <app-heading title="prjctX - Members"></app-heading>
+<body class="container">
+    <script language="php">
+        if (!isset ($_GET["page"])) {
+            $page_number = 1;  
+        } else {
+            $page_number = $_GET["page"];
+        }
+    </script>
+    <app-header title="prjctX - Members list"></app-header>
+    <app-nav></app-nav>
     <main>
         <header>
-            <h2>Members table</h2>
+            <h2>All Members</h2>
         </header>
         <section>
             <div class="table-responsive">
@@ -21,7 +29,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Email address</th>
                             <th scope="col">Phone</th>
                         </tr>
                     </thead>
@@ -30,8 +38,6 @@
             </div>
         </section>
     </main>
-    <footer>
-        <p>Copyright © 2023 prjctX. All rights reserved.</p>
-    </footer>
+    <app-footer></app-footer>
 </body>
 </html>

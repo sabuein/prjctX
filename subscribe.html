@@ -8,28 +8,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="/assets/js/index.js" type="module"></script>
 </head>
-<body>
-    <app-heading title="prjctX - Subscribe"></app-heading>
-    <span>Logo</span>
-    <h1>prjctX Monthly Newsletter</h1>
-    <h2>Get the hottest prjctX news.</h2>
-    <p>Sign up for our monthly prjctX newsletter to stay up to date on the latest product releases, upcoming webinars, events, and more!</p>
-    <div>
-        <h3>Subscribe Now</h3>
-        <input type="text" />
-        <input type="email" />
-        <select>
-            <option>Palestine</option>
-            <option selected>United Kingdom</option>
-        </select>
-        <input type="radio" value="Yes, please" />
-        <input type="radio" value="No, thank you" />
-        May we use your contact details to update you on offers, products, and services? You may unsubscribe anytime.
-        <input type="checkbox">I have read and I agree to the prjctX Privacy Policy.
-        <input type="submit" value="ADD ME"/>
-    </div>
-    <footer>
-        <p>Copyright © 2023 prjctX. All rights reserved.</p>
-    </footer>
+<body class="container">
+    <app-header title="prjctX - Subscribe"></app-header>
+    <app-nav></app-nav>
+    <main>
+        <header>
+            <h2>prjctX - Monthly Newsletter</h2>
+            <h3>Get the hottest prjctX news.</h3>
+        </header>
+        <section>
+            <p>Sign up for our monthly prjctX newsletter to stay up to date on the latest product releases, upcoming webinars, events, and more!</p>
+            <div>
+                <h3>Subscribe Now</h3>
+                <input type="text" />
+                <input type="email" />
+                <select>
+                    <option>Palestine</option>
+                    <option selected>United Kingdom</option>
+                </select>
+                <input type="radio" value="Yes, please" />
+                <input type="radio" value="No, thank you" />
+                May we use your contact details to update you on offers, products, and services? You may unsubscribe anytime.
+                <input type="checkbox">I have read and I agree to the prjctX Privacy Policy.
+                <input type="submit" value="ADD ME"/>
+            </div>
+        </section>
+    </main>
+    <app-footer></app-footer>
 </body>
 </html>
