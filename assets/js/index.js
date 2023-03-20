@@ -1,8 +1,9 @@
 "use strict";
 
 import { cl, ce, cw, id, setCustomComponent as component} from "./modules/helpers.mjs";
-import { loadMembers, renderMembers } from "./modules/members.mjs";
+import { loadMembers, renderMembers, updateMember } from "./modules/members.mjs";
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
+import { checkDevices } from "./modules/bluetooth.mjs";
 
 component(AppHeader, "app-header");
 component(AppNav, "app-nav");
@@ -10,13 +11,20 @@ component(AppFooter, "app-footer");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const request = new Request("http://localhost:8888/collectors/all"), output = id("membersBody");
+    checkDevices();
+
+    const request = new Request("http://localhost:8888/collectors/all");
+    const updateRequest = new Request("http://localhost:8888/collectors/update/");
+    const output = id("membersBody");
 
     if (window.fetch) {
         try {
             // members = await loadMembers(url);
             const members = await loadMembers(request, output);
             renderMembers(members, output);
+
+            const updated = await updateMember(updateRequest);
+            cl(updateMember);
         } catch (error) {
             cl(error) || ce(error) || cw(error);
         }

@@ -28,6 +28,7 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 - Payment Request API ([W3C][payw3c], [MDN][paymdn], [web.dev][payweb], [Apple][payapple], [freeCodeCamp][payfreecode])
 - Google Pay API ([Google][paygoogle])
 - Stripe's payments APIs ([Payments][stripeapis], [CLI][stripcli], [SDK][stripephp])
+- Web Bluetooth API ([W3C project on GitHub][btw3c], [MDN][btmdn])
 
 ### PHP resources:
 
@@ -58,3 +59,5 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [payfreecode]: https://www.freecodecamp.org/news/payment-request-api-javascript/ "How to Use the Payment Request API in JavaScript"
 [rfc_rr]: https://wiki.php.net/rfc/request_response "PHP: rfc:request_response"
 [bootstrap]: https://getbootstrap.com/docs/5.3/getting-started/introduction/ "Get started with Bootstrap · Bootstrap v5.3"
+[btmdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API "Web Bluetooth API - Web APIs | MDN"
+[btw3c]: https://github.com/WebBluetoothCG/web-bluetooth "WebBluetoothCG/web-bluetooth: Bluetooth support for the Web."
