@@ -13,6 +13,31 @@ async function loadMembers(request) {
   }).catch(handleError)).text();
 }
 
+async function updateMember(request, id) {
+  let headersList = {
+    "Accept": "*/*",
+    "User-Agent": "prjctX (https://github.com/sabuein/prjctX)",
+    "Accept-Charset": "utf-8",
+    "Connection": "keep-alive",
+    "Content-Type": "application/json"
+  }
+
+  let bodyContent = JSON.stringify({
+    "name": "Zainab Al-Abdulrahman",
+    "email": "zainab.alabdulrahman@example.com",
+    "phone": "+966561234567"
+  });
+
+  request.url = `${request.url}${id}`
+
+  return await (await fetch(request, {
+    method: "put",
+    mode: "cors",
+    headers: headersList,
+    body: bodyContent
+  }).catch(handleError)).text();
+}
+
 const handleError = (error) => {
   console.warn(error);
   return new Response(
@@ -63,4 +88,4 @@ referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, orig
 
 */
 
-export { loadMembers, renderMembers };
+export { loadMembers, renderMembers, updateMember };
