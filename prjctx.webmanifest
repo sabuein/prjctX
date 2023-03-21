@@ -1,0 +1,21 @@
+{
+    "name": "Tools for art collectors",
+    "short_name": "prjctX",
+    "description": "A community management system and tools for art collectors.",
+    "icons": [
+        {
+            "src": "/assets/images/icons8-easel-50.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/icons8-easel-100.png",
+            "sizes": "100x100",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "theme_color": "#c3c3c3",
+    "background_color": "#ffffff"
+}

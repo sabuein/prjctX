@@ -30,6 +30,10 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 - Stripe's payments APIs ([Payments][stripeapis], [CLI][stripcli], [SDK][stripephp])
 - Web Bluetooth API ([W3C project on GitHub][btw3c], [MDN][btmdn])
 
+### PWA resources:
+
+- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb])
+
 ### PHP resources:
 
 - [rfc:request_response][rfc_rr]
@@ -61,3 +65,5 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [bootstrap]: https://getbootstrap.com/docs/5.3/getting-started/introduction/ "Get started with Bootstrap · Bootstrap v5.3"
 [btmdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API "Web Bluetooth API - Web APIs | MDN"
 [btw3c]: https://github.com/WebBluetoothCG/web-bluetooth "WebBluetoothCG/web-bluetooth: Bluetooth support for the Web."
+[pwamdn]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps "Progressive web apps (PWAs) | MDN"
+[pwaweb]: https://web.dev/progressive-web-apps/ "Progressive Web Apps - web.dev"
