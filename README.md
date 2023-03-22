@@ -23,6 +23,8 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 
 ### Web resources:
 
+- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb]. [Microsoft][mspwa])
+- Service Worker API ([MDN][servicemdn])
 - Fetch API ([WHATWG][fetchwhat], [MDN][fetchmdn], [web.dev][fetchweb])
 - Credential Management API ([MDN][creapimdn], [web.dev][creapiweb])
 - Payment Request API ([W3C][payw3c], [MDN][paymdn], [web.dev][payweb], [Apple][payapple], [freeCodeCamp][payfreecode])
@@ -30,11 +32,9 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 - Stripe's payments APIs ([Payments][stripeapis], [CLI][stripcli], [SDK][stripephp])
 - Web Bluetooth API ([W3C project on GitHub][btw3c], [MDN][btmdn])
 - Notifications API ([MDN][notifimdn])
-- Push API ([MDN][pushmdn])
-
-### PWA resources:
-
-- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb])
+- Push API ([MDN][pushmdn], [Mozilla's Push Service][mozillapush], [Data Encryption Test Page][pushdatatest])
+- Cache ([MDN][cachemdn])
+- Performance API ([MDN][performdn])
 
 ### PHP resources:
 
@@ -71,3 +71,9 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [pwaweb]: https://web.dev/progressive-web-apps/ "Progressive Web Apps - web.dev"
 [pushmdn]: https://developer.mozilla.org/en-US/docs/Web/API/Push_API "Push API - Web APIs | MDN"
 [notifimdn]: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API "Notifications API - Web APIs | MDN"
+[servicemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API "Service Worker API"
+[pushdatatest]: https://jrconlin.github.io/WebPushDataTestPage/ "Web Push: Data Encryption Test Page"
+[cachemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Cache "Cache - Web APIs | MDN"
+[mozillapush]: https://blog.mozilla.org/services/2016/08/23/sending-vapid-identified-webpush-notifications-via-mozillas-push-service/ "Sending VAPID identified WebPush Notifications via Mozilla’s Push Service | Mozilla Services"
+[mspwa]: https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/ "Overview of Progressive Web Apps (PWAs) - Microsoft Edge Development | Microsoft Learn"
+[performdn]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API "Performance API - Web APIs | MDN"
