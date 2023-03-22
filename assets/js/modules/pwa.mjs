@@ -16,6 +16,9 @@ const registerServiceWorker = async (url) => {
             } else if (registration.active) {
                 cl("Service worker active");
             }
+            // Activate push-service subscription
+            const subscription = await registration.pushManager.getSubscription();
+            cl(`Subscription object: ${subscription}`);
         } catch (error) {
             cl(`Registration failed with ${error}`);
         }

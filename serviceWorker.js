@@ -104,3 +104,13 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
+// Receive push messages
+self.addEventListener("push", (event) => {
+  const payload = event.data?.text() ?? "No payload";
+  event.waitUntil(
+    self.registration.showNotification("Push messages received", {
+      body: payload,
+    })
+  );
+});
