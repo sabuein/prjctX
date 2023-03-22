@@ -16,13 +16,10 @@ import {
 
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
 import { checkDevices } from "./modules/bluetooth.mjs";
-import { registerServiceWorker as startWorker, startPWA } from "./modules/pwa.mjs";
+import { registerServiceWorker as startWorker, startPWA, requestNotificationsPermission as notifyPWA } from "./modules/pwa.mjs";
 
-let deferredPrompt;
-const addBtn = document.querySelector(".add-button");
-addBtn.style.display = "none";
-startPWA(deferredPrompt, addBtn);
-startWorker("/service-worker.js");
+
+// addBtn.style.display = "none";
 
 component(AppHeader, "app-header");
 component(AppNav, "app-nav");
@@ -34,6 +31,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const request = new Request("http://localhost:8888/collectors/all");
   const updateRequest = new Request("http://localhost:8888/collectors/update/");
   const output = id("membersBody");
+
+  let deferredPrompt;
+  const addToHomeButton = id("appAdd");
+  startPWA(deferredPrompt, addToHomeButton);
+  const receiveNotificationsButton = id("appNotify");
+  receiveNotificationsButton.addEventListener("click", notifyPWA);
+
+  startWorker("/serviceWorker.js");
 
   if (window.fetch) {
     try {
@@ -49,5 +54,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     cl("do something with XMLHttpRequest");
   }
-  
+
 });

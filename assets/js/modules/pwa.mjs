@@ -1,5 +1,7 @@
 
-import { ce, cl } from "./helpers.mjs";
+/*jshint esversion: 8 */
+
+import { cl, id } from "./helpers.mjs";
 
 const registerServiceWorker = async (url) => {
     if (window.isSecureContext && navigator && navigator.serviceWorker) {
@@ -22,7 +24,7 @@ const registerServiceWorker = async (url) => {
     }
 };
 
-const startPWA = (deferredPrompt, button) => {    
+const startPWA = async (deferredPrompt, button) => {
     window.addEventListener("beforeinstallprompt", (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
         e.preventDefault();
@@ -47,6 +49,49 @@ const startPWA = (deferredPrompt, button) => {
             });
         });
     });
+};
+
+const requestNotificationsPermission = () => {
+    Notification.requestPermission().then((result) => {
+        if (result === "granted") {
+            const someGames = [
+                {
+                    "name": "Super Mario Bros.",
+                    "author": "Shigeru Miyamoto",
+                    "slug": "super-mario-bros"
+                },
+                {
+                    "name": "The Legend of Zelda",
+                    "author": "Shigeru Miyamoto",
+                    "slug": "the-legend-of-zelda"
+                },
+                {
+                    "name": "Minecraft",
+                    "author": "Markus Persson",
+                    "slug": "minecraft"
+                },
+                {
+                    "name": "Tetris",
+                    "author": "Alexey Pajitnov",
+                    "slug": "tetris"
+                }
+            ];
+            randomNotification(someGames);
+        }
+    });
 }
 
-export { registerServiceWorker, startPWA };
+const randomNotification = (input) => {
+    const randomItem = Math.floor(Math.random() * input.length);
+    const notifTitle = input[randomItem].name;
+    const notifBody = `Created by ${input[randomItem].author}.`;
+    const notifImg = `/assets/images/notifications/${input[randomItem].slug}.jpg`;
+    const options = {
+        body: notifBody,
+        icon: notifImg,
+    };
+    new Notification(notifTitle, options);
+    // setTimeout(randomNotification(input), 30000);
+}
+
+export { registerServiceWorker, startPWA, requestNotificationsPermission };

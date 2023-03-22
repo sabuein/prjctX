@@ -29,6 +29,8 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 - Google Pay API ([Google][paygoogle])
 - Stripe's payments APIs ([Payments][stripeapis], [CLI][stripcli], [SDK][stripephp])
 - Web Bluetooth API ([W3C project on GitHub][btw3c], [MDN][btmdn])
+- Notifications API ([MDN][notifimdn])
+- Push API ([MDN][pushmdn])
 
 ### PWA resources:
 
@@ -67,3 +69,5 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [btw3c]: https://github.com/WebBluetoothCG/web-bluetooth "WebBluetoothCG/web-bluetooth: Bluetooth support for the Web."
 [pwamdn]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps "Progressive web apps (PWAs) | MDN"
 [pwaweb]: https://web.dev/progressive-web-apps/ "Progressive Web Apps - web.dev"
+[pushmdn]: https://developer.mozilla.org/en-US/docs/Web/API/Push_API "Push API - Web APIs | MDN"
+[notifimdn]: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API "Notifications API - Web APIs | MDN"
