@@ -5,7 +5,7 @@ import {
   ce,
   cw,
   id,
-  setCustomComponent as component
+  setCustomComponent as component,
 } from "./modules/helpers.mjs";
 
 import {
@@ -16,8 +16,12 @@ import {
 
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
 import { checkDevices } from "./modules/bluetooth.mjs";
-import { registerServiceWorker as startWorker, startPWA, requestNotificationsPermission as notifyPWA } from "./modules/pwa.mjs";
-
+import {
+  registerServiceWorker as startServiceWorker,
+  startPWA,
+  requestNotificationsPermission as notifyPWA,
+} from "./modules/pwa.mjs";
+import { giveMeCookies as startCookies } from "./modules/cookies.mjs";
 
 // addBtn.style.display = "none";
 
@@ -27,32 +31,34 @@ component(AppFooter, "app-footer");
 
 document.addEventListener("DOMContentLoaded", async () => {
   // checkDevices();
-
-  const request = new Request("http://localhost:8888/collectors/all");
-  const updateRequest = new Request("http://localhost:8888/collectors/update/");
-  const output = id("membersBody");
-
-  let deferredPrompt;
-  const addToHomeButton = id("appAdd");
-  startPWA(deferredPrompt, addToHomeButton);
-  const receiveNotificationsButton = id("appNotify");
-  receiveNotificationsButton.addEventListener("click", notifyPWA);
-
-  startWorker("/serviceWorker.js");
-
-  if (window.fetch) {
+  if (meta.document.slug === "index") {
     try {
-      // members = await loadMembers(url);
-      const members = await loadMembers(request, output);
-      renderMembers(members, output);
+      let deferredPrompt;
+      const addToHomeButton = id("appAdd");
+      startPWA(deferredPrompt, addToHomeButton);
+      const receiveNotificationsButton = id("appNotify");
+      receiveNotificationsButton.addEventListener("click", notifyPWA);
 
-      const updated = await updateMember(updateRequest);
-      cl(updateMember);
+      startCookies();
+      startServiceWorker("/serviceWorker.js");
+    } catch (error) {
+      cl(error);
+    }
+  }
+
+  if (window.fetch && meta.document.slug === "members") {
+    try {
+      const table = id("membersBody");
+      const all = new Request("http://localhost:8888/collectors/all");
+      const update = new Request("http://localhost:8888/collectors/update/");
+      const raw = await loadMembers(all);
+      renderMembers(raw, table);
+      // const updated = await updateMember(update);
+      // cl(updated);
     } catch (error) {
       cl(error) || ce(error) || cw(error);
     }
   } else {
     cl("do something with XMLHttpRequest");
   }
-
 });
