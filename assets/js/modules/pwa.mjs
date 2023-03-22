@@ -4,26 +4,23 @@
 import { cl, id } from "./helpers.mjs";
 
 const registerServiceWorker = async (url) => {
-    if (window.isSecureContext && navigator && navigator.serviceWorker) {
-        try {
-            const registration = await navigator.serviceWorker.register(url, {
-                scope: "/",
-            });
-            if (registration.installing) {
-                cl("Service worker installing");
-            } else if (registration.waiting) {
-                cl("Service worker installed");
-            } else if (registration.active) {
-                cl("Service worker active");
-            }
-            // Activate push-service subscription
-            const subscription = await registration.pushManager.getSubscription();
-            cl(`Subscription object: ${subscription}`);
-        } catch (error) {
-            cl(`Registration failed with ${error}`);
+    try {
+        const registration = await navigator.serviceWorker.register(url, {
+            scope: "/",
+        });
+        if (registration.installing) {
+            cl("Service worker installing");
+        } else if (registration.waiting) {
+            cl("Service worker installed");
+            
+        } else if (registration.active) {
+            cl("Service worker active");
         }
-    } else {
-        cl("The browser does not offer service worker registration.");
+        // Activate push-service subscription
+        const subscription = await registration.pushManager.getSubscription();
+        cl(`Subscription object: ${subscription}`);
+    } catch (error) {
+        cl(`Registration failed with ${error}`);
     }
 };
 

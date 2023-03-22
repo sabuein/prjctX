@@ -29,21 +29,20 @@ component(AppHeader, "app-header");
 component(AppNav, "app-nav");
 component(AppFooter, "app-footer");
 
+// startCookies();
+
 document.addEventListener("DOMContentLoaded", async () => {
   // checkDevices();
-  if (meta.document.slug === "index") {
-    try {
-      let deferredPrompt;
-      const addToHomeButton = id("appAdd");
-      startPWA(deferredPrompt, addToHomeButton);
-      const receiveNotificationsButton = id("appNotify");
-      receiveNotificationsButton.addEventListener("click", notifyPWA);
 
-      startCookies();
-      startServiceWorker("/serviceWorker.js");
-    } catch (error) {
-      cl(error);
-    }
+  if (window.isSecureContext && navigator && navigator.serviceWorker && meta.document.slug === "index") {
+    let deferredPrompt;
+    const addToHomeButton = id("appAdd");
+    startPWA(deferredPrompt, addToHomeButton);
+    const receiveNotificationsButton = id("appNotify");
+    receiveNotificationsButton.addEventListener("click", notifyPWA);
+    startServiceWorker("/serviceWorker.js");
+  } else {
+    cl("The browser does not offer service worker registration.");
   }
 
   if (window.fetch && meta.document.slug === "members") {

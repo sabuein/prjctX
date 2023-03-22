@@ -1,7 +1,12 @@
 const addResourcesToCache = async (appShellFiles, cacheName) => {
-  const cache = await caches.open(cacheName);
-  for (let asset of appShellFiles) {
-    await cache.add(new Request(asset));
+  try {
+    const cache = await caches.open(cacheName);
+    // cache.addAll(appShellFiles);
+    for (let asset of appShellFiles) {
+      await cache.add(new Request(asset));
+    }
+  } catch {
+    console.log("Error occured while caching...");
   }
 };
 
@@ -10,25 +15,33 @@ self.addEventListener("install", function (event) {
   self.skipWaiting();
   // Cache the core assets
   event.waitUntil(
-    addResourcesToCache([
-      "/prjctx.webmanifest",
-      "/index.html",
-      "/offline.html",
-      "/404.html",
-      "/assets/css/main.css",
-      "/assets/js/app.js",
-      "/assets/js/components/static.mjs",
-      "/assets/js/modules/helpers.mjs",
-      "/assets/images/logo.svg",
-      "/assets/images/favicon.ico",
-      "/assets/images/icons8-easel-100.png"
-    ], "prjctx")
+    addResourcesToCache(
+      [
+        "/prjctx.webmanifest",
+        "/index.html",
+        "/offline.html",
+        "/404.html",
+        "/assets/css/main.css",
+        "/assets/js/app.js",
+        "/assets/js/components/static.mjs",
+        "/assets/js/modules/helpers.mjs",
+        "/assets/images/logo.svg",
+        "/assets/images/favicon.ico",
+        "/assets/images/icons8-easel-100.png",
+      ],
+      "prjctx"
+    )
   );
 });
 
 self.addEventListener("fetch", (event) => {
   // Bug fix https://stackoverflow.com/a/49719964
-  if (event.request.cache === "only-if-cached" && event.request.mode !== "same-origin") { return; }
+  if (
+    event.request.cache === "only-if-cached" &&
+    event.request.mode !== "same-origin"
+  ) {
+    return;
+  }
   // Getting the request object itself
   let request = event.request;
   console.log(`[Service Worker] Fetched resource ${event.request.url}`);
