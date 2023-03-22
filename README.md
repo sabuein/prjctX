@@ -35,6 +35,7 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 - Push API ([MDN][pushmdn], [Mozilla's Push Service][mozillapush], [Data Encryption Test Page][pushdatatest])
 - Cache ([MDN][cachemdn])
 - Performance API ([MDN][performdn])
+- Web Storage API ([MDN][storagemdn])
 
 ### PHP resources:
 
@@ -77,3 +78,4 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [mozillapush]: https://blog.mozilla.org/services/2016/08/23/sending-vapid-identified-webpush-notifications-via-mozillas-push-service/ "Sending VAPID identified WebPush Notifications via Mozilla’s Push Service | Mozilla Services"
 [mspwa]: https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/ "Overview of Progressive Web Apps (PWAs) - Microsoft Edge Development | Microsoft Learn"
 [performdn]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API "Performance API - Web APIs | MDN"
+[storagemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API "Web Storage API - Web APIs | MDN"
