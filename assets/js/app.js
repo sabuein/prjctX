@@ -21,7 +21,7 @@ import {
   startPWA,
   requestNotificationsPermission as notifyPWA,
 } from "./modules/pwa.mjs";
-import { giveMeCookies as startCookies } from "./modules/cookies.mjs";
+import { startCookies } from "./modules/storage.mjs";
 
 // addBtn.style.display = "none";
 
