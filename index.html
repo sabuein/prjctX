@@ -8,6 +8,7 @@
     <link rel="manifest" href="prjctx.webmanifest" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link href="/assets/css/main.css" rel="stylesheet" />
+    <script src="/assets/js/lib/handlebars-v4.7.7.js" type="application/javascript"></script>
     <script src="/assets/js/app.js" type="module"></script>
     <script type="application/javascript">
         var meta = {
@@ -34,6 +35,14 @@
     <div>
         <div><button id="appAdd">Add to Home Screen</button></div>
         <div><button id="appNotify">Receive Notifications</button></div>
+    </div>
+    <div id="handle">
+        <p>Hello, my name is {{name}}. I am from {{hometown}}. I have {{kids.length}} kids:</p>
+        <ul>
+            {{#kids}}
+            <li>{{name}} is {{age}}</li>
+            {{/kids}}
+        </ul>
     </div>
 </body>
 </html>

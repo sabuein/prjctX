@@ -1,7 +1,5 @@
 // Console
 const cl = (output) => console.log(output);
-const ce = (error) => console.error(error);
-const cw = (error) => console.warn(error);
 
 const id = (id) => document.getElementById(id);
 
@@ -11,4 +9,15 @@ const setCustomComponent = (className, elementName) => {
     }
 };
 
-export { cl, ce, cw, id, setCustomComponent };
+const prettyJson = (object) => JSON.stringify(object, null, "\t");
+
+const handlebars = (source, data) => {
+    try {
+        const template = Handlebars.compile(source.innerHTML);
+        source.innerHTML = template(data);
+    } catch (reason) {
+        cl(`Handlebars.js didn't load: ${reason}`);
+    }
+}
+
+export { cl, id, setCustomComponent, prettyJson as pJson, handlebars };

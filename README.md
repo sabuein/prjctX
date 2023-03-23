@@ -3,7 +3,7 @@
 A community management system and tools for art collectors.
 
 The project consists of:
-- Front-end: Progessive web app (PWA) built with Bootstrap v[5.3.0-alpha1][bootstrap],
+- Front-end: Progessive web app (PWA) built with Bootstrap v[5.3.0-alpha1][bootstrap], Handlebars v[4.7.7][handlebars]
 - Back-end: RESTful API built with Slim Framework v[4.11.0][slim], PHP v[8.1.2][php], and MariaDB v[10.6.12][mariadb].
 
 ```bash
@@ -79,3 +79,4 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [mspwa]: https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/ "Overview of Progressive Web Apps (PWAs) - Microsoft Edge Development | Microsoft Learn"
 [performdn]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API "Performance API - Web APIs | MDN"
 [storagemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API "Web Storage API - Web APIs | MDN"
+[handlebars]: https://handlebarsjs.com/installation/#downloading-handlebars "Handlebars"
