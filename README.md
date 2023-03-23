@@ -3,7 +3,7 @@
 A community management system and tools for art collectors.
 
 The project consists of:
-- Front-end: Progessive web app (PWA) built with Bootstrap v[5.3.0-alpha1][bootstrap], Handlebars v[4.7.7][handlebars]
+- Front-end: Progessive web app (PWA) built with [Bubblewrap][bubblewrap], Bootstrap v[5.3.0-alpha1][bootstrap], Handlebars v[4.7.7][handlebars]
 - Back-end: RESTful API built with Slim Framework v[4.11.0][slim], PHP v[8.1.2][php], and MariaDB v[10.6.12][mariadb].
 
 ```bash
@@ -23,7 +23,7 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 
 ### Web resources:
 
-- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb]. [Microsoft][mspwa])
+- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb], [Microsoft][mspwa])
 - Service Worker API ([MDN][servicemdn])
 - Fetch API ([WHATWG][fetchwhat], [MDN][fetchmdn], [web.dev][fetchweb])
 - Credential Management API ([MDN][creapimdn], [web.dev][creapiweb])
@@ -80,3 +80,4 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [performdn]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API "Performance API - Web APIs | MDN"
 [storagemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API "Web Storage API - Web APIs | MDN"
 [handlebars]: https://handlebarsjs.com/installation/#downloading-handlebars "Handlebars"
+[bubblewrap]: https://github.com/GoogleChromeLabs/bubblewrap "GoogleChromeLabs/bubblewrap: Bubblewrap is a Command Line Interface (CLI) that helps developers to create a Project for an Android application that launches an existing Progressive Web App (PWAs) using a Trusted Web Activity."
