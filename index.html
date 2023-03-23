@@ -25,24 +25,23 @@
     <app-nav></app-nav>
     <main>
         <header>
-            <h2>Welcome to prjctX, A community management system and tools for art collectors&period;</h2>
+            <h2>Welcome to prjctX&comma;</h2>
+            <h4>A community management system and tools for art collectors&period;</h4>
         </header>
         <section>
-            <p>Under construction&hellip;</p>
+            <blockquote>Construction work in progress&hellip;</blockquote>
         </section>
     </main>
-    <app-footer></app-footer>
-    <div>
-        <div><button id="appAdd">Add to Home Screen</button></div>
-        <div><button id="appNotify">Receive Notifications</button></div>
-    </div>
     <div id="handle">
-        <p>Hello, my name is {{name}}. I am from {{hometown}}. I have {{kids.length}} kids:</p>
+        <h6>Some magic by Handlebars&period;js&colon;</h6>
+        <p>Hello, my name is {{name}}. I am from {{hometown}}, I live and work in {{live}}, and I am {{age}} years old.</p>
+        <p>I have {{siblings.length}} siblings:</p>
         <ul>
-            {{#kids}}
-            <li>{{name}} is {{age}}</li>
-            {{/kids}}
+            {{#siblings}}
+            <li>{{name}} is {{age}} years old.</li>
+            {{/siblings}}
         </ul>
     </div>
+    <app-footer></app-footer>
 </body>
 </html>
