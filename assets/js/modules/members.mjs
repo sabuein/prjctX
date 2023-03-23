@@ -13,6 +13,23 @@ async function loadMembers(request) {
   }).catch(handleError)).text();
 }
 
+const addMember = async (data) => {
+  const request = new Request("http://localhost:8888/collectors/add");
+  let headersList = {
+    "Accept": "*/*",
+    "User-Agent": "prjctX (https://github.com/sabuein/prjctX)",
+    "Accept-Charset": "utf-8",
+    "Connection": "keep-alive",
+    "Content-Type": "application/json"
+  }
+  return await (await fetch(request, {
+    method: "post",
+    mode: "no-cors",
+    headers: headersList,
+    body: JSON.stringify(data)
+  }).catch(handleError)).text();
+}
+
 async function updateMember(request, id) {
   let headersList = {
     "Accept": "*/*",
@@ -68,24 +85,4 @@ const renderMembers = (input, output) => {
   output.appendChild(row);
 }
 
-
-/*
-
-// IF POST
-body: JSON.stringify(options), // body data type must match "Content-Type" header
-
-method: "get",
-mode: "no-cors", // no-cors, *cors, same-origin
-cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-credentials: "same-origin", // include, *same-origin, omit
-headers: {
-  "Content-Type": "application/json",
-  // 'Content-Type': 'application/x-www-form-urlencoded',
-},
-redirect: "follow", // manual, *follow, error
-referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-}
-
-*/
-
-export { loadMembers, renderMembers, updateMember };
+export { loadMembers, addMember, updateMember, renderMembers };

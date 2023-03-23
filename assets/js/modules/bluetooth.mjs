@@ -1,4 +1,4 @@
-import { ce, cl } from "./helpers.mjs";
+import { cl } from "./helpers.mjs";
 
 const checkDevices = () => {
   let options = { filter: [{ services: ["battery_service"] }] };
@@ -8,8 +8,8 @@ const checkDevices = () => {
       cl(`Name: ${device.name}`);
     })
     .catch((error) => {
-      ce(`Something went wrong. ${error}`);
+      cl(`Something went wrong. ${error}`);
     });
 };
 
-export { checkDevices };
+export { checkDevices as checkBluetoothDevices };

@@ -1,7 +1,7 @@
 
 /*jshint esversion: 8 */
 
-import { cl, id } from "./helpers.mjs";
+import { cl } from "./helpers.mjs";
 
 const registerServiceWorker = async (url) => {
     try {
