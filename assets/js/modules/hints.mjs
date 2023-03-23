@@ -1,4 +1,5 @@
-import { cl, pJson } from "./helpers.mjs";
+import { cd } from "./helpers.mjs";
+import { pJson } from "./view.mjs";
 
 const userAgentData = async () => {
     const keys = [
@@ -11,7 +12,7 @@ const userAgentData = async () => {
         "fullVersionList"
     ];
     const result = await navigator.userAgentData.getHighEntropyValues(keys);
-    cl(pJson(result));
+    cd(pJson(result));
     return pJson(result);
 }
 

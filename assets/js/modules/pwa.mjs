@@ -24,7 +24,8 @@ const registerServiceWorker = async (url) => {
     }
 };
 
-const startPWA = async (deferredPrompt, button) => {
+const startPWA = async (deferredPrompt, button, serviceWorkerURL) => {
+    registerServiceWorker(serviceWorkerURL);
     window.addEventListener("beforeinstallprompt", (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
         e.preventDefault();
@@ -94,4 +95,4 @@ const randomNotification = (input) => {
     // setTimeout(randomNotification(input), 30000);
 }
 
-export { registerServiceWorker, startPWA, requestNotificationsPermission };
+export { registerServiceWorker, startPWA, requestNotificationsPermission as notifyPWA };

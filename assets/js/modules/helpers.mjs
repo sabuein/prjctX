@@ -1,23 +1,20 @@
 // Console
 const cl = (output) => console.log(output);
+const cd = (object) => console.dir(object);
+const cw = (error) => console.warn(error);
 
 const id = (id) => document.getElementById(id);
 
-const setCustomComponent = (className, elementName) => {
-    if (!window.customElements.get(elementName)) {
-        window.customElements.define(elementName, className);
-    }
-};
+const responseError = (error) => {
+    cw(error);
 
-const prettyJson = (object) => JSON.stringify(object, null, "\t");
-
-const handlebars = (source, data) => {
-    try {
-        const template = Handlebars.compile(source.innerHTML);
-        source.innerHTML = template(data);
-    } catch (reason) {
-        cl(`Handlebars.js didn't load: ${reason}`);
-    }
+    return new Response(
+        JSON.stringify({
+            code: 400,
+            message: "There has been a problem with fetch operation",
+            console: `${error}`
+        })
+    );
 }
 
-export { cl, id, setCustomComponent, prettyJson as pJson, handlebars };
+export { cl, cd, cw, id, responseError };
