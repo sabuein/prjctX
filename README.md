@@ -23,8 +23,9 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 
 ### Web resources:
 
-- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb], [Microsoft][mspwa])
-- Service Worker API ([MDN][servicemdn])
+- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb], [Learn PWA][learnpwaweb], [Microsoft][mspwa])
+- Web Workers API ([MDN][workermdn])
+- Service Worker API ([W3C][workerw3c], [MDN][servicemdn])
 - Fetch API ([WHATWG][fetchwhat], [MDN][fetchmdn], [web.dev][fetchweb])
 - Credential Management API ([MDN][creapimdn], [web.dev][creapiweb])
 - Payment Request API ([W3C][payw3c], [MDN][paymdn], [web.dev][payweb], [Apple][payapple], [freeCodeCamp][payfreecode])
@@ -70,9 +71,11 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [btw3c]: https://github.com/WebBluetoothCG/web-bluetooth "WebBluetoothCG/web-bluetooth: Bluetooth support for the Web."
 [pwamdn]: https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps "Progressive web apps (PWAs) | MDN"
 [pwaweb]: https://web.dev/progressive-web-apps/ "Progressive Web Apps - web.dev"
+[learnpwaweb]: https://web.dev/learn/pwa/ "Learn PWA"
 [pushmdn]: https://developer.mozilla.org/en-US/docs/Web/API/Push_API "Push API - Web APIs | MDN"
 [notifimdn]: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API "Notifications API - Web APIs | MDN"
 [servicemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API "Service Worker API"
+[workermdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API "Web Workers API - Web APIs | MDN"
 [pushdatatest]: https://jrconlin.github.io/WebPushDataTestPage/ "Web Push: Data Encryption Test Page"
 [cachemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Cache "Cache - Web APIs | MDN"
 [mozillapush]: https://blog.mozilla.org/services/2016/08/23/sending-vapid-identified-webpush-notifications-via-mozillas-push-service/ "Sending VAPID identified WebPush Notifications via Mozilla’s Push Service | Mozilla Services"
@@ -81,3 +84,4 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [storagemdn]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API "Web Storage API - Web APIs | MDN"
 [handlebars]: https://handlebarsjs.com/installation/#downloading-handlebars "Handlebars"
 [bubblewrap]: https://github.com/GoogleChromeLabs/bubblewrap "GoogleChromeLabs/bubblewrap: Bubblewrap is a Command Line Interface (CLI) that helps developers to create a Project for an Android application that launches an existing Progressive Web App (PWAs) using a Trusted Web Activity."
+[workerw3c]: https://www.w3.org/TR/service-workers/ "Service Workers"
