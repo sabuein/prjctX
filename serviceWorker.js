@@ -1,12 +1,12 @@
+const regex = new RegExp("\/\..$");
+
 const addResourcesToCache = async (appShellFiles, cacheName) => {
   try {
     const cache = await caches.open(cacheName);
-    // cache.addAll(appShellFiles);
-    for (let asset of appShellFiles) {
-      await cache.add(new Request(asset));
-    }
-  } catch {
+    await cache.addAll(appShellFiles);
+  } catch(error) {
     console.log("Error occured while caching...");
+    console.log(error);
   }
 };
 
@@ -17,17 +17,33 @@ self.addEventListener("install", function (event) {
   event.waitUntil(
     addResourcesToCache(
       [
+        "/serviceWorker.js",
         "/prjctx.webmanifest",
-        "/index.html",
-        "/offline.html",
-        "/404.html",
-        "/assets/css/main.css",
         "/assets/js/app.js",
-        "/assets/js/components/static.mjs",
+        "/assets/js/lib/handlebars-v4.7.7.js",
+        "/assets/js/classes/Member.mjs",
+        "/assets/js/classes/Collector.mjs",
+        "/assets/js/components/communication.mjs",
+        "/assets/js/modules/hints.mjs",
+        "/assets/js/modules/storage.mjs",
+        "/assets/js/modules/bluetooth.mjs",
+        "/assets/js/modules/view.mjs",
+        "/assets/js/modules/members.mjs",
+        "/assets/js/modules/pwa.mjs",
         "/assets/js/modules/helpers.mjs",
-        "/assets/images/logo.svg",
-        "/assets/images/favicon.ico",
-        "/assets/images/icons8-easel-100.png",
+        "/assets/js/components/static.mjs",
+        "/404.html",
+        "/collector.html",
+        "/communication.html",
+        "/forums.html",
+        "/login.html",
+        "/index.html",
+        "/members.html",
+        "/offline.html",
+        "/signup.html",
+        "/subscribe.html",
+        "/upload.html",
+        "/assets/css/main.css"
       ],
       "prjctx"
     )
@@ -65,7 +81,7 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(async function (error) {
           return caches.match(request).then(function (response) {
-            return response || caches.match("/offline.html");
+            return response || caches.match("offline.html");
           });
         })
     );

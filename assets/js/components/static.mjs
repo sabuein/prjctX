@@ -79,15 +79,11 @@ class AppFooter extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `
-        <footer style="text-align: center;">
-            <p>Copyright © 2023 prjctX. All rights reserved.</p>
-            <div>
-                <h6>Here are the PWA buttons&colon;</h6>
-                <div>
-                    <button id="appAdd">Add to Home Screen</button>
-                    <button id="appNotify">Receive Notifications</button>
-                </div>
-            </div>
+        <footer style="display: flex; flex-direction: column; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: stretch; gap: 1rem; text-align: center;">
+            <pre>Copyright © 2023 prjctX. All rights reserved.</pre>
+            <h6>Here are the PWA buttons&colon;</h6>
+            <button id="appAdd">Add to home screen</button>
+            <button id="appNotify">Get notifications</button>
         </footer>`;
     }
 }
