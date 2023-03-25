@@ -12,7 +12,7 @@ const registerServiceWorker = async (url) => {
             cl("Service worker installing");
         } else if (registration.waiting) {
             cl("Service worker installed");
-            
+
         } else if (registration.active) {
             cl("Service worker active");
         }

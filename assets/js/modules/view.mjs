@@ -2,15 +2,16 @@ import { cl } from "./helpers.mjs";
 
 const renderMembers = (json, table) => {
     try {
+        let index = 0;
         const members = JSON.parse(json);
         for (const member of members) {
             const row = document.createElement("tr");
-            row.appendChild(document.createElement("th")).textContent = member.id;
+            row.appendChild(document.createElement("th")).textContent = ++index;
             row.appendChild(document.createElement("td")).textContent = member.name;
             row.appendChild(document.createElement("td")).innerHTML = `<a href="mailto:${member.email}">${member.email}</a>`;
             row.appendChild(document.createElement("td")).innerHTML = `<a href="tel:${member.phone}">${member.phone}</a>`;
             row.firstElementChild.setAttribute("scope", "row");
-            table.insertBefore(row, table.firstChild);
+            table.appendChild(row);            
         }
         const row = document.createElement("tr");
         const final = document.createElement("td");

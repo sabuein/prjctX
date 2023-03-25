@@ -8,15 +8,36 @@ import { renderMembers, setCustomComponent as component, handlebars } from "./mo
 import { checkBluetoothDevices } from "./modules/bluetooth.mjs";
 import { startCookies } from "./modules/storage.mjs";
 import { userAgentData } from "./modules/hints.mjs";
+import Collector from "./classes/Collector.mjs";
+import { MailToForm } from "./components/communication.mjs";
 
 (() => { // Just do this
   component(AppHeader, "app-header");
   component(AppNav, "app-nav");
   component(AppFooter, "app-footer");
+  component(MailToForm, "app-communication");
 })();
 
 // startCookies();
 document.addEventListener("DOMContentLoaded", async () => {
+  const address = {
+    number: 129,
+    street: "Seymour Road",
+    postcode: "E10 7LZ",
+    city: "London",
+    country: "United Kingdom"
+  }, access = {
+    username: "sabuein",
+    password: "something"
+  };
+  
+  cl(`Building a profile for someone...\r\n`);
+  const someone = new Collector(address, access);
+  cl(`Calling someone's fullAddress()...\r\n`);
+  someone.fullAddress();
+  cl(`Calling someone's whois()...\r\n`);
+  someone.whois();
+
   switch (window.isSecureContext && (typeof (navigator) === "object") && (typeof (navigator.serviceWorker) === "object")) {
     case true:
       let deferredPrompt;
@@ -48,7 +69,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (window.fetch && (typeof (meta) !== "undefined" && meta.document.slug === "members")) {
-    const table = id("membersBody"), getAll = new Request("http://localhost:8888/collectors/all");
+    // const table = id("membersBody"), getAll = new Request("http://localhost:8888/collectors/all");
+    const table = id("membersBody"), getAll = new Request("/assets/data/100.json");
     renderMembers(await loadMembers(getAll), table);
 
     // const currentLocation = "x", update = new Request("http://localhost:8888/collectors/update/:id");
