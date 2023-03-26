@@ -1,5 +1,7 @@
 "use strict";
 
+import { cl } from "../modules/helpers.mjs";
+
 export default class Member {
 
     static get keys() {
@@ -39,11 +41,11 @@ export default class Member {
         Object.keys(this.address).forEach(key => {
             result.push(`${key}: ${this.address[key]}`);
         });
-        console.log(result.join(", "));
+        cl(`[*Art Collector] ${result.join(", ")}`);
         return result.join(", ");
     }
 
     whois() {
-        console.log(JSON.stringify({...this.address, ...this.access}));
+        cl(`[*Art Collector] ${JSON.stringify({...this.address, ...this.access})}`);
     }
 }
