@@ -4,7 +4,7 @@ const addResourcesToCache = async (appShellFiles, cacheName) => {
   try {
     const cache = await caches.open(cacheName);
     await cache.addAll(appShellFiles);
-  } catch(error) {
+  } catch (error) {
     console.log("Error occured while caching...");
     console.log(error);
   }
@@ -24,14 +24,15 @@ self.addEventListener("install", function (event) {
         "/assets/js/classes/Member.mjs",
         "/assets/js/classes/Collector.mjs",
         "/assets/js/components/communication.mjs",
-        "/assets/js/modules/hints.mjs",
+        "/assets/js/modules/pwa.mjs",
         "/assets/js/modules/storage.mjs",
         "/assets/js/modules/bluetooth.mjs",
-        "/assets/js/modules/view.mjs",
         "/assets/js/modules/members.mjs",
-        "/assets/js/modules/pwa.mjs",
         "/assets/js/modules/helpers.mjs",
+        "/assets/js/modules/hints.mjs",
         "/assets/js/components/static.mjs",
+        "/assets/js/modules/view.mjs",
+        "/assets/css/main.css",
         "/404.html",
         "/collector.html",
         "/communication.html",
@@ -42,15 +43,14 @@ self.addEventListener("install", function (event) {
         "/offline.html",
         "/signup.html",
         "/subscribe.html",
-        "/upload.html",
-        "/assets/css/main.css"
+        "/upload.html"
       ],
       "prjctx"
     )
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", event => {
   // Bug fix https://stackoverflow.com/a/49719964
   if (
     event.request.cache === "only-if-cached" &&
@@ -74,14 +74,14 @@ self.addEventListener("fetch", (event) => {
           let copy = response.clone();
           event.waitUntil(
             caches.open("prjctx").then(function (cache) {
-              return cache.put(request, copy);
+              return cache.put(request.url, copy);
             })
           );
           return response;
         })
         .catch(async function (error) {
           return caches.match(request).then(function (response) {
-            return response || caches.match("offline.html");
+            return response || caches.match("/offline.html");
           });
         })
     );
@@ -92,7 +92,8 @@ self.addEventListener("fetch", (event) => {
   // Offline-first
   if (
     request.headers.get("Accept").includes("text/css") ||
-    request.headers.get("Accept").includes("text/javascript")
+    request.headers.get("Accept").includes("text/javascript") ||
+    request.headers.get("Accept").includes("module")
   ) {
     // Check the cache first
     // If it's not found, send the request to the network
