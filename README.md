@@ -23,9 +23,9 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 
 ### Web resources:
 
-- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb], [Learn PWA][learnpwaweb], [Microsoft][mspwa])
+- Progressive web apps (PWAs) ([MDN][pwamdn], [web.dev][pwaweb], [Learn PWA][learnpwaweb], [Microsoft][mspwa], [Wikipedia][pwawiki])
 - Web Workers API ([MDN][workermdn])
-- Service Worker API ([W3C][workerw3c], [MDN][servicemdn])
+- Service Worker API ([W3C][workerw3c], [MDN][servicemdn], [ServiceWorker Cookbook][swmozillabook], [The offline cookbook][offlinebook])
 - Fetch API ([WHATWG][fetchwhat], [MDN][fetchmdn], [web.dev][fetchweb])
 - Credential Management API ([MDN][creapimdn], [web.dev][creapiweb])
 - Payment Request API ([W3C][payw3c], [MDN][paymdn], [web.dev][payweb], [Apple][payapple], [freeCodeCamp][payfreecode])
@@ -85,3 +85,6 @@ cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S loca
 [handlebars]: https://handlebarsjs.com/installation/#downloading-handlebars "Handlebars"
 [bubblewrap]: https://github.com/GoogleChromeLabs/bubblewrap "GoogleChromeLabs/bubblewrap: Bubblewrap is a Command Line Interface (CLI) that helps developers to create a Project for an Android application that launches an existing Progressive Web App (PWAs) using a Trusted Web Activity."
 [workerw3c]: https://www.w3.org/TR/service-workers/ "Service Workers"
+[pwawiki]: https://en.wikipedia.org/wiki/Progressive_web_app "Progressive web app - Wikipedia"
+[swmozillabook]: https://serviceworke.rs/ "IGRICE Za Decu Od 3 Do 103 godine - ServiceWorker Cookbook"
+[offlinebook]: https://jakearchibald.com/2014/offline-cookbook/ "The offline cookbook - JakeArchibald.com"
