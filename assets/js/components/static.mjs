@@ -55,7 +55,7 @@ class AppNav extends HTMLElement {
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand">prjctX</a>
+                    <a href="/" class="navbar-brand">prjctX</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.html">Homepage</a></li>

@@ -74,12 +74,12 @@ const addToHome = (homeButton) => {
 }
 
 const startPWA = (serviceWorkerURL, addToHomeButton, getNotificationsButton) => {
-    try {
-        registerProtocolHandler("mailto", "gmail.google.com");
+    try { // https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=sabuein@gmail.com
+        // registerProtocolHandler("mailto", "https://mail.google.com/mail/?extsrc=mailto&url=%s", "Gmail");
         // 'http://localhost:5500/members.html?name=web+name://Salaheddin AbuEin'
-        registerProtocolHandler("web+name", "/members.html?name=%s");
+        registerProtocolHandler("web+name", "/members.html?name=%s", "PrjctX");
         // 'http://localhost:5500/members.html?country=web+country://palestine'
-        registerProtocolHandler("web+country", "/members.html?country=%s");
+        registerProtocolHandler("web+country", "/members.html?country=%s", "PrjctX");
         // 
         registerServiceWorker(serviceWorkerURL);
         addToHome(addToHomeButton);
@@ -165,7 +165,7 @@ const randomNotification = (input) => {
     } catch (error) { cl(`Random notification failed: ${error}`); }
 }
 
-const registerProtocolHandler = (scheme = `web+art`, url = `art?type=%s`) => {
+const registerProtocolHandler = (scheme = `web+art`, url = `art?type=%s`, appName = "PrjctX") => {
     /**
     Let installed PWAs handle links that use a specific protocol for a more integrated experience.
     
@@ -176,7 +176,7 @@ const registerProtocolHandler = (scheme = `web+art`, url = `art?type=%s`) => {
     
     @url: A string containing the URL of the handler. This URL must include %s, as a placeholder that will be replaced with the escaped URL to be handled.
     **/
-    try { navigator.registerProtocolHandler(scheme, url); }
+    try { navigator.registerProtocolHandler(scheme, url, appName); }
     catch (error) { cl(`Protocol handler registeration failed: ${error}`); }
 }
 
