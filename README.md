@@ -16,6 +16,9 @@ slim/slim          4.11.0 Slim is a PHP micro framework that helps you quickly w
 ## Local development:
 
 ```bash
+# Creating the DB and required tables
+mariadb -u root -p database_name < ./assets/data/schema.sql
+
 # Start PHP built-in web server to run an API
 cd ./core/apis/v1/collectors/ && sudo php -S localhost:8888 -t public public/index.php
 cd /home/sabuein/my/projects/prjctX/core/apis/v1/collectors/ && sudo php -S localhost:8888 -t public public/index.php
