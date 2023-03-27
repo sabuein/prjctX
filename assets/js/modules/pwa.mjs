@@ -74,13 +74,18 @@ const addToHome = (homeButton) => {
 }
 
 const startPWA = (serviceWorkerURL, addToHomeButton, getNotificationsButton) => {
-    try { // https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=sabuein@gmail.com
+    try {
+        // https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=sabuein@gmail.com
         // registerProtocolHandler("mailto", "https://mail.google.com/mail/?extsrc=mailto&url=%s", "Gmail");
-        // 'http://localhost:5500/members.html?name=web+name://Salaheddin AbuEin'
+
+        // unescape("http://127.0.0.1:5500/members.html?name=web%2Bname%3A%2F%2FSalaheddin");
+        // 'http://127.0.0.1:5500/members.html?name=web+name://Salaheddin'
         registerProtocolHandler("web+name", "/members.html?name=%s", "PrjctX");
-        // 'http://localhost:5500/members.html?country=web+country://palestine'
+
+        // unescape("http://127.0.0.1:5500/members.html?country=web%2Bcountry%3A%2F%2Fpalestine");
+        // 'http://127.0.0.1:5500/members.html?country=web+country://palestine'
         registerProtocolHandler("web+country", "/members.html?country=%s", "PrjctX");
-        // 
+
         registerServiceWorker(serviceWorkerURL);
         addToHome(addToHomeButton);
         notifyMe(getNotificationsButton);
