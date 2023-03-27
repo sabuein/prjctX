@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "password": "password123",
+    "encryption": "SHA-512",
+    "terminal": "openssl passwd -6 -salt yaRab ${password}"
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "password": "password456"
+  },
+  {
+    "id": 3,
+    "name": "Bob Johnson",
+    "email": "bob.johnson@example.com",
+    "password": "password789"
+  },
+  {
+    "id": 4,
+    "name": "Alice Brown",
+    "email": "alice.brown@example.com",
+    "password": "passwordabc"
+  },
+  {
+    "id": 5,
+    "name": "Michael Davis",
+    "email": "michael.davis@example.com",
+    "password": "passworddef"
+  },
+  {
+    "id": 6,
+    "name": "Emily Green",
+    "email": "emily.green@example.com",
+    "password": "passwordghi"
+  },
+  {
+    "id": 7,
+    "name": "Tom Wilson",
+    "email": "tom.wilson@example.com",
+    "password": "passwordjkl"
+  },
+  {
+    "id": 8,
+    "name": "Samantha Lee",
+    "email": "samantha.lee@example.com",
+    "password": "passwordmno"
+  },
+  {
+    "id": 9,
+    "name": "Robert Clark",
+    "email": "robert.clark@example.com",
+    "password": "passwordpqr"
+  },
+  {
+    "id": 10,
+    "name": "Olivia Adams",
+    "email": "olivia.adams@example.com",
+    "password": "passwordstu"
+  },
+  {
+    "id": 11,
+    "name": "David Martinez",
+    "email": "david.martinez@example.com",
+    "password": "passwordvwx"
+  },
+  {
+    "id": 12,
+    "name": "Grace Brown",
+    "email": "grace.brown@example.com",
+    "password": "passwordyz1"
+  },
+  {
+    "id": 13,
+    "name": "Anthony Wilson",
+    "email": "anthony.wilson@example.com",
+    "password": "password234"
+  },
+  {
+    "id": 14,
+    "name": "Lily Garcia",
+    "email": "lily.garcia@example.com",
+    "password": "password567"
+  },
+  {
+    "id": 15,
+    "name": "William Lee",
+    "email": "william.lee@example.com",
+    "password": "password890"
+  },
+  {
+    "id": 16,
+    "name": "Sophia Davis",
+    "email": "sophia.davis@example.com",
+    "password": "passwordabc1"
+  },
+  {
+    "id": 17,
+    "name": "Brandon Clark",
+    "email": "brandon.clark@example.com",
+    "password": "passworddef2"
+  },
+  {
+    "id": 18,
+    "name": "Ava Johnson",
+    "email": "ava.johnson@example.com",
+    "password": "passwordghi3"
+  }
+]
