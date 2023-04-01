@@ -1,5 +1,6 @@
 import Collector from "../classes/Collector.mjs";
 import { cl, responseError } from "./helpers.mjs";
+import { getUserAgentData } from "./hints.mjs";
 
 const loadMembers = async (request) => {
   try {
@@ -78,25 +79,33 @@ const updateMember = async (request, id) => {
   }
 };
 
-const fakeCollector = () => {
+const fakeCollector = async () => {
+
   try {
-    let address = {
-      number: 129,
-      street: "Seymour Road",
-      postcode: "E10 7LZ",
-      city: "London",
-      country: "United Kingdom",
+    let credentials = {
+      credentials: {
+        id: 4567,
+        name: "Salaheddin AbuEim",
+        password: "something"
+      }
     },
-      access = {
-        username: "sabuein",
-        password: "something",
-      };
-    cl(`[*Art Collector] Building a profile for someone...\r\n`);
-    const someone = new Collector(address, access);
-    cl(`[*Art Collector] Calling someone's fullAddress()...\r\n`);
-    someone.fullAddress();
-    cl(`[*Art Collector] Calling someone's whois()...\r\n`);
-    someone.whois();
+      address = {
+        address: {
+          number: 129,
+          street: "Seymour Road",
+          postcode: "E10 7LZ",
+          city: "London",
+          country: "United Kingdom"
+        }
+      },
+      agentData = await getUserAgentData(),
+      xX = { more: "information" };
+
+    // Getting some hints to use as extra information
+    const someone = new Collector(credentials, address, { agentData, xX });
+    someone.fullAddress;
+    someone.whois;
+
   } catch (error) {
     responseError(error);
   }

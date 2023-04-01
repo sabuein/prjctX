@@ -16,7 +16,6 @@ import {
 } from "./modules/view.mjs";
 import { checkBluetoothDevices } from "./modules/bluetooth.mjs";
 import { startCookies } from "./modules/storage.mjs";
-import { userAgentData } from "./modules/hints.mjs";
 import { MailToForm } from "./components/communication.mjs";
 
 window.addEventListener("load", () => {
@@ -46,11 +45,26 @@ window.addEventListener("load", () => {
     default:
       cl(`Thank you for visitng the prjctX code!`);
   }
+
+  if ("credentials" in navigator) {
+    navigator.credentials.get({ password: true }).then((creds) => {
+      cl(`Do something with the credentials: ${creds}`);
+
+      /* Experimental 
+      CredentialsContainer.create({ id: 100, password: 32324 });
+      CredentialsContainer.get();
+      CredentialsContainer.preventSilentAccess();
+      CredentialsContainer.store(); */
+      
+    });
+  } else {
+    cl(`Handle sign-in the way you did before.`);
+  }
+
 });
 
 // startCookies();
 document.addEventListener("DOMContentLoaded", async () => {
-  fakeCollector();
 
   if (window.fetch) {
     if (typeof meta !== "undefined") {
@@ -68,16 +82,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             ]
           };
           handlebars(source, data);
+          fakeCollector();
           break;
         case "members":
           // const table = id("membersBody"), getAll = new Request("http://localhost:8888/collectors/all");
           const table = id("membersBody"),
-            getAll = new Request("/core/raw/collectors.json");
+            getAll = new Request("/assets/collectors.json");
           renderMembers(await loadMembers(getAll), table);
           // const currentLocation = "x", update = new Request("http://localhost:8888/collectors/update/:id");
           // cl(await updateMember(update), currentLocation);
-          // Some info
-          await userAgentData();
           // checkBluetoothDevices();
           const newMember = {
             name: "Salaheddin AbuEin",
@@ -94,6 +107,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       cl(`The meta object is not available`);
     }
   } else {
-    cl(`We need to do something with XMLHttpRequest`);
+    if (typeof meta !== "undefined") {
+      let slug = meta.document.slug;
+      switch (slug) {
+        case "index":
+          cl(`You are on ${slug}. We need to do something with XMLHttpRequest`);
+          break;
+        default:
+          cl(`Thank you.`);
+      }
+    }
   }
 });
