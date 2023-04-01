@@ -1,7 +1,7 @@
 "use strict";
 
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
-import { cl, id } from "./modules/helpers.mjs";
+import { cl, id, responseError } from "./modules/helpers.mjs";
 import { startPWA, notifyMe } from "./modules/pwa.mjs";
 import {
   loadMembers,
@@ -125,13 +125,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           // cl(back);
           break;
         case "login":
+          //let x = navigator.credentials.store(new PasswordCredential({id: 444, type: "password", password: "332211"}));
           const form = document.querySelector("#login");
           form.addEventListener("submit", (e) => {
             e.preventDefault();
-            const creds = new PasswordCredential(e.target);
-            navigator.credentials.store(creds).then((cred) => {
-              cl(`Do something with ${cred}`);
-            }).catch(error => console.error(error));
+            const login = new PasswordCredential(e.target);
+            navigator.credentials.store(login).then((status) => {
+              cl(`---| PWA: Save Password?`);
+              cl(login);
+              return status;
+            }).catch(error => responseError(error));
           });
           break;
         default:

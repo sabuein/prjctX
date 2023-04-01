@@ -95,11 +95,11 @@ self.addEventListener("fetch", (event) => {
   // CSS & JavaScript
   // Offline-first
   if (
-    request.headers.get("accept").includes("text/css") ||
-    request.headers.get("accept").includes("text/javascript") ||
-    request.headers.get("accept").includes("module") ||
-    request.headers.get("accept").includes("manifest+json") ||
-    request.headers.get("accept").includes("application/json")
+    request.headers.get("accept").includes("") ||
+    request.headers.get("accept").includes("") ||
+    request.headers.get("accept").includes("") ||
+    request.headers.get("accept").includes("") ||
+    request.headers.get("accept").includes("")
   ) {
     // Check the cache first
     // If it's not found, send the request to the network
@@ -113,46 +113,20 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Images
-  // Offline-first
-  if (request.headers.get("accept").includes("image")) {
-    // Check the cache first
-    // If it's not found, send the request to the network
-    event.respondWith(
-      caches.match(request, { ignoreSearch: true })
-        .then(function (response) {
-          return response || fetch(request).then(function (response) {
-            let copy = response.clone();
-            // Save a copy of it in cache
-            event.waitUntil(caches.open("prjctx").then(function (cache) {
-              return cache.put(request, copy);
-            }).catch(error => console.log(error)));
-            return response;
-          });
-        }).catch((error) => console.log(error)));
-    return;
-  }
-
-  // Images
-  // Offline-first
-  if (request.headers.get("accept").includes("manifest")) {
-    // Check the cache first
-    // If it's not found, send the request to the network
-    event.respondWith(
-      caches.match(request, { ignoreSearch: true }).then(function (response) {
-        return response || fetch(request).then(function (response) {
-          let copy = response.clone();
-          // Save a copy of it in cache
-          event.waitUntil(caches.open("prjctx").then(function (cache) {
-            return cache.put(request, copy);
-          }).catch(error => console.log(error)));
-          return response;
-        });
-      })
-    );
-    return;
-  }
-
+  let cacheName = "prjctx",
+    mimes = [
+      "text/css",
+      "text/javascript",
+      "module",
+      "manifest+json",
+      "application/json",
+      "manifest",
+      "image"
+    ];
+  mimes.forEach(mime => offlineFirst(event, request, mime, cacheName));
+  // Or just everything!
+  //offlineFirst(event, request, "*/*", cacheName);
+  
   // General setupapplication/
   let responseContent = `
   <html>
@@ -177,27 +151,6 @@ self.addEventListener("fetch", (event) => {
   //     );
   //   })
   // );
-
-
-  // Everything
-  // Offline-first
-  // if (request.headers.get("accept").includes("*/*")) {
-  //   // Check the cache first
-  //   // If it's not found, send the request to the network
-  //   event.respondWith(
-  //     caches.match(request, { ignoreSearch: true }).then(function (response) {
-  //       return response || fetch(request).then(function (response) {
-  //         let copy = response.clone();
-  //         // Save a copy of it in cache
-  //         event.waitUntil(caches.open("prjctx").then(function (cache) {
-  //           return cache.put(request, copy);
-  //         }).catch(error => console.log(error)));
-  //         return response;
-  //       });
-  //     })
-  //   );
-  //   return;
-  // }
 });
 
 // Receive push messages
@@ -209,3 +162,20 @@ self.addEventListener("push", (event) => {
     })
   );
 });
+
+const offlineFirst = (event, request, mime, cacheName) => {
+  if (request.headers.get("accept").includes(mime)) {
+    event.respondWith(
+      caches.match(request, { ignoreSearch: true })
+        .then(function (response) {
+          return response || fetch(request).then(function (response) {
+            let copy = response.clone();
+            // Save a copy of it in cache
+            event.waitUntil(caches.open(cacheName).then(function (cache) {
+              return cache.put(request, copy);
+            }).catch(error => console.log(error)));
+          });
+        }).catch((error) => console.log(error)));
+    return console.log(`offline() didn't do anything.`);
+  }
+}
