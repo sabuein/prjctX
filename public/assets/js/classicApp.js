@@ -1,1 +1,1 @@
-console.log("Welcome to the Class App");
+console.log("TODO: Welcome to the Classic App");
