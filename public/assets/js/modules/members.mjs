@@ -1,6 +1,6 @@
 import Collector from "../classes/Collector.mjs";
 import { cl, responseError } from "./helpers.mjs";
-import { getUserAgentData } from "./hints.mjs";
+import { getUserAgentData, getUserLanguages } from "./hints.mjs";
 
 const loadMembers = async (request) => {
   try {
@@ -98,11 +98,12 @@ const fakeCollector = async () => {
           country: "United Kingdom"
         }
       },
+      userLanguages = await getUserLanguages(),
       agentData = await getUserAgentData(),
       xX = { more: "information" };
 
     // Getting some hints to use as extra information
-    const someone = new Collector(credentials, address, { agentData, xX });
+    const someone = new Collector(credentials, address, { userLanguages, agentData, xX });
     someone.fullAddress;
     cl(`${someone.constructor.name} #${someone.id}: ${someone.whois}`);
 

@@ -1,6 +1,10 @@
 import { cd } from "./helpers.mjs";
 import { pJson } from "./view.mjs";
 
+const getUserLanguages = async () => {
+    return navigator.languages;
+}
+
 const getUserAgentData = async () => {
     const keys = [
         "architecture",
@@ -27,4 +31,4 @@ const getUserAgentData = async () => {
 
 
 
-export { getUserAgentData };
+export { getUserLanguages, getUserAgentData };
