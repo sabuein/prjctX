@@ -8,6 +8,7 @@ import {
   addMember,
   updateMember,
   fakeCollector,
+  userLogin
 } from "./modules/members.mjs";
 import {
   renderMembers,
@@ -58,27 +59,8 @@ window.addEventListener("load", () => {
     navigator.credentials.create({
       password: cred
     }).then((creds) => {
-      cl(`#TODO: Apply create credentials: ${creds}`);
+      cl(`#TODO: Apply create credentials: ${creds.id}`);
       // return creds;
-    });
-
-    const credX = new PasswordCredential({
-      id: 9876,
-      password: "123sA#1587S$",
-      name: "Another Guy",
-      iconURL: "",
-    });
-
-    navigator.credentials.store(credX).then((creds) => {
-      cl(`#TODO: Apply store credentials: ${creds}`);
-    });
-
-    navigator.credentials.get(cred).then((creds) => {
-      cl(`#TODO: Apply get credentials: ${creds}`);
-    });
-
-    navigator.credentials.preventSilentAccess(cred).then((creds) => {
-      cl(`#TODO: Apply preventSilentAccess credentials: ${creds}`);
     });
     
   } else {
@@ -107,6 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           };
           handlebars(source, data);
           fakeCollector();
+          userLogin();
           break;
         case "members":
           // const table = id("membersBody"), getAll = new Request("http://localhost:8888/collectors/all");
@@ -134,7 +117,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               cl(`---| PWA: Save Password?`);
               cl(login);
               return status;
-            }).catch(error => responseError(error));
+            }).then(profile => cl(`Check the profile: ${profile}`))
+            .catch(error => responseError(error));
           });
           break;
         default:

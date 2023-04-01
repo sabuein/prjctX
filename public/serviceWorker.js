@@ -54,7 +54,7 @@ self.addEventListener("activate", () => {
   });
 });
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", async (event) => {
   // Bug fix https://stackoverflow.com/a/49719964
   if (
     event.request.cache === "only-if-cached" &&
@@ -63,7 +63,36 @@ self.addEventListener("fetch", (event) => {
     return;
   }
   // Getting the request object itself
-  let request = event.request;
+  let request = event.request,
+    responseContent = `
+    <html>
+    <head>
+    <title>prjctX General Setup</title>
+    </head>
+    <body>
+    <style>
+    body {text-aligh: center; background-color: #333333; color: #eeeeee;}
+    </style>
+    <h1>prjctX General Setup</h1>
+    <p>There seems to be a problem with your connection.</p>
+    </body>
+    </html>
+    `,
+    cacheName = "prjctx";
+  
+  const mimes = [
+      "text/css",
+      "text/javascript",
+      "module",
+      "manifest+json",
+      "application/json",
+      "manifest",
+      "image"
+    ];
+
+  mimes.forEach(mime => {
+    offlineFirst(event, request, mime, cacheName);
+  });
   // console.log(`[Service Worker] Fetched resource ${event.request.url}`);
   // HTML files
   // Network-first
@@ -92,56 +121,8 @@ self.addEventListener("fetch", (event) => {
     );
   }
 
-  // CSS & JavaScript
-  // Offline-first
-  if (
-    request.headers.get("accept").includes("") ||
-    request.headers.get("accept").includes("") ||
-    request.headers.get("accept").includes("") ||
-    request.headers.get("accept").includes("") ||
-    request.headers.get("accept").includes("")
-  ) {
-    // Check the cache first
-    // If it's not found, send the request to the network
-    event.respondWith(
-      caches.match(request, { ignoreSearch: true })
-        .then(function (response) {
-          return response || fetch(request).then(function (response) {
-            return response;
-          })
-        }).catch((error) => console.log(error)));
-    return;
-  }
-
-  let cacheName = "prjctx",
-    mimes = [
-      "text/css",
-      "text/javascript",
-      "module",
-      "manifest+json",
-      "application/json",
-      "manifest",
-      "image"
-    ];
-  mimes.forEach(mime => offlineFirst(event, request, mime, cacheName));
   // Or just everything!
   //offlineFirst(event, request, "*/*", cacheName);
-  
-  // General setupapplication/
-  let responseContent = `
-  <html>
-  <head>
-  <title>prjctX General Setup</title>
-  </head>
-  <body>
-  <style>
-  body {text-aligh: center; background-color: #333333; color: #eeeeee;}
-  </style>
-  <h1>prjctX General Setup</h1>
-  <p>There seems to be a problem with your connection.</p>
-  </body>
-  </html>
-  `;
 
   // event.respondWith(
   //   fetch(request).catch(function () {
@@ -176,6 +157,7 @@ const offlineFirst = (event, request, mime, cacheName) => {
             }).catch(error => console.log(error)));
           });
         }).catch((error) => console.log(error)));
-    return console.log(`offline() didn't do anything.`);
+    return "Hi";
   }
+  return console.log(`offline() didn't do anything.`);
 }

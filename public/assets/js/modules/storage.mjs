@@ -1,7 +1,19 @@
 import { cl } from "./helpers.mjs";
 
 const startLocalStorage = () => {
-    cl(`TODO: Local storage`);
+    window.localStorage.setItem(key, value); // store key/value pair
+    window.localStorage.getItem(key, value); // get the value by key
+    window.localStorage.removeItem(key, value); // remove the key with its value
+    window.localStorage.key(index); // get the key on a given position
+    cl(`---| Local storage started.`);
+}
+
+const clearLocalStorage = () => {
+    window.localStorage.clear(); // delete everything
+}
+
+const sizeLocalStorage = () => {
+    return window.localStorage.length; // the number of stored items
 }
 
 

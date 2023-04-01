@@ -122,7 +122,7 @@ const sendSubscriptionToServer = (subscription) => {
 }
 
 const showCurlCommand = (subscription) => {
-    // cl(`${subscription}`);
+    cl(subscription);
 }
 
 const requestNotificationsPermission = async () => {

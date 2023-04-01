@@ -120,9 +120,42 @@ const fakeCollector = async () => {
     const user = new Collector(userCredentials, userAddress, { client: client });
     cl(`${user.constructor.name} #${user.id}: ${user.whois}`);
 
+    window.localStorage.setItem("userCredentials", JSON.stringify(userCredentials));
+    cl(JSON.parse(window.localStorage.getItem("userCredentials")));
+
   } catch (error) {
     responseError(error);
   }
 };
 
-export { loadMembers, addMember, updateMember, fakeCollector };
+const userLogin = async () => {
+  const login = await window.navigator.credentials.get({password: true}).then((creds) => {
+    if (creds && creds.type === "password") {
+      cl(`#Credentials: ID: ${creds.id}`);
+      cl(`#Credentials: Name: ${creds.name}`);
+      return creds;
+    } else {
+      return Promise.resolve()
+    }
+  }).then(profile => {
+    if (profile) {
+      cl(`Update UI: ${profile}`);
+    } else {
+      window.location.href = "/login.html";
+    }
+  }).catch(error => {
+    window.location.href = "/login.html";
+    responseError(error);
+  });
+}
+
+const signOut = () => {
+  // First terminate the session
+
+  // Then turn off auto sign-in for future visits
+  if (navigator.credentials && navigator.credentials.preventSilentAccess) {
+    navigator.credentials.preventSilentAccess();
+  }
+}
+
+export { loadMembers, addMember, updateMember, fakeCollector, userLogin};
