@@ -56,14 +56,25 @@ export default class Member {
         });
     }
 
+    set id(newId) {
+        this.credentials.credentials.id = newId;
+    }
+
+    get id() {
+        return this.credentials.credentials.id;
+    }
+
     get whois() {
         cl(`[*${this.constructor.name}] Calling someone's whois...\r\n`);
-        cl(`[*${this.constructor.name}]\r\n${JSON.stringify(
+        /*cl(`[*${this.constructor.name}]\r\n${JSON.stringify(
                 { ...this.credentials, ...this.address, ...this.details },
                 null,
                 "\t"
             )}`
         );
+        cl(`------------------ Now returning:`);*/
+        let result = JSON.stringify({ ...this.credentials, ...this.address, ...this.details }, null, "\t");
+        return result;
     }
 
     get fullAddress() {

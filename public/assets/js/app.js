@@ -47,18 +47,42 @@ window.addEventListener("load", () => {
   }
 
   if ("credentials" in navigator) {
-    navigator.credentials.get({ password: true }).then((creds) => {
-      cl(`Do something with the credentials: ${creds}`);
 
-      /* Experimental 
-      CredentialsContainer.create({ id: 100, password: 32324 });
-      CredentialsContainer.get();
-      CredentialsContainer.preventSilentAccess();
-      CredentialsContainer.store(); */
-      
+    const cred = new PasswordCredential({
+      id: 54321,
+      password: "123sA#1587S$",
+      name: "Salaheddin AbuEin",
+      iconURL: "",
     });
+
+    navigator.credentials.create({
+      password: cred
+    }).then((creds) => {
+      cl(`#TODO: Apply create credentials: ${creds}`);
+      // return creds;
+    });
+
+    const credX = new PasswordCredential({
+      id: 9876,
+      password: "123sA#1587S$",
+      name: "Another Guy",
+      iconURL: "",
+    });
+
+    navigator.credentials.store(credX).then((creds) => {
+      cl(`#TODO: Apply store credentials: ${creds}`);
+    });
+
+    navigator.credentials.get(cred).then((creds) => {
+      cl(`#TODO: Apply get credentials: ${creds}`);
+    });
+
+    navigator.credentials.preventSilentAccess(cred).then((creds) => {
+      cl(`#TODO: Apply preventSilentAccess credentials: ${creds}`);
+    });
+    
   } else {
-    cl(`Handle sign-in the way you did before.`);
+    cl(`Handle sign-in the other way.`);
   }
 
 });
@@ -99,6 +123,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           };
           // const back = await addMember(newMember);
           // cl(back);
+          break;
+        case "login":
+          const form = document.querySelector("#login");
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const creds = new PasswordCredential(e.target);
+            navigator.credentials.store(creds).then((cred) => {
+              cl(`Do something with ${cred}`);
+            }).catch(error => console.error(error));
+          });
           break;
         default:
           cl(`Document slug: ${slug}`);

@@ -34,9 +34,12 @@
             <h2>Login form</h2>
         </header>
         <section>
-            <form id="login" action="http://localhost:7654/apis/collectors/all" method="post">
-                <input name="email" type="email" autocomplete="username" />
+            <form id="login" method="post"><!-- action="http://localhost:7654/apis/collectors/all" -->
+                <label for="id">Username:</label>
+                <input type="text" name="id" autocomplete="username" />
+                <label for="password">Password:</label>
                 <input name="password" type="password" autocomplete="current-password"/>
+                <input type="hidden" name="csrf_token" value="*****" />
                 <input type="submit" value="Login" />
             </form>
         </section>

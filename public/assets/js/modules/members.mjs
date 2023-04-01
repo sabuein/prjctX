@@ -104,7 +104,7 @@ const fakeCollector = async () => {
     // Getting some hints to use as extra information
     const someone = new Collector(credentials, address, { agentData, xX });
     someone.fullAddress;
-    someone.whois;
+    cl(`${someone.constructor.name} #${someone.id}: ${someone.whois}`);
 
   } catch (error) {
     responseError(error);
