@@ -1,6 +1,12 @@
 import Collector from "../classes/Collector.mjs";
 import { cl, responseError } from "./helpers.mjs";
-import { getUserAgentData, getUserLanguages } from "./hints.mjs";
+import {
+  cookieEnabled,
+  getUserAgentController,
+  getUserAgentData,
+  getUserLanguages,
+  insertUserLocation
+} from "./hints.mjs";
 
 const loadMembers = async (request) => {
   try {
@@ -82,14 +88,17 @@ const updateMember = async (request, id) => {
 const fakeCollector = async () => {
 
   try {
-    let credentials = {
+    let userCredentials = {
       credentials: {
+        type: "password",
         id: 4567,
-        name: "Salaheddin AbuEim",
-        password: "something"
+        email: "sabuein@gmail.com",
+        password: "123456789",
+        name: "Salaheddin AbuEin",
+        iconURL: null
       }
     },
-      address = {
+      userAddress = {
         address: {
           number: 129,
           street: "Seymour Road",
@@ -98,14 +107,18 @@ const fakeCollector = async () => {
           country: "United Kingdom"
         }
       },
-      userLanguages = await getUserLanguages(),
-      agentData = await getUserAgentData(),
-      xX = { more: "information" };
+      client = {
+        cookieEnabled: await cookieEnabled(),
+        clientController: await getUserAgentController(),
+        //clientLocation: await insertUserLocation(),
+        clientLanguages: await getUserLanguages(),
+        clientData: await getUserAgentData(),
+        clientX: { key: "add more information" }
+      };
 
     // Getting some hints to use as extra information
-    const someone = new Collector(credentials, address, { userLanguages, agentData, xX });
-    someone.fullAddress;
-    cl(`${someone.constructor.name} #${someone.id}: ${someone.whois}`);
+    const user = new Collector(userCredentials, userAddress, { client: client });
+    cl(`${user.constructor.name} #${user.id}: ${user.whois}`);
 
   } catch (error) {
     responseError(error);

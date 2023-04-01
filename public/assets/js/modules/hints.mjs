@@ -1,8 +1,22 @@
-import { cd } from "./helpers.mjs";
+import { cd, cl, responseError } from "./helpers.mjs";
 import { pJson } from "./view.mjs";
 
-const getUserLanguages = async () => {
-    return navigator.languages;
+const cookieEnabled = async () => {
+    return navigator.cookieEnabled;
+}
+
+const getUserAgentController = async () => {
+    try {
+        const controller = navigator.serviceWorker.controller;
+        return {
+            scriptURL: controller.scriptURL,
+            state: controller.state,
+            onerror: controller.onerror,
+            onstatechange: controller.onstatechange
+        };
+    } catch(error) {
+        responseError(error);
+    }
 }
 
 const getUserAgentData = async () => {
@@ -20,15 +34,45 @@ const getUserAgentData = async () => {
     return result;
 }
 
-// console.log("Cookies: " + navigator.cookieEnabled);
-// console.log("Browser Language: " + navigator.browserLanguage);
-// console.log("Language: " + navigator.language);
+const getUserLanguages = async () => {
+    const language = navigator.language,
+        languages = navigator.languages;
+    return {
+        languages: {
+            main: language,
+            all: languages
+        }
+    };
+}
+
+// TO-FIX
+const getUserLocation = async (options) => {
+    return await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
+}
+
+const insertUserLocation = async () => {
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+    };
+
+    return await getUserLocation(options).then(pos => {
+        const coords = pos.coords;
+        return location = {
+            geo: {
+                latitude: coords.latitude,
+                longitude: coords.longitude,
+                metersRoughly: coords.accuracy
+            }
+        };
+    }).catch(error => responseError(error));
+}
+
 // console.log("Platform: " + navigator.platform);
 // console.log("Connection Speed: " + navigator.connectionSpeed);
-// console.log("User Agent: " + navigator.userAgent);
 // console.log("Webdriver: " + navigator.webdriver);
-// console.log("Geolocation: " + navigator.geolocation);
 
-
-
-export { getUserLanguages, getUserAgentData };
+export { cookieEnabled, getUserAgentController, getUserAgentData, getUserLanguages, insertUserLocation };

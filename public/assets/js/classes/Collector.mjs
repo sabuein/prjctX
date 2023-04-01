@@ -1,8 +1,8 @@
 "use strict";
 
-import Member from "./Member.mjs";
+import User from "./User.mjs";
 
-export default class Collector extends Member {
+export default class Collector extends User {
     constructor(...args) {
         super(...args);
     }
