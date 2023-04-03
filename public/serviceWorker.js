@@ -20,6 +20,9 @@ self.addEventListener("install", (event) => {
       "/assets/js/components/static.mjs",
       "/assets/css/main.css",
       "/assets/images/notifications/tetris.jpg",
+      "/assets/images/notifications/minecraft.jpg",
+      "/assets/images/notifications/super-mario-bros.jpg",
+      "/assets/images/notifications/the-legend-of-zelda.jpg",
       "/assets/images/144x144.webp",
       "/404.html",
       "/collector.html",
@@ -73,14 +76,16 @@ self.addEventListener("fetch", (event) => {
   let request = event.request,
     cacheName = "prjctx";
 
+  /*
   // Log request URL
   console.log(`[Service Worker] Fetched resource ${request.url}`);
-/*
+
   // Log headers
   request.headers.forEach((value, key) => {
     console.log(`${key} ==> ${value}`);
   });
-*/
+  */
+  
   if (
     request.headers.get("accept").includes("image") ||
     request.headers.get("accept").includes("text/plain") ||
@@ -93,6 +98,7 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("module") ||
     request.headers.get("accept").includes("application/json") ||
     request.headers.get("accept").includes("manifest+json") ||
+    request.headers.get("accept").includes("json") ||
     request.headers.get("accept").includes("manifest")
   ) {
     try {
