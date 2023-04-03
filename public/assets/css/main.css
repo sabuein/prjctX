@@ -3,12 +3,12 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+    margin: 0 auto;
+    width: 1440px;
+}
+
+main {
+    width: 100%;
 }
 
 /* #appAdd {
@@ -22,3 +22,22 @@ body {
     top: 2rem;
     left: 2rem;
 } */
+
+.flexy {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+#outputArea {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: #cccccc;
+    max-width: inherit;
+    font-size: larger;
+}
