@@ -118,11 +118,11 @@ const notifyMe = (pushButton) => {
 };
 
 const sendSubscriptionToServer = (subscription) => {
-    // cl(JSON.stringify(subscription));
+    //cl(JSON.stringify(subscription));
 }
 
 const showCurlCommand = (subscription) => {
-    cl(subscription);
+   //cl(subscription);
 }
 
 const requestNotificationsPermission = async () => {

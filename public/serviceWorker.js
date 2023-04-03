@@ -1,14 +1,13 @@
-const regex = new RegExp("/..$");
-
-const addResourcesToCache = async (cacheName) => {
-  try {
-    let appShellFiles = [
+self.addEventListener("install", (event) => {
+  let cacheName = "prjctx",
+    appShell = [
       "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
       "/serviceWorker.js",
-      "/prjctx.webmanifest",
+      "/prjctx.json",
+      "/assets/collectors.json",
       "/assets/js/app.js",
       "/assets/js/lib/handlebars-v4.7.7.js",
-      "/assets/js/classes/Member.mjs",
+      "/assets/js/classes/User.mjs",
       "/assets/js/classes/Collector.mjs",
       "/assets/js/components/communication.mjs",
       "/assets/js/modules/pwa.mjs",
@@ -17,8 +16,8 @@ const addResourcesToCache = async (cacheName) => {
       "/assets/js/modules/members.mjs",
       "/assets/js/modules/helpers.mjs",
       "/assets/js/modules/hints.mjs",
-      "/assets/js/components/static.mjs",
       "/assets/js/modules/view.mjs",
+      "/assets/js/components/static.mjs",
       "/assets/css/main.css",
       "/404.html",
       "/collector.html",
@@ -30,134 +29,149 @@ const addResourcesToCache = async (cacheName) => {
       "/signup.html",
       "/subscribe.html",
       "/upload.html",
+      "/index.html",
     ];
-    const cache = await caches.open(cacheName);
-    await cache.addAll(appShellFiles);
-  } catch (error) {
-    console.log("Error occured while caching...");
-    console.log(error);
-  }
-};
-
-self.addEventListener("install", async function (event) {
   // Cache the core assets
-  await event.waitUntil(addResourcesToCache("prjctx"));
+  event.waitUntil(addResourcesToCache(cacheName, appShell));
   // Activate right away
-  await self.skipWaiting();
+  self.skipWaiting();
 });
 
-self.addEventListener("activate", () => {
-  self.clients.matchAll({ type: "window" }).then(windowClients => {
-    windowClients.forEach(windowClient => {
+self.addEventListener("activate", (event) => {
+  // Clear the old cache
+  let cacheName = "prjctx";
+  event.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key === cacheName) {
+            return;
+          }
+          return caches.delete(key);
+        })
+      );
+    })
+  );
+  self.clients.matchAll({ type: "window" }).then((windowClients) => {
+    windowClients.forEach((windowClient) => {
       windowClient.navigate(windowClient.url);
     });
   });
 });
 
-self.addEventListener("fetch", async (event) => {
-  // Bug fix https://stackoverflow.com/a/49719964
+self.addEventListener("fetch", (event) => {
   if (
     event.request.cache === "only-if-cached" &&
     event.request.mode !== "same-origin"
   ) {
+    console.log(`Bug fix https://stackoverflow.com/a/49719964`);
     return;
   }
-  // Getting the request object itself
-  let request = event.request,
-    responseContent = `
-    <html>
-    <head>
-    <title>prjctX General Setup</title>
-    </head>
-    <body>
-    <style>
-    body {text-aligh: center; background-color: #333333; color: #eeeeee;}
-    </style>
-    <h1>prjctX General Setup</h1>
-    <p>There seems to be a problem with your connection.</p>
-    </body>
-    </html>
-    `,
-    cacheName = "prjctx";
-  
-  const mimes = [
-      "text/css",
-      "text/javascript",
-      "module",
-      "manifest+json",
-      "application/json",
-      "manifest",
-      "image"
-    ];
 
-  mimes.forEach(mime => {
-    offlineFirst(event, request, mime, cacheName);
+  let request = event.request,
+    cacheName = "prjctx";
+
+  // Log request URL
+  console.log(`[Service Worker] Fetched resource ${request.url}`);
+
+  // Log headers
+  request.headers.forEach((value, key) => {
+    console.log(`${key} ==> ${value}`);
   });
-  // console.log(`[Service Worker] Fetched resource ${event.request.url}`);
-  // HTML files
-  // Network-first
-  if (request.headers.get("accept").includes("text/html")) {
-    // Handle HTML files...
-    // Send the request to the network first
-    // If it's not found, look in the cache
-    event.respondWith(
-      fetch(request)
-        .then(function (response) {
-          // Create a copy of the response and save it to the cache
-          let copy = response.clone();
-          event.waitUntil(
-            caches.open("prjctx").then(function (cache) {
-              return cache.put(request, copy);
-            })
-          );
-          return response;
-        })
-        .catch(async function (error) {
-          return caches.match(request, { ignoreSearch: true }).then(function (response) {
-            console.log(error);
-            return response || caches.match("/offline.html", { ignoreSearch: true });
-          });
-        })
-    );
+
+  if (
+    request.headers.get("accept").includes("image/png") ||
+    request.headers.get("accept").includes("image/jpeg") ||
+    request.headers.get("accept").includes("image/webp") ||
+    request.headers.get("accept").includes("text/plain") ||
+    request.headers.get("accept").includes("text/html") ||
+    request.headers.get("accept").includes("application/xml") ||
+    request.headers.get("accept").includes("application/xhtml+xml") ||
+    request.headers.get("accept").includes("text/css") ||
+    request.headers.get("accept").includes("text/javascript") ||
+    request.headers.get("accept").includes("application/javascript") ||
+    request.headers.get("accept").includes("module") ||
+    request.headers.get("accept").includes("application/json") ||
+    request.headers.get("accept").includes("manifest+json") ||
+    request.headers.get("accept").includes("manifest")
+  ) {
+    try {
+      const cached = getCachedResource(cacheName, request);
+      const fetching = fetchTheResource(cacheName, request);
+      event.respondWith(cached || fetching);
+    } catch (error) {
+      console.error(`The requested resource is not available...`);
+      console.log(error);
+    }
   }
 
-  // Or just everything!
-  //offlineFirst(event, request, "*/*", cacheName);
-
-  // event.respondWith(
-  //   fetch(request).catch(function () {
-  //     return new Response(
-  //       responseContent,
-  //       { headers: { "Content-Type": "text/html" } }
-  //     );
-  //   })
-  // );
+  // if (request.headers.get("accept").includes("*/*")) {
+  //   try {
+  //     const myHeaders = new Headers();
+  //     myHeaders.append("content-type", "application/javascript");
+  //     const responseInIt = {
+  //       headers: myHeaders,
+  //       status: 200,
+  //       statusText: "SuperSmashingGreat!",
+  //     }, cached = getCachedResource(cacheName, request);
+  //     event.respondWith(new Response(cached, responseInIt));
+  //   } catch (error) {
+  //     console.error(`The response resource has a problem */*...`);
+  //     console.log(error);
+  //   }
+  // }
 });
 
 // Receive push messages
 self.addEventListener("push", (event) => {
   const payload = event.data?.text() ?? "No payload";
   event.waitUntil(
-    self.registration.showNotification("Push messages received", {
+    self.registration.showNotification("Push messages received...", {
       body: payload,
     })
   );
 });
 
-const offlineFirst = (event, request, mime, cacheName) => {
-  if (request.headers.get("accept").includes(mime)) {
-    event.respondWith(
-      caches.match(request, { ignoreSearch: true })
-        .then(function (response) {
-          return response || fetch(request).then(function (response) {
-            let copy = response.clone();
-            // Save a copy of it in cache
-            event.waitUntil(caches.open(cacheName).then(function (cache) {
-              return cache.put(request, copy);
-            }).catch(error => console.log(error)));
-          });
-        }).catch((error) => console.log(error)));
-    return "Hi";
+const addResourceToCache = async (request, cacheName, response) => {
+  try {
+    const cache = await caches.open(cacheName);
+    cache.put(request, response.clone());
+  } catch (error) {
+    console.error(`Error occured while caching...`);
+    console.log(error);
   }
-  return console.log(`offline() didn't do anything.`);
-}
+};
+
+const addResourcesToCache = async (cacheName, appShellResources) => {
+  try {
+    const cache = await caches.open(cacheName);
+    cache.addAll(appShellResources);
+  } catch (error) {
+    console.error(`Error occured while caching...`);
+    console.log(error);
+  }
+};
+
+const getCachedResource = async (cacheName, request) => {
+  try {
+    const cache = await caches.open(cacheName);
+    return cache.match(request, { ignoreSearch: true });
+  } catch (error) {
+    console.error(`Error occured returning cached resource...`);
+    console.log(error);
+  }
+};
+
+const fetchTheResource = async (cacheName, request) => {
+  return await fetch(request, { mode: "cors" })
+    .then((response) => {
+      if (response.status === 200) {
+        addResourceToCache(request, cacheName, response);
+        return response;
+      }
+    })
+    .catch((error) => {
+      console.error(`Error occured while fetching...`);
+      console.log(error);
+    });
+};
