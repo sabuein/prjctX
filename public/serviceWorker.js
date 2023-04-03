@@ -2,7 +2,6 @@ self.addEventListener("install", (event) => {
   let cacheName = "prjctx",
     appShell = [
       "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
-      "/serviceWorker.js",
       "/prjctx.json",
       "/assets/collectors.json",
       "/assets/js/app.js",
@@ -27,6 +26,7 @@ self.addEventListener("install", (event) => {
       "/404.html",
       "/collector.html",
       "/communication.html",
+      "/dashboard.html",
       "/forums.html",
       "/login.html",
       "/members.html",
@@ -37,14 +37,14 @@ self.addEventListener("install", (event) => {
       "/index.html",
     ];
   // Cache the core assets
-  event.waitUntil(addResourcesToCache(cacheName, appShell));
+  event.waitUntil(addManyToCache(cacheName, appShell));
   // Activate right away
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   // Clear the old cache
-  let cacheName = "prjctx";
+  /*let cacheName = "prjctx";
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
@@ -56,7 +56,7 @@ self.addEventListener("activate", (event) => {
         })
       );
     })
-  );
+  );*/
   self.clients.matchAll({ type: "window" }).then((windowClients) => {
     windowClients.forEach((windowClient) => {
       windowClient.navigate(windowClient.url);
@@ -101,10 +101,12 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("json") ||
     request.headers.get("accept").includes("manifest")
   ) {
-    try {
-      const cached = getCachedResource(cacheName, request);
-      const fetching = fetchTheResource(cacheName, request);
-      event.respondWith(cached || fetching);
+    try {     
+      event.respondWith(() => {
+        const cached = getCachedResource(cacheName, request);
+        const fetching = fetchTheResource(cacheName, request);
+        return cached || fetching;
+      });
     } catch (error) {
       console.error(`The requested resource is not available...`);
       console.log(error);
@@ -138,17 +140,17 @@ self.addEventListener("push", (event) => {
   );
 });
 
-const addResourceToCache = async (request, cacheName, response) => {
+const addOneToCache = async (request, cacheName, response) => {
   try {
     const cache = await caches.open(cacheName);
-    cache.put(request, response.clone());
+    cache.put(request, response);
   } catch (error) {
     console.error(`Error occured while caching...`);
     console.log(error);
   }
 };
 
-const addResourcesToCache = async (cacheName, appShellResources) => {
+const addManyToCache = async (cacheName, appShellResources) => {
   try {
     const cache = await caches.open(cacheName);
     cache.addAll(appShellResources);
@@ -172,7 +174,7 @@ const fetchTheResource = async (cacheName, request) => {
   return await fetch(request, { mode: "cors" })
     .then((response) => {
       if (response.status === 200) {
-        addResourceToCache(request, cacheName, response);
+        addOneToCache(request, cacheName, response.clone());
         return response;
       }
     })

@@ -2,7 +2,7 @@
 
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
 import { cl, id, responseError } from "./modules/helpers.mjs";
-import { startPWA, notifyMe } from "./modules/pwa.mjs";
+import { startPWA, pwaAddToHome, pwaNotifyMe } from "./modules/pwa.mjs";
 import {
   loadMembers,
   addMember,
@@ -16,7 +16,7 @@ import {
   handlebars,
 } from "./modules/view.mjs";
 import { checkBluetoothDevices } from "./modules/bluetooth.mjs";
-import { startCookies } from "./modules/storage.mjs";
+import { startCookies, printLocalStorage, printSessionStorage } from "./modules/storage.mjs";
 import { MailToForm } from "./components/communication.mjs";
 
 window.addEventListener("load", () => {
@@ -32,13 +32,7 @@ window.addEventListener("load", () => {
   "serviceWorker" in navigator
   ) {
     case true:
-      const addToHomeButton = id("appAdd"); // Home button
-      const receiveNotificationsButton = id("appNotify"); // Notification button
-      startPWA(
-        "/serviceWorker.js",
-        addToHomeButton,
-        receiveNotificationsButton
-      );
+      startPWA("/serviceWorker.js");
       break;
     case false:
       cl("Service workers are not supported.");
@@ -71,7 +65,6 @@ window.addEventListener("load", () => {
 
 // startCookies();
 document.addEventListener("DOMContentLoaded", async () => {
-
   if (window.fetch) {
     if (typeof meta !== "undefined") {
       let slug = meta.document.slug;
@@ -120,6 +113,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             }).then(profile => cl(`Check the profile: ${profile}`))
             .catch(error => responseError(error));
           });
+          break;
+        case "dashboard":
+          const appAdd = id("appAdd"),
+            appNotify = id("appNotify"),
+            printSession = id("printSession"),
+            printLocal = id("printLocal"),
+            outputArea = id("outputArea"),
+            clearArea = id("clearOutput");
+          pwaAddToHome(appAdd);
+          pwaNotifyMe(appNotify);
+          printSessionStorage(printSession, outputArea);
+          printLocalStorage(printLocal, outputArea);
+          clearArea.addEventListener("click", () => outputArea.innerHTML = "Output goes here&hellip;");
           break;
         default:
           cl(`Document slug: ${slug}`);

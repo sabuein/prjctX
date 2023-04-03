@@ -81,9 +81,6 @@ class AppFooter extends HTMLElement {
         this.innerHTML = `
         <footer style="display: flex; flex-direction: column; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: stretch; gap: 1rem; text-align: center;">
             <pre>Copyright © 2023 prjctX. All rights reserved.</pre>
-            <h6>Here are the PWA buttons&colon;</h6>
-            <button id="appAdd">Add to home screen</button>
-            <button id="appNotify">Get notifications</button>
         </footer>`;
     }
 }

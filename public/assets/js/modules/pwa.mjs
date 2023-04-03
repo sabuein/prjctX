@@ -45,7 +45,7 @@ const registerServiceWorker = async (workerURL) => {
     }
 };
 
-const addToHome = (homeButton) => {
+const pwaAddToHome = (homeButton) => {
     homeButton.style.display = "none";
     window.addEventListener("beforeinstallprompt", (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -73,7 +73,7 @@ const addToHome = (homeButton) => {
     });
 }
 
-const startPWA = (serviceWorkerURL, addToHomeButton, getNotificationsButton) => {
+const startPWA = (serviceWorkerURL) => {
     try {
         // https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=sabuein@gmail.com
         // registerProtocolHandler("mailto", "https://mail.google.com/mail/?extsrc=mailto&url=%s", "Gmail");
@@ -87,15 +87,13 @@ const startPWA = (serviceWorkerURL, addToHomeButton, getNotificationsButton) => 
         registerProtocolHandler("web+country", "/members.html?country=%s", "PrjctX");
 
         registerServiceWorker(serviceWorkerURL);
-        addToHome(addToHomeButton);
-        notifyMe(getNotificationsButton);
         // Activating push-service subscription to run every 30 seconds
         setInterval(requestNotificationsPermission, 30000);
         cl(`---| PWA: App started successfully.`);
     } catch (error) { cl(`---| PWA: App failed to start: ${error}`); }
 };
 
-const notifyMe = (pushButton) => {
+const pwaNotifyMe = (pushButton) => {
     try {
         const serviceWorkerRegistration = async () => await navigator.serviceWorker.ready;
         const subscription = async () => await serviceWorkerRegistration.pushManager.getSubscription();
@@ -185,4 +183,4 @@ const registerProtocolHandler = (scheme = `web+art`, url = `art?type=%s`, appNam
     catch (error) { cl(`Protocol handler registeration failed: ${error}`); }
 }
 
-export { startPWA, notifyMe };
+export { startPWA, pwaAddToHome, pwaNotifyMe };
