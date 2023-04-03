@@ -19,6 +19,8 @@ self.addEventListener("install", (event) => {
       "/assets/js/modules/view.mjs",
       "/assets/js/components/static.mjs",
       "/assets/css/main.css",
+      "/assets/images/notifications/tetris.jpg",
+      "/assets/images/144x144.webp",
       "/404.html",
       "/collector.html",
       "/communication.html",
@@ -73,16 +75,14 @@ self.addEventListener("fetch", (event) => {
 
   // Log request URL
   console.log(`[Service Worker] Fetched resource ${request.url}`);
-
+/*
   // Log headers
   request.headers.forEach((value, key) => {
     console.log(`${key} ==> ${value}`);
   });
-
+*/
   if (
-    request.headers.get("accept").includes("image/png") ||
-    request.headers.get("accept").includes("image/jpeg") ||
-    request.headers.get("accept").includes("image/webp") ||
+    request.headers.get("accept").includes("image") ||
     request.headers.get("accept").includes("text/plain") ||
     request.headers.get("accept").includes("text/html") ||
     request.headers.get("accept").includes("application/xml") ||
