@@ -1,6 +1,4 @@
 self.addEventListener("install", (event) => {
-  // Activate right away
-  self.skipWaiting();
   let cacheName = "prjctx",
     appShell = [
       "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
@@ -41,11 +39,13 @@ self.addEventListener("install", (event) => {
     ];
   // Cache the core assets
   event.waitUntil(addManyToCache(cacheName, appShell));
+  // Activate right away
+  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   // Clear the old cache
-  /*let cacheName = "prjctx";
+  let cacheName = "prjctx";
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
@@ -57,7 +57,7 @@ self.addEventListener("activate", (event) => {
         })
       );
     })
-  );*/
+  );
   self.clients.matchAll({ type: "window" }).then((windowClients) => {
     windowClients.forEach((windowClient) => {
       windowClient.navigate(windowClient.url);
@@ -114,21 +114,6 @@ self.addEventListener("fetch", (event) => {
     }
   }
 
-  // if (request.headers.get("accept").includes("*/*")) {
-  //   try {
-  //     const myHeaders = new Headers();
-  //     myHeaders.append("content-type", "application/javascript");
-  //     const responseInIt = {
-  //       headers: myHeaders,
-  //       status: 200,
-  //       statusText: "SuperSmashingGreat!",
-  //     }, cached = getCachedResource(cacheName, request);
-  //     event.respondWith(new Response(cached, responseInIt));
-  //   } catch (error) {
-  //     console.error(`The response resource has a problem */*...`);
-  //     console.log(error);
-  //   }
-  // }
 });
 
 // Receive push messages
