@@ -109,8 +109,8 @@ const fakeCollector = async () => {
       },
       client = {
         cookieEnabled: await cookieEnabled(),
-        clientController: await getUserAgentController(),
-        //clientLocation: await insertUserLocation(),
+        clientController: getUserAgentController(),
+        clientLocation: await insertUserLocation(),
         clientLanguages: await getUserLanguages(),
         clientData: await getUserAgentData(),
         clientX: { key: "add more information" }

@@ -1,4 +1,5 @@
 import { cl, ce } from "./helpers.mjs";
+import { pJson } from "./view.mjs";
 
 const startCookies = async () => {
     // CookieStore.delete()
@@ -42,7 +43,7 @@ const sizeLocalStorage = () => {
 const printLocalStorage = (trigger, output) => {
     try {
         trigger.addEventListener("click", () => {
-            output.innerText = JSON.stringify(window.localStorage, null, "\t");
+            output.innerText = pJson(window.localStorage);
         });
     } catch (error) {
         ce(`Error in printLocalStorage();`);
@@ -58,7 +59,7 @@ const startSessionStorage = () => {
 const printSessionStorage = (trigger, output) => {
     try {
         trigger.addEventListener("click", () => {
-            output.innerText = JSON.stringify(window.sessionStorage, null, "\t");
+            output.innerText = pJson(window.sessionStorage);
         });
     } catch (error) {
         ce(`Error in printLocalStorage();`);

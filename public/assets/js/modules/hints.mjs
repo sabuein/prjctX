@@ -5,16 +5,14 @@ const cookieEnabled = async () => {
   return navigator.cookieEnabled;
 };
 
-const getUserAgentController = async () => {
-  const controller = navigator.serviceWorker.controller;
-  if (controller) {
+const getUserAgentController = () => {
+  if ("serviceWorker" in navigator) {
     try {
-      return {
+      const controller = navigator.serviceWorker.controller;
+      return (result = {
         scriptURL: controller.scriptURL,
         state: controller.state,
-        onerror: controller.onerror,
-        onstatechange: controller.onstatechange,
-      };
+      });
     } catch (error) {
       responseError(error);
     }
@@ -61,18 +59,17 @@ const insertUserLocation = async () => {
     maximumAge: 0,
   };
 
-  return await getUserLocation(options)
-    .then((pos) => {
-      const coords = pos.coords;
-      return (location = {
-        geo: {
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-          metersRoughly: coords.accuracy,
-        },
-      });
-    })
-    .catch((error) => responseError(error));
+  const pos = await getUserLocation(options);
+  if (pos) {
+    const coords = await pos.coords;
+    return {
+      geo: {
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+        metersRoughly: coords.accuracy,
+      },
+    };
+  }
 };
 
 // console.log("Platform: " + navigator.platform);
