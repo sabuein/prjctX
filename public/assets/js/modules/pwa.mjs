@@ -2,7 +2,7 @@ import { cl } from "./helpers.mjs";
 
 const registerServiceWorker = async (workerURL) => {
     try {
-        const registration = await navigator.serviceWorker.register(workerURL, { scope: "/", });
+        const registration = await navigator.serviceWorker.register(workerURL, { scope: "/public/", });
         registration.addEventListener("updatefound", async () => {
             const installingWorker = registration.installing;
             cl(`------------------ Start ------------------`);

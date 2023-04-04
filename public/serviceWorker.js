@@ -1,4 +1,6 @@
 self.addEventListener("install", (event) => {
+  // Activate right away
+  self.skipWaiting();
   let cacheName = "prjctx",
     appShell = [
       "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
@@ -38,8 +40,6 @@ self.addEventListener("install", (event) => {
     ];
   // Cache the core assets
   event.waitUntil(addManyToCache(cacheName, appShell));
-  // Activate right away
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
@@ -85,7 +85,7 @@ self.addEventListener("fetch", (event) => {
     console.log(`${key} ==> ${value}`);
   });
   */
-  
+
   if (
     request.headers.get("accept").includes("image") ||
     request.headers.get("accept").includes("text/plain") ||
@@ -101,7 +101,7 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("json") ||
     request.headers.get("accept").includes("manifest")
   ) {
-    try {     
+    try {
       event.respondWith(() => {
         const cached = getCachedResource(cacheName, request);
         const fetching = fetchTheResource(cacheName, request);
@@ -143,7 +143,7 @@ self.addEventListener("push", (event) => {
 const addOneToCache = async (request, cacheName, response) => {
   try {
     const cache = await caches.open(cacheName);
-    cache.put(request, response);
+    if (cache) cache.put(request, response);
   } catch (error) {
     console.error(`Error occured while caching...`);
     console.log(error);
@@ -153,7 +153,7 @@ const addOneToCache = async (request, cacheName, response) => {
 const addManyToCache = async (cacheName, appShellResources) => {
   try {
     const cache = await caches.open(cacheName);
-    cache.addAll(appShellResources);
+    if (cache) return await cache.addAll(appShellResources);
   } catch (error) {
     console.error(`Error occured while caching...`);
     console.log(error);
@@ -163,7 +163,7 @@ const addManyToCache = async (cacheName, appShellResources) => {
 const getCachedResource = async (cacheName, request) => {
   try {
     const cache = await caches.open(cacheName);
-    return cache.match(request, { ignoreSearch: true });
+    if (cache) return await cache.match(request, { ignoreSearch: true });
   } catch (error) {
     console.error(`Error occured returning cached resource...`);
     console.log(error);
@@ -171,15 +171,14 @@ const getCachedResource = async (cacheName, request) => {
 };
 
 const fetchTheResource = async (cacheName, request) => {
-  return await fetch(request, { mode: "cors" })
-    .then((response) => {
-      if (response.status === 200) {
-        addOneToCache(request, cacheName, response.clone());
-        return response;
-      }
-    })
-    .catch((error) => {
-      console.error(`Error occured while fetching...`);
-      console.log(error);
-    });
+  try {
+    const response = await fetch(request, { mode: "cors" });
+    if (!response || response.status !== 200 || response.type !== "basic") {
+      await addOneToCache(request, cacheName, response.clone());
+      return response;
+    }
+  } catch (error) {
+    console.error(`Error occured while fetching...`);
+    console.log(error);
+  }
 };
