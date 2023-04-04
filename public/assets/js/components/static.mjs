@@ -52,21 +52,22 @@ class AppNav extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="/" class="navbar-brand">prjctX</a>
+        <nav class="flexy">
+            <div class="flexy-row">
+                <div>
+                    <a href="/">prjctX</a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Homepage</a></li>
+                <ul class="flexy-row-between">
+                    <li><a href="index.html">Homepage</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
                     <li><a href="members.html">Members list</a></li>
                     <li><a href="upload.html">Upload</a></li>
                     <li><a href="forums.html">Forums</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="subscribe.html"><span class="glyphicon glyphicon-subscribe"></span> Subscribe</a></li>
-                    <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <ul class="flexy-row-between">
+                    <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
+                    <li><a href="signup.html"><span>x</span> Sign Up</a></li>
+                    <li><a href="login.html"><span>x</span> Login</a></li>
                 </ul>
             </div>
         </nav>`;
@@ -79,7 +80,7 @@ class AppFooter extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `
-        <footer style="display: flex; flex-direction: column; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: stretch; gap: 1rem; text-align: center;">
+        <footer class="flexy">
             <pre>Copyright © 2023 prjctX. All rights reserved.</pre>
         </footer>`;
     }
