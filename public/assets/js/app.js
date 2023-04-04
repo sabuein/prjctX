@@ -2,7 +2,8 @@
 
 import { AppHeader, AppNav, AppFooter } from "./components/static.mjs";
 import { cl, id, responseError } from "./modules/helpers.mjs";
-import { startPWA, pwaAddToHome, pwaNotifyMe } from "./modules/pwa.mjs";
+import { startPWA, pwaAddToHome } from "./modules/pwa.mjs";
+import { pwaNotifyMe } from "./modules/push.mjs";
 import {
   loadMembers,
   addMember,

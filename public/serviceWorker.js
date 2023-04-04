@@ -17,6 +17,7 @@ self.addEventListener("install", (event) => {
       "/assets/js/modules/members.mjs",
       "/assets/js/modules/helpers.mjs",
       "/assets/js/modules/hints.mjs",
+      "/assets/js/modules/push.mjs",
       "/assets/js/modules/view.mjs",
       "/assets/js/components/static.mjs",
       "/assets/css/main.css",
