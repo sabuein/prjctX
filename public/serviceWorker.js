@@ -2,7 +2,7 @@ self.addEventListener("install", (event) => {
   let cacheName = "prjctx",
     appShell = [
       "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
-      "/prjctx.json",
+      "/app.webmanifest",
       "/assets/collectors.json",
       "/assets/js/app.js",
       "/assets/js/lib/handlebars-v4.7.7.js",
@@ -23,7 +23,6 @@ self.addEventListener("install", (event) => {
       "/assets/images/notifications/minecraft.jpg",
       "/assets/images/notifications/super-mario-bros.jpg",
       "/assets/images/notifications/the-legend-of-zelda.jpg",
-      "/assets/images/144x144.webp",
       "/404.html",
       "/collector.html",
       "/communication.html",
@@ -35,7 +34,7 @@ self.addEventListener("install", (event) => {
       "/signup.html",
       "/subscribe.html",
       "/upload.html",
-      "/index.html",
+      "/index.html"
     ];
   // Cache the core assets
   event.waitUntil(addManyToCache(cacheName, appShell));
@@ -86,7 +85,6 @@ self.addEventListener("fetch", (event) => {
     console.log(`${key} ==> ${value}`);
   });
   */
-
   if (
     request.headers.get("accept").includes("image") ||
     request.headers.get("accept").includes("text/plain") ||
@@ -99,19 +97,23 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("module") ||
     request.headers.get("accept").includes("application/json") ||
     request.headers.get("accept").includes("manifest+json") ||
+    request.headers.get("accept").includes("application/manifest+json") ||
     request.headers.get("accept").includes("json") ||
     request.headers.get("accept").includes("manifest")
   ) {
+    /*
     try {
-      event.respondWith(() => {
-        const cached = getCachedResource(cacheName, request);
-        const fetching = fetchTheResource(cacheName, request);
+      event.respondWith(async () => {
+        const cached = await getCachedResource(cacheName, request);
+        const fetching = await fetchTheResource(cacheName, request);
         return cached || fetching;
       });
     } catch (error) {
       console.error(`The requested resource is not available...`);
       console.log(error);
     }
+    */
+   console.log("Hello there...")
   }
 
 });
