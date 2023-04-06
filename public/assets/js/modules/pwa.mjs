@@ -5,9 +5,9 @@ import { activatePush } from "./push.mjs";
 
 const registerServiceWorker = async (workerURL) => {
   try {
-    const registration = await navigator.serviceWorker.register(workerURL, {
-      scope: "/public/",
-    });
+    const registration = await navigator.serviceWorker.register(workerURL);
+      /* enabled: environment.production,
+      registrationStrategy: "registerImmediately" */
     registration.addEventListener("updatefound", async () => {
       const installingWorker = registration.installing;
       cl(`------------------ Start ------------------`);
