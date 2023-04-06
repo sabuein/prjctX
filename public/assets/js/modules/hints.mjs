@@ -9,10 +9,12 @@ const getUserAgentController = () => {
   if ("serviceWorker" in navigator) {
     try {
       const controller = navigator.serviceWorker.controller;
-      return (result = {
-        scriptURL: controller.scriptURL,
-        state: controller.state,
-      });
+      if (controller) {
+        return {
+          scriptURL: controller.scriptURL,
+          state: controller.state
+        };
+    }
     } catch (error) {
       responseError(error);
     }
