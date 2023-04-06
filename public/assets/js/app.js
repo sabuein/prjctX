@@ -33,7 +33,7 @@ window.addEventListener("load", () => {
   "serviceWorker" in navigator
   ) {
     case true:
-      startPWA("/serviceWorker.js");
+     startPWA("/serviceWorker.js");
       break;
     case false:
       cl("Service workers are not supported.");

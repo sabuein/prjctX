@@ -91,7 +91,7 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("text/html") ||
     request.headers.get("accept").includes("application/xml") ||
     request.headers.get("accept").includes("application/xhtml+xml") ||
-    request.headers.get("accept").includes("text/css") ||
+    request.headers.get("accept").includes("text/css")/* ||
     request.headers.get("accept").includes("text/javascript") ||
     request.headers.get("accept").includes("application/javascript") ||
     request.headers.get("accept").includes("module") ||
@@ -99,8 +99,19 @@ self.addEventListener("fetch", (event) => {
     request.headers.get("accept").includes("manifest+json") ||
     request.headers.get("accept").includes("application/manifest+json") ||
     request.headers.get("accept").includes("json") ||
-    request.headers.get("accept").includes("manifest")
+    request.headers.get("accept").includes("manifest")*/
   ) {
+      try {
+        const fetched = getCachedResource(cacheName, request);
+        if (fetched) return fetched;
+        const response = fetchTheResource(cacheName, request);;
+        if (response) return response;
+      } catch (error) {
+        console.error(`Error occured returning the resource...`);
+        console.log(error);
+      } finally {
+      console.log("The End #1: Main");
+    }
     /*
     try {
       event.respondWith(async () => {
@@ -113,7 +124,7 @@ self.addEventListener("fetch", (event) => {
       console.log(error);
     }
     */
-   console.log("Hello there...")
+   console.log("Take care. Salam....")
   }
 
 });
