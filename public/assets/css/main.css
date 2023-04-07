@@ -3,7 +3,7 @@
   --color-bg-main: #ffffff;
   --color-bg-second: #f5f5f5;
   --color-dark-gray: #a9a9a9;
-  --app-toggle-cms-menu: inherit;
+  --app-toggle-cms-menu: initial;
   --app-max-width: 1280px;
   --app-font-size: 20px;
   --app-font-family: "system-ui", "Segoe UI", "Helvetica Neue", "Noto Sans",
@@ -291,11 +291,7 @@ table {
   max-width: 100%;
 }
 
-@media screen and (max-width: 1080px) {
-  :root {
-    --app-toggle-cms-menu: none;
-  }
-  
+@media screen and (max-width: 1080px) {  
   .nowrap {
     flex-wrap: wrap;
   }
