@@ -65,6 +65,8 @@ window.addEventListener("load", () => {
   } else {
     cl(`Handle sign-in the other way.`);
   }
+
+  userLogin();
 });
 
 // startCookies();
@@ -87,7 +89,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             };
           handlebars(source, data);
           fakeCollector();
-          userLogin();
           break;
         case "members":
           // const table = id("membersBody"), getAll = new Request("http://localhost:8888/collectors/all");
@@ -97,13 +98,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           // const currentLocation = "x", update = new Request("http://localhost:8888/collectors/update/:id");
           // cl(await updateMember(update), currentLocation);
           // checkBluetoothDevices();
-          const newMember = {
-            name: "Salaheddin AbuEin",
-            email: "sabuein@gmail.com",
-            phone: "+447930120661",
-          };
-          // const back = await addMember(newMember);
-          // cl(back);
           break;
         case "login":
           //let x = navigator.credentials.store(new PasswordCredential({id: 444, type: "password", password: "332211"}));
@@ -128,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             menu = document.querySelector("main.cms>section:nth-child(1)");
           showmenu.addEventListener("click", (e) => {
             e.preventDefault();
-            menu.style.display = "inherit";
+            menu.style.display = "initial";
             showmenu.style.display = "none";
           });
           hidemenu.addEventListener("click", (e) => {
@@ -164,10 +158,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       let slug = meta.document.slug;
       switch (slug) {
         case "index":
-          cl(`You are on ${slug}. We need to do something with XMLHttpRequest`);
           break;
         default:
-          cl(`Thank you.`);
+          cl(`You are on ${slug}. We need to do something with XMLHttpRequest`);
       }
     }
   }
