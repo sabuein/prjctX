@@ -30,6 +30,10 @@ main {
     padding: 1rem;
 }
 
+main ul, main ol {
+    list-style-position: inside;
+}
+
 [type="submit"], [type="reset"],
 button {
     cursor: pointer;
@@ -85,7 +89,9 @@ footer {
 }
 
 .start li {
+    margin-top: .75rem;
     margin-bottom: .75rem;
+    margin-left: .75rem;
 }
 
 .nowrap {
