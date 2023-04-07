@@ -9,7 +9,7 @@ import {
   addMember,
   updateMember,
   fakeCollector,
-  userLogin
+  userLogin,
 } from "./modules/members.mjs";
 import {
   renderMembers,
@@ -17,7 +17,11 @@ import {
   handlebars,
 } from "./modules/view.mjs";
 import { checkBluetoothDevices } from "./modules/bluetooth.mjs";
-import { startCookies, printLocalStorage, printSessionStorage } from "./modules/storage.mjs";
+import {
+  startCookies,
+  printLocalStorage,
+  printSessionStorage,
+} from "./modules/storage.mjs";
 import { MailToForm } from "./components/communication.mjs";
 
 window.addEventListener("load", () => {
@@ -28,12 +32,12 @@ window.addEventListener("load", () => {
 
   // Delay registration until after the page has loaded.
   switch (
-  window.isSecureContext &&
-  typeof navigator === "object" &&
-  "serviceWorker" in navigator
+    window.isSecureContext &&
+    typeof navigator === "object" &&
+    "serviceWorker" in navigator
   ) {
     case true:
-     startPWA("/serviceWorker.js");
+      startPWA("/serviceWorker.js");
       break;
     case false:
       cl("Service workers are not supported.");
@@ -43,7 +47,6 @@ window.addEventListener("load", () => {
   }
 
   if ("credentials" in navigator) {
-
     const cred = new PasswordCredential({
       id: 54321,
       password: "123sA#1587S$",
@@ -51,17 +54,17 @@ window.addEventListener("load", () => {
       iconURL: "",
     });
 
-    navigator.credentials.create({
-      password: cred
-    }).then((creds) => {
-      cl(`#TODO: Apply create credentials: ${creds.id}`);
-      // return creds;
-    });
-    
+    navigator.credentials
+      .create({
+        password: cred,
+      })
+      .then((creds) => {
+        cl(`#TODO: Apply create credentials: ${creds.id}`);
+        // return creds;
+      });
   } else {
     cl(`Handle sign-in the other way.`);
   }
-
 });
 
 // startCookies();
@@ -71,16 +74,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       let slug = meta.document.slug;
       switch (slug) {
         case "index":
-          const source = id("handle"), data = {
-            name: "Salaheddin AbuEin",
-            hometown: "Ramallah, occupied Palestine",
-            live: "London, United Kingdom",
-            age: 36,
-            siblings: [
-              { name: "AlMutasembellah", age: 35 },
-              { name: "Hanan", age: 34 },
-            ]
-          };
+          const source = id("handle"),
+            data = {
+              name: "Salaheddin AbuEin",
+              hometown: "Ramallah, occupied Palestine",
+              live: "London, United Kingdom",
+              age: 36,
+              siblings: [
+                { name: "AlMutasembellah", age: 35 },
+                { name: "Hanan", age: 34 },
+              ],
+            };
           handlebars(source, data);
           fakeCollector();
           userLogin();
@@ -107,15 +111,33 @@ document.addEventListener("DOMContentLoaded", async () => {
           form.addEventListener("submit", (e) => {
             e.preventDefault();
             const login = new PasswordCredential(e.target);
-            navigator.credentials.store(login).then((status) => {
-              cl(`---| PWA: Save Password?`);
-              cl(login);
-              return status;
-            }).then(profile => cl(`Check the profile: ${profile}`))
-            .catch(error => responseError(error));
+            navigator.credentials
+              .store(login)
+              .then((status) => {
+                cl(`---| PWA: Save Password?`);
+                cl(login);
+                return status;
+              })
+              .then((profile) => cl(`Check the profile: ${profile}`))
+              .catch((error) => responseError(error));
           });
           break;
-        case "dashboard":
+        case "cms":
+          let showmenu = document.getElementById("show-cms-menu"),
+            hidemenu = document.getElementById("hide-cms-menu"),
+            menu = document.querySelector("main.cms>section:nth-child(1)");
+          showmenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            menu.style.display = "inherit";
+            showmenu.style.display = "none";
+          });
+          hidemenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            menu.style.display = "none";
+            showmenu.style.display = "initial";
+          });
+          break;
+        case "admin":
           const appAdd = id("appAdd"),
             appNotify = id("appNotify"),
             printSession = id("printSession"),
@@ -126,7 +148,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           pwaNotifyMe(appNotify);
           printSessionStorage(printSession, outputArea);
           printLocalStorage(printLocal, outputArea);
-          clearArea.addEventListener("click", () => outputArea.innerHTML = "Output goes here&hellip;");
+          clearArea.addEventListener(
+            "click",
+            () => (outputArea.innerHTML = "Output goes here&hellip;")
+          );
           break;
         default:
           cl(`Document slug: ${slug}`);

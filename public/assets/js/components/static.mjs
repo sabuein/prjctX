@@ -62,11 +62,12 @@ class AppNav extends HTMLElement {
                 </figure>    
             </div>
             <ul class="flexy row wrap nav-item">
+                <li><a href="cms.html">CMS</a></li>
                 <li><a href="plans.html">Plans</a></li>
+                <li><a href="statistics.html">Statistics</a></li>
+                <li><a href="admin.html">Admin</a></li>
                 <li><a href="members.html">Members</a></li>
                 <li><a href="upload.html">Upload</a></li>
-                <li><a href="statistics.html">Statistics</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
             </ul>
             <ul class="flexy row wrap nav-item">
                 <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
