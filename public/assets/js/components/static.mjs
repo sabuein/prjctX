@@ -52,24 +52,27 @@ class AppNav extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `
-        <nav class="flexy">
-            <div class="flexy-row">
-                <div>
-                    <a href="/">prjctX</a>
-                </div>
-                <ul class="flexy-row-between">
-                    <li><a href="index.html">Homepage</a></li>
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="members.html">Members list</a></li>
-                    <li><a href="upload.html">Upload</a></li>
-                    <li><a href="forums.html">Forums</a></li>
-                </ul>
-                <ul class="flexy-row-between">
-                    <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
-                    <li><a href="signup.html"><span>x</span> Sign Up</a></li>
-                    <li><a href="login.html"><span>x</span> Login</a></li>
-                </ul>
+        <nav class="flexy row nav-container">
+            <div class="flexy row nav-item">
+                <figure>
+                    <a href="/" class="flexy row">
+                        <img src="/favicon-32x32.png" />
+                        <figcaption>prjctX</figcaption>
+                    </a>
+                </figure>    
             </div>
+            <ul class="flexy row wrap nav-item">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="upload.html">Upload</a></li>
+                <li><a href="forums.html">Forums</a></li>
+            </ul>
+            <ul class="flexy row wrap nav-item">
+                <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
+                <li><a href="signup.html"><span>x</span> Sign Up</a></li>
+                <li><a href="login.html"><span>x</span> Login</a></li>
+            </ul>
         </nav>`;
     }
 }
@@ -79,10 +82,8 @@ class AppFooter extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = `
-        <footer class="flexy">
-            <pre>Copyright © 2023 prjctX. All rights reserved.</pre>
-        </footer>`;
+        this.innerHTML = `<pre>Copyright © 2023 prjctX. All rights reserved.</pre>
+        <a id="scrollTop" href="#main" class="navigation" title="Scroll Back To Top">&#8673;</a>`;
     }
 }
 
@@ -91,10 +92,7 @@ class MembershipDashboard extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = `
-        <footer>
-            <p>Copyright © 2023 prjctX. All rights reserved.</p>
-        </footer>`;
+        this.innerHTML = `<pre>Copyright © 2023 prjctX. All rights reserved.</pre>`;
     }
 }
 

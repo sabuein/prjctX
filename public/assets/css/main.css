@@ -1,60 +1,224 @@
+:root {
+    --color-font-main: #000000;
+    --color-bg-main: #ffffff;
+    --color-dark-gray: #a9a9a9;
+}
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
     margin: 0 auto;
-    width: 1440px;
+    max-width: 1280px;
+    background-color: #f5f5f5;
+    color: var(--color-font-main);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: "system-ui","Segoe UI","Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+body > header {
+    margin-top: 3rem;
 }
 
 main {
-    width: 100%;
+    margin: 0 2rem;
+    padding: 1rem;
 }
 
-/* #appAdd {
-    position: absolute;
-    top: 1px;
-    left: 1px;
+[type="submit"], [type="reset"],
+button {
+    cursor: pointer;
 }
 
-#appNotify {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-} */
+[type="submit"]:disabled, [type="reset"]:disabled,
+button:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+a {
+    color: var(--color-dark-gray);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration-color: var(--color-font-main);
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}
+
+p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+pre {
+    font-size: .85rem;
+}
+
+footer {
+    margin-bottom: 5rem;
+    color: var(--color-dark-gray);
+}
 
 .flexy {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    align-content: center;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
     text-align: center;
 }
 
-.flexy-row {
-    display: flex;
+.row {
     flex-direction: row;
+}
+
+.start {
+    align-items: start;
+    text-align: start;
+}
+
+.start li {
+    margin-bottom: .75rem;
+}
+
+.nowrap {
     flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.nav-container {
     gap: 5rem;
 }
 
-.flexy-row-between {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+.nav-container ul, .nav-container ol {
+    list-style-type: none;
+}
+
+.nav-item {
     gap: 1rem;
-    list-style: none;
+}
+
+.plans-container {
+    gap: 2rem;
+}
+
+.plans-container header {
+    flex-basis: 100%;
+}
+
+.plan {
+    margin: 1rem .5rem;
+    padding: 2rem 1rem;
+    background-color: var(--color-bg-main);
+    border-radius: .25rem;
+}
+
+.plan h5 {
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--color-dark-gray);
+}
+
+.plan h6 {
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.plan div {
+    text-transform: uppercase;
+    color: var(--color-dark-gray);
+}
+
+.plan ul, .plan ol {
+    margin-top: 2rem;
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+.plan li {
+    margin-top: .5rem;
+}
+
+[type="submit"], [type="reset"],
+.plan button {
+    margin-top: 3rem;
+    padding: .85rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    border-radius: .25rem;
+    text-transform: uppercase;
+}
+
+[type="submit"], [type="reset"] {
+    width: unset;
+}
+
+[type="submit"]:hover, [type="reset"]:hover,
+.plan button:hover {
+    background-color: #cccccc;
+}
+
+a.navigation {
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    text-decoration: none;
+    font-size: 3rem;
+}
+
+a.navigation:hover {
+    color: var(--color-font-main);
+    scale: 1.2;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: .25rem solid #cccccc;
+    margin: 1.5rem 1rem;
+    padding: .65rem .85rem;
+    quotes: '"' '"' "'" "'";
+    font-size: 1.1rem;
+}
+
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+q {
+    quotes: '"' '"' "'" "'";
+}
+
+q::before {
+    content: open-quote;
+}
+
+q::after {
+    content: close-quote;
 }
 
 #outputArea {
@@ -63,4 +227,19 @@ main {
     background-color: #cccccc;
     width: inherit;
     max-width: 100%;
+}
+
+@media screen and (max-width: 1080px) {
+    .nowrap {
+        flex-wrap: wrap;
+    }
+
+    .nav-container {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }    
+
+    .plans-container {
+        gap: 1rem;
+    }
 }

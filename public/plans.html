@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prjctX - Plans</title>
+    <link rel="manifest" type="application/manifest+json" href="/app.webmanifest?v=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1.0" />
+    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=1.0" />
+    <link rel="modulepreload" href="/assets/js/modules/helpers.mjs" type="module" />
+    <link rel="modulepreload" type="module" href="/assets/js/modules/members.mjs" />
+    <link rel="modulepreload" type="module" href="/assets/js/modules/pwa.mjs" />
+    <link rel="modulepreload" type="module" href="/assets/js/modules/storage.mjs" />
+    <link rel="modulepreload" type="module" href="/assets/js/modules/util.mjs" />
+    <link rel="modulepreload" type="module" href="/assets/js/modules/view.mjs" />
+    <script type="text/javascript">
+        var meta = {
+            document: {
+                slug: "plans",
+                type: "html"
+            }
+        };
+    </script>
+    <script src="/assets/js/lib/handlebars-v4.7.7.js" type="text/javascript"></script>
+    <script src="/assets/js/app.js" type="module"></script>
+    <script nomodule src="/assets/js/classicApp.js" type="text/javascript"></script>
+</head>
+<body class="flexy">
+    <header class="flexy">
+        <h1>prjctX - Plans</h1>
+        <app-nav></app-nav>
+        <noscript>Your browser does not support JavaScript&excl;</noscript>
+    </header>
+    <main id="main" class="flexy">
+        <section class="flexy row wrap plans-container">
+            <header class="flexy">
+                <h2>A community management system and tools for art collectors&period;</h2>
+                <h3>Use all features of prjctX with only one account&period;</h3>
+                <h4>Start free, pay as your grow&period;</h4>
+            </header>
+            <article class="flexy plan">
+                <h5>Starter</h5>
+                <h6>Free</h6>
+                <div>Trial</div>
+                <ul>
+                    <li>10 artworks</li>
+                    <li>no public 3D exhibition</li>
+                </ul>
+                <form action="/signup.html" method="get">
+                    <button name="plan" value="starter">Sign up</button>
+                </form>
+            </article>
+            <article class="flexy plan">
+                <h5>Basic</h5>
+                <h6>12</h6>
+                <div>USD / Month*</div>
+                <ul>
+                    <li>50 artworks</li>
+                    <li>5 public 3D exhibition</li>
+                </ul>
+                <button disabled>Upgrade</button>
+            </article>
+            <article class="flexy plan">
+                <h5>Regular</h5>
+                <h6>30</h6>
+                <div>USD / Month*</div>
+                <ul>
+                    <li>250 artwroks</li>
+                    <li>10 public 3D exhibition</li>
+                </ul>
+                <button disabled>Upgrade</button>
+            </article>
+            <article class="flexy plan">
+                <h5>Professional</h5>
+                <h6>60</h6>
+                <div>USD / Month*</div>
+                <ul>
+                    <li>500 artworks</li>
+                    <li>50 public 3D exhibition</li>
+                </ul>
+                <button disabled>Upgrade</button>
+            </article>
+        </section>
+        <section class="flexy start">
+            <blockquote><p>We offer a range of plans to cater to the needs of all types of art collectors&period; Our packages are designed to give you the best experience possible, so you can focus on building your collection&period; If you find that our packages are too small for your needs, please contact us for an individual offer for bigger packages&period;</p></blockquote>
+            <p>All our plans come with the following features:</p>
+            <ul>
+                <li>Secure online access to your collection</li>
+                <li>Ability to create and manage custom collections</li>
+                <li>Import and export data to and from your collection</li>
+                <li>Unlimited storage for images and documents</li>
+                <li>Mobile and tablet-friendly access</li>
+            </ul>
+            <p>Here are the add-ons you can choose to enhance your plan&colon;</p>
+            <ol>
+                <li>Premium Support: For $50/month, you'll receive priority support from our team of experts&period; They'll be available to assist you with any questions or issues you may have&period;</li>
+                <li>Advanced Reporting: For $100/month, you can access advanced reporting features that will help you track the value of your collection over time&period; You'll be able to generate custom reports that show you how your collection is performing&period;</li>
+                <li>Social Sharing: For $75/month, you can share your collection on social media platforms such as Facebook, Instagram, and Twitter&period; This will allow you to showcase your collection to a wider audience&period;</li>
+                <li>Custom Design: For $200/month, you can get a custom design for your collection&period; Our team of designers will work with you to create a unique and personalized design that reflects your style and taste&period;</li>
+                <li>Art Authentication: For $150/month, we'll provide authentication services for your collection. Our team of experts will verify the authenticity of your artwork and provide you with a certificate of authenticity&period;</li>
+            </ol>
+            <p>Please note that these prices do not include taxes&period; If you have any questions about our plans or add-ons, please feel free to contact us&period; We're here to help you build your collection!</p>
+        </section>
+    </main>
+    <footer class="flexy">
+        <app-footer></app-footer>
+        <noscript>Your browser does not support JavaScript!</noscript>
+    </footer>
+</body>
+</html>
