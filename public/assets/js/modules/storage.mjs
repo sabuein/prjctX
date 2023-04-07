@@ -26,8 +26,8 @@ const startIndexedDb = () => {
 
 const startLocalStorage = () => {
     window.localStorage.setItem(key, value); // store key/value pair
-    window.localStorage.getItem(key, value); // get the value by key
-    window.localStorage.removeItem(key, value); // remove the key with its value
+    window.localStorage.getItem(key); // get the value by key
+    window.localStorage.removeItem(key); // remove the key with its value
     window.localStorage.key(index); // get the key on a given position
     cl(`---| Local storage started.`);
 }
@@ -51,6 +51,13 @@ const printLocalStorage = (trigger, output) => {
     }
 }
 
+const checkStatus = (key) => {
+    return window.localStorage.getItem(key);
+}
+
+const registerStatus = (key, value) => {
+    return window.localStorage.setItem(key, value);
+}
 
 const startSessionStorage = () => {
     cl(`TODO: Session storage`);
@@ -76,6 +83,8 @@ export {
     startIndexedDb,
     startLocalStorage,
     clearLocalStorage,
+    checkStatus,
+    registerStatus,
     sizeLocalStorage,
     printLocalStorage,
     startSessionStorage,

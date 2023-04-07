@@ -21,6 +21,8 @@ import {
   startCookies,
   printLocalStorage,
   printSessionStorage,
+  checkStatus,
+  registerStatus
 } from "./modules/storage.mjs";
 import { MailToForm } from "./components/communication.mjs";
 
@@ -32,9 +34,9 @@ window.addEventListener("load", () => {
 
   // Delay registration until after the page has loaded.
   switch (
-    window.isSecureContext &&
-    typeof navigator === "object" &&
-    "serviceWorker" in navigator
+  window.isSecureContext &&
+  typeof navigator === "object" &&
+  "serviceWorker" in navigator
   ) {
     case true:
       startPWA("/serviceWorker.js");
@@ -119,16 +121,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         case "cms":
           let showmenu = document.getElementById("show-cms-menu"),
             hidemenu = document.getElementById("hide-cms-menu"),
-            menu = document.querySelector("main.cms>section:nth-child(1)");
-          showmenu.addEventListener("click", (e) => {
-            e.preventDefault();
-            menu.style.display = "initial";
+            root = document.querySelector(":root");
+          const cms = JSON.parse(checkStatus("cms"));
+          cl(`app.cmsMenu: ${cms.style.app.cmsMenu}`);
+          if (cms.style.app.cmsMenu) {
+            root.style.setProperty("--app-toggle-cms-menu", "initial");
             showmenu.style.display = "none";
-          });
+            cl(`app.cmsMenu: ${cms.style.app.cmsMenu}`);
+          } else {
+            root.style.setProperty("--app-toggle-cms-menu", "none");
+            showmenu.style.display = "initial";
+          }
           hidemenu.addEventListener("click", (e) => {
             e.preventDefault();
-            menu.style.display = "none";
             showmenu.style.display = "initial";
+            root.style.setProperty("--app-toggle-cms-menu", "none");
+            registerStatus("cms", '{"style": {"app": {"cmsMenu": false}}}');
+          });
+          showmenu.addEventListener("click", (e) => {
+            e.preventDefault();
+            showmenu.style.display = "none";
+            root.style.setProperty("--app-toggle-cms-menu", "initial");
+            registerStatus("cms", '{"style": {"app": {"cmsMenu": true}}}');
           });
           break;
         case "admin":
