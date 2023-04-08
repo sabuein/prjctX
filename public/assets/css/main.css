@@ -31,15 +31,14 @@ body {
 body > header {
   width: 100%;
   padding: 1rem;
-  position: fixed;
+  position: sticky;
   top: 0;
-  background-color: black;
+  background-color: steelblue;
 }
 
 main {
-  margin: 0 2rem;
-  margin-top: 4rem;
   padding: 1rem;
+  padding-right: 2rem;
 }
 
 main ul,
@@ -97,8 +96,10 @@ pre {
 }
 
 footer {
+  width: 85%;
   margin-bottom: 5rem;
   color: var(--color-dark-gray);
+  font-size: 1rem;
 }
 
 footer hr {
@@ -157,20 +158,45 @@ main.cms>article:nth-child(3) {
   width: 100%;
 }
 
+.cms > article > header {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.cms header figure img {
+  width: 15rem;
+}
+
 main.cms>article:nth-child(3)>hr {
   width: inherit;
 }
 
-.nav-item {
-  gap: 1rem;
-}
-
-.nav-item a {
+.gap-half {
   gap: .5rem;
 }
 
+.gap-x1 {
+  gap: 1rem;
+}
+
+.gap-x3 {
+  gap: 3rem;
+}
+
+.nav-item a {
+  padding: 0 .5rem;
+  gap: .5rem;
+  color: gainsboro;
+}
+
+.active-nav-item {
+  height: 100%;
+  background-color: darkblue;
+}
+
 .nav-item a:hover {
-  color: var(--color-bg-main);
+  color: ghostwhite;
+  text-decoration-color: ghostwhite;
 }
 
 .plans-container {
@@ -216,10 +242,21 @@ main.cms>article:nth-child(3)>hr {
   margin-top: 0.5rem;
 }
 
+.stretch {
+  align-items: stretch;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.space {
+  justify-content: space-between;
+}
+
 [type="submit"],
 [type="reset"],
-.plan button {
-  margin-top: 3rem;
+button {
   padding: 0.85rem 1.5rem;
   background-color: transparent;
   border: 2px solid #000000;
@@ -232,6 +269,10 @@ main.cms>article:nth-child(3)>hr {
   text-transform: uppercase;
 }
 
+.plan button {
+  margin-top: 3rem;
+}
+
 [type="submit"],
 [type="reset"] {
   width: unset;
@@ -239,7 +280,7 @@ main.cms>article:nth-child(3)>hr {
 
 [type="submit"]:hover,
 [type="reset"]:hover,
-.plan button:hover {
+button:hover {
   background-color: #cccccc;
 }
 
@@ -290,12 +331,20 @@ q::after {
   content: close-quote;
 }
 
+details {
+  width: 100%;
+}
+
 details summary { 
   cursor: pointer;
 }
 
 details summary>* {
   display: inline;
+}
+
+details > div {
+  margin: 2rem 0;
 }
 
 table,
