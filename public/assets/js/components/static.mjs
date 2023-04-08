@@ -53,7 +53,7 @@ class AppNav extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
         <nav class="flexy row nav-container">
-            <div class="flexy row nav-item">
+            <div class="flexy row gap-x1 nav-item">
                 <figure>
                     <a href="/" class="flexy row">
                         <img src="/favicon-32x32.png" />
@@ -61,15 +61,14 @@ class AppNav extends HTMLElement {
                     </a>
                 </figure>    
             </div>
-            <ul class="flexy row wrap nav-item">
-                <li><a href="cms.html">CMS</a></li>
+            <ul class="flexy row wrap gap-x1 nav-item">
+                <li class="active-nav-item"><a href="cms.html">CMS</a></li>
                 <li><a href="plans.html">Plans</a></li>
-                <li><a href="statistics.html">Statistics</a></li>
                 <li><a href="admin.html">Admin</a></li>
                 <li><a href="members.html">Members</a></li>
                 <li><a href="upload.html">Upload</a></li>
             </ul>
-            <ul class="flexy row wrap nav-item">
+            <ul class="flexy row wrap gap-x1 nav-item">
                 <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
                 <li><a href="signup.html"><span>x</span> Sign Up</a></li>
                 <li><a href="login.html"><span>x</span> Login</a></li>
@@ -83,7 +82,15 @@ class AppFooter extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = `<pre>Copyright © 2023 prjctX. All rights reserved.</pre>
+        this.innerHTML = `<div class="flexy row gap-x3 stretch space full-width">
+            <div><a href="/">Homepage</a></div>
+            <menu class="flexy row gap-x3">
+                <li><a href="#">About prjctX</a></li>
+                <li><a href="statistics.html">Statistics</a></li>
+                <li><a href="#">Terms of service</a></li>
+            </menu>
+        </div>
+        <pre>Copyright © 2023 prjctX. All rights reserved.</pre>
         <a id="scrollTop" href="#main" class="navigation" title="Scroll Back To Top">&#8673;</a>`;
     }
 }
