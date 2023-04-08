@@ -29,11 +29,16 @@ body {
 }
 
 body > header {
-  margin-top: 3rem;
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  background-color: black;
 }
 
 main {
   margin: 0 2rem;
+  margin-top: 4rem;
   padding: 1rem;
 }
 
@@ -144,7 +149,16 @@ footer hr {
 
 main.cms>section:nth-child(1) {
   display: var(--app-toggle-cms-menu);
-  flex-basis: 100rem;
+  flex-basis: 15rem;
+}
+
+main.cms>article:nth-child(3) {
+  margin-right: 2rem;
+  width: 100%;
+}
+
+main.cms>article:nth-child(3)>hr {
+  width: inherit;
 }
 
 .nav-item {
@@ -152,7 +166,11 @@ main.cms>section:nth-child(1) {
 }
 
 .nav-item a {
-    gap: .5rem;
+  gap: .5rem;
+}
+
+.nav-item a:hover {
+  color: var(--color-bg-main);
 }
 
 .plans-container {
@@ -227,7 +245,7 @@ main.cms>section:nth-child(1) {
 
 a.navigation {
   position: fixed;
-  bottom: 2rem;
+  bottom: 0;
   right: 3rem;
   text-decoration: none;
   font-size: 3rem;
@@ -270,6 +288,14 @@ q::before {
 
 q::after {
   content: close-quote;
+}
+
+details summary { 
+  cursor: pointer;
+}
+
+details summary>* {
+  display: inline;
 }
 
 table,
