@@ -51,11 +51,11 @@ const printLocalStorage = (trigger, output) => {
     }
 }
 
-const checkStatus = (key) => {
+const getStatus = (key) => {
     return window.localStorage.getItem(key);
 }
 
-const registerStatus = (key, value) => {
+const setStatus = (key, value) => {
     return window.localStorage.setItem(key, value);
 }
 
@@ -83,8 +83,8 @@ export {
     startIndexedDb,
     startLocalStorage,
     clearLocalStorage,
-    checkStatus,
-    registerStatus,
+    getStatus,
+    setStatus,
     sizeLocalStorage,
     printLocalStorage,
     startSessionStorage,

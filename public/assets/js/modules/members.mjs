@@ -5,8 +5,9 @@ import {
   getUserAgentController,
   getUserAgentData,
   getUserLanguages,
-  insertUserLocation
+  insertUserLocation,
 } from "./hints.mjs";
+import { getStatus, setStatus } from "./storage.mjs";
 
 const loadMembers = async (request) => {
   try {
@@ -86,26 +87,25 @@ const updateMember = async (request, id) => {
 };
 
 const fakeCollector = async () => {
-
   try {
     let userCredentials = {
-      credentials: {
-        type: "password",
-        id: 4567,
-        email: "sabuein@gmail.com",
-        password: "123456789",
-        name: "Salaheddin AbuEin",
-        iconURL: null
-      }
-    },
+        credentials: {
+          type: "password",
+          id: 4567,
+          email: "sabuein@gmail.com",
+          password: "123456789",
+          name: "Salaheddin AbuEin",
+          iconURL: null,
+        },
+      },
       userAddress = {
         address: {
           number: 129,
           street: "Seymour Road",
           postcode: "E10 7LZ",
           city: "London",
-          country: "United Kingdom"
-        }
+          country: "United Kingdom",
+        },
       },
       client = {
         cookieEnabled: await cookieEnabled(),
@@ -113,40 +113,62 @@ const fakeCollector = async () => {
         clientLocation: await insertUserLocation(),
         clientLanguages: await getUserLanguages(),
         clientData: await getUserAgentData(),
-        clientX: { key: "add more information" }
+        clientX: { key: "add more information" },
       };
 
     // Getting some hints to use as extra information
-    const user = new Collector(userCredentials, userAddress, { client: client });
+    const user = new Collector(userCredentials, userAddress, {
+      client: client,
+    });
     cl(`${user.constructor.name} #${user.id}: ${user.whois}`);
 
-    window.localStorage.setItem("userCredentials", JSON.stringify(userCredentials));
+    window.localStorage.setItem(
+      "userCredentials",
+      JSON.stringify(userCredentials)
+    );
     cl(JSON.parse(window.localStorage.getItem("userCredentials")));
-
   } catch (error) {
     responseError(error);
   }
 };
 
-const userLogin = async () => {
-  const login = await window.navigator.credentials.get({password: true}).then((creds) => {
-    if (creds && creds.type === "password") {
-      cl(`#Credentials: ID: ${creds.id}`);
-      cl(`#Credentials: Name: ${creds.name}`);
-      return creds;
+const getLogin = async () => {
+  const account = JSON.parse(getStatus("account"));
+  if (account) {
+    const creds = account.credentials;
+    cl(`Welcome back, ${creds.name}`);
+    return creds;
+  } else {
+    const account = await setLogin();
+    cl(`Welcome aboard, ${account}`);
+    return account;
+  }
+}
+
+const setLogin = async () => {
+  try {
+    const creds = await navigator.credentials.get({"password": true});
+    if (creds && creds.type === "password" /*&& u.isValidJID(creds.id)*/) {
+      /*await setUserJID(creds.id);*/
+      const account = {
+        credentials: {
+          id: creds.id,
+          name: creds.name,
+          type: creds.type,
+          email: creds.email,
+          password: creds.password,
+          iconURL: creds.iconURL
+        },
+      };
+      setStatus("account", JSON.stringify(account));
+      return account;
     } else {
-      return Promise.resolve()
+      return getLogin();
     }
-  }).then(profile => {
-    if (profile) {
-      cl(`Update UI: ${profile}`);
-    } else {
-      window.location.href = "/login.html";
-    }
-  }).catch(error => {
+  } catch (error) {
     window.location.href = "/login.html";
     responseError(error);
-  });
+  }
 }
 
 const signOut = () => {
@@ -158,4 +180,4 @@ const signOut = () => {
   }
 }
 
-export { loadMembers, addMember, updateMember, fakeCollector, userLogin};
+export { loadMembers, addMember, updateMember, fakeCollector, getLogin };
