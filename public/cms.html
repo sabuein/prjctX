@@ -45,84 +45,97 @@
                 <li><a href="#">Connections</a></li>
                 <li><a href="#">Conversations</a></li>
                 <li><a href="#">Help Center</a></li>
-                <li><a href="/">Home</a></li>
             </menu>
         </section>
         <a href="#" id="show-cms-menu" title="Show menu">&hellip;</a>
-        <article class="flexy nowrap start">
+        <article class="flexy nowrap start gap-x1">
             <div>Welcome to your prjctX CMS</div>
             <hr />
-            <header>
-                <h1>Ziad Anani</h1>
-                <h2>Ramallah - Dubai</h2>
+            <header class="flexy row start">
+                <div>
+                    <h1>Zawyeh Art Gallery</h1>
+                    <h2>Ramallah - Dubai</h2>
+                </div>
+                <figure><img src="/assets/images/collectors/01-logo.jpg" alt="Zawyeh Art Gallery" /></figure>
             </header>
             <hr />
-            <details open class="flexy start">
+            <details open class="flexy start full-width">
                 <summary><h3>Your to-do list</h3></summary>
                 <div>
                     <p>Improve your presence on prjctX and increase the liklihood of sales by completing the tasks below&period;</p>
                     <h4>Add key information</h4>
                     <p>Some of your artworks are missing important details that collectors consider when making a purchase&period; We&apos;ll show you the most important artworks to update each day&period;</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Numbers</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div>
+                        <table style="border: none;">
                             <tr>
                                 <td># of topics</td>
-                                <td>111</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
                             <tr>
                                 <td># of collectors</td>
-                                <td>222</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
                             <tr>
                                 <td># of artworks</td>
-                                <td>333</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
                             <tr>
                                 <td># of artists</td>
-                                <td>444</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
                             <tr>
                                 <td># art consultants</td>
-                                <td>555</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
                             <tr>
                                 <td># art advisers</td>
-                                <td>666</td>
+                                <td><button>Snooze</button></td>
+                                <td><button>Add images</button></td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </table>
+                    </div>
                     <p>Review best practices for <a href="#">Listing Artworks</a>&period;</p>
                 </div>
             </details>
             <hr />
-            <details open class="flexy start">
+            <details open class="flexy start full-width">
                 <summary><h3>Your inquiries status</h3></summary>
                 <div>
                     <p>100.0% responsive rate</p>
                 </div>
             </details>
             <hr />
-            <details open class="flexy start">
-                <summary><h3>Your inquiries status</h3></summary>
-                <div>
-                    <p>100.0% responsive rate</p>
+            <details open class="flexy start full-width">
+                <summary><h3>Quick actions</h3></summary>
+                <div class="flexy row stretch gap-x3">
+                    <div class="flexy stretch space gap-half">
+                        <button>Add works</button>
+                        <span>2165 artworks</span>
+                        <span>1444 visible on prjctX</span>
+                        <span>1689 for sale</span>
+                    </div>
+                    <div class="flexy stretch space gap-half">
+                        <button>Add artists</button>
+                        <span>87 artists</span>
+                        <span>8 representted</span>
+                        <span>79 non-representted</span>
+                    </div>
+                    <div class="flexy stretch space gap-half">
+                        <button>Add events</button>
+                        <span>49 shows and fair booths</span>
+                        <span>3 ongoing</span>
+                        <span>2 upcoming</span>
+                        <span>44 past</span>
+                    </div>
                 </div>
             </details>
             <hr />
-            <details open class="flexy start">
-                <summary><h3>Your inquiries status</h3></summary>
-                <div>
-                    <p>100.0% responsive rate</p>
-                </div>
-            </details>
-            <hr />
-            <details open class="flexy start">
+            <details open class="flexy start full-width">
                 <summary><h3>Some lorem text</h3></summary>
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias magni maxime repudiandae quod aliquam enim, vitae ea necessitatibus quisquam reprehenderit alias doloremque corporis. Illum, nemo laborum ipsum deserunt nobis commodi.</p>
@@ -137,8 +150,8 @@
             <hr />
         </article>
     </main>
-    <footer class="flexy">
-        <app-footer></app-footer>
+    <footer>
+        <app-footer class="flexy gap-x3"></app-footer>
         <noscript>Your browser does not support JavaScript!</noscript>
     </footer>
 </body>
