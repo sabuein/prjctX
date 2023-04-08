@@ -112,7 +112,6 @@ footer hr {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .row {
@@ -347,6 +346,10 @@ details > div {
   margin: 2rem 0;
 }
 
+details>div>div {
+  text-align: center;
+}
+
 table,
 th,
 td {
@@ -363,7 +366,7 @@ table {
   padding: 1rem;
   background-color: #cccccc;
   width: inherit;
-  max-width: 100%;
+  max-width: 85%;
 }
 
 @media screen and (max-width: 1080px) {  
