@@ -5,7 +5,7 @@ Thumbs.db
 # IDEs
 .vscode/
 nbproject/
-/coverage/
+coverage/
 *.iml
 
 # IntelliJ
@@ -15,14 +15,14 @@ deploymentTargetDropDown.xml
 render.experimental.xml
 
 # Vendor
-core/apis/v1/collectors/vendor
+core/apis/v1/collectors/vendor/
 
 # Logs
-/logs/*
+logs/*
 !/logs/README.md
 
 # Cache
-/var/cache/*
+var/cache/*
 .phpunit.result.cache
 cache.properties
 .php_cs.cache
