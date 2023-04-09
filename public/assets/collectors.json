@@ -4,8 +4,10 @@
         "name": "Yasmin Al-Masri",
         "email": "yasmin.almasri@example.com",
         "phone": "+971561234567",
-        "country": "Palestine",
-        "url": "/"
+        "password": null,
+        "iconURL": null,
+        "url": null,
+        "country": null
     },
     {
         "id": 2,
