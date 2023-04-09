@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\MoveUploadedFile;
 
 class Form
@@ -35,5 +36,11 @@ class Form
                 $response->write("uploaded " . $filename . "<br />");
             }
         }
+
+        $text = "Thanks habibi!";
+        $response->getBody()->write(json_encode($text));
+        return $response
+            ->withHeader("content-type", "application/json")
+            ->withStatus(200);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Slim\Factory\AppFactory;
+use Slim\Factory\AppFactory as AppFactory;
 use Selective\BasePath\BasePathMiddleware;
 
 require_once __DIR__ . "/../vendor/autoload.php";

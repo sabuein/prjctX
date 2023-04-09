@@ -2,23 +2,29 @@
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\PhpRenderer as PhpRenderer;
+use Slim\Http\UploadedFile as UploadedFile;
+use Psr\Http\Message\UploadedFileInterface;
+
 
 use App\Models\Database as DB;
 use App\Models\Form as Form;
 
-$container = $api->getContainer();
-$container["upload_directory"] = "../../var/www/uploads/";
+$renderer = new PhpRenderer("templates/");
+$upload_directory = __DIR__ . "var/uploads/";
 
-/* GET */
+/* POST */
 $api->get("/", "getRoot");
 $api->get("/collectors", "getHome");
 $api->get("/collectors/all", "getAll");
+$api->get("/collectors/{id}", "getId");
+
 
 /* POST */
 $api->post("/", "postRoot");
 $api->post("/collectors", "postHome");
 $api->post("/collectors/add", "postAdd");
-$api->post("/collectors/add/all", "postAddAll");
+$api->post("/collectors/add/all", "postAll");
 $api->post("/collectors/upload", "postUpload");
 
 /* PUT */
@@ -28,67 +34,45 @@ $api->put("/collectors/update/{id}", "updateId");
 $api->delete("/collectors/delete/{id}", "deleteId");
 
 /* GET functions */
-function getRoot(Request $request, Response $response): Response {
-    $html = <<<TXT
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>prjctX: APIs Homepage</title>
-    </head>
-    <body>
-        <header>
-            <h1>prjctX: APIs Homepage</h1>
-        </header>
-        <main>
-            <h2>As-salamu alaykum, world! 😊</h2>
-            <p>
-                <a href="https://en.wikipedia.org/wiki/As-salamu_alaykum" target="_blank">Wikipedia</a>
-            </p>
-            <div>
-                <h3>GET</h3>
-                <ul>
-                    <li><a href="/">/</a></li>
-                    <li><a href="/collectors">/collectors</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                </ul>
-                <a href="#" onclick="window.history.go(-1)">Go Back</a>
-            </div>
-            <div>
-                <h3>POST</h3>
-                <ul>
-                    <li><a href="/">/</a></li>
-                    <li><a href="/collectors/add">/collectors/add</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                    <li><a href="/collectors/all">/collectors/all</a></li>
-                </ul>
-                <a href="#" onclick="window.history.go(-1)">Go Back</a>
-            </div>
-        </main>
-        <footer>
-            <p>Copyright © 2023 prjctX. All rights reserved.</p>
-            <p><a href="#" target="_top">Homepage</a> | <a href="https://github.com/sabuein/prjctX" target="_blank">Source code</a></p>
-        </footer>
-    </body>
-    </html>
-    TXT;
-    $response->getBody()->write($html);
-    return $response;
-}
-function getHome(Request $request, Response $response, array $args): Response {
-    global $api;
-    return $this->renderer->render($response, "form.phtml", $args);
-}
-function getAll(Request $request, Response $response): Response {
+function getRoot(Request $request, Response $response): Response
+{
+    global $renderer;
+    return $renderer->render($response, "root.phtml");
+};
+
+function getHome(Request $request, Response $response): Response
+{
+    global $renderer;
+    return $renderer->render($response, "form.phtml");
+};
+
+function getId(Request $request, Response $response, array $args): Response
+{
+    $id = $args["id"];
+    $sql = "SELECT * FROM collectors c WHERE c.id = $id";
+
+    try {
+        $db = new DB();
+        $conn = $db->connect();
+        $stmt = $conn->query($sql);
+        $member = $stmt->fetch(PDO::FETCH_OBJ);
+        $db = null;
+
+        $response->getBody()->write(json_encode($member));
+        return $response
+            ->withAddedHeader("access-control-allow-origin", "*")
+            ->withHeader("content-type", "application/json")
+            ->withStatus(200);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
+    }
+};
+
+function getAll(Request $request, Response $response): Response
+{
     $start = 0;
     $count = 20;
-    $sql = "SELECT * FROM collectors ORDER BY id ASC"; // LIMIT $start, $count
+    $sql = "SELECT * FROM collectors c ORDER BY c.id ASC"; // LIMIT $start, $count
 
     try {
         $db = new DB();
@@ -96,39 +80,49 @@ function getAll(Request $request, Response $response): Response {
         $stmt = $conn->query($sql);
         $members = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
-        
+
         $response->getBody()->write(json_encode($members));
         return $response
             ->withAddedHeader("access-control-allow-origin", "*")
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
 
 /* POST functions */
-function postRoot(Request $request, Response $response, array $args): Response {
-    return $this->renderer->render($response, "form.phtml", $args);
+function postRoot(Request $request, Response $response, array $args): Response
+{
+    global $renderer;
+    return $renderer->render($response, "root.phtml", $args);
 }
-function postHome(Request $request, Response $response, array $args): Response {
+
+function postHome(Request $request, Response $response, array $args): Response
+{
     $data = $request->getParsedBody();
     $html = var_export($data, true);
     $response->getBody()->write($html);
     return $response;
 }
-function postAdd(Request $request, Response $response, array $args): Response {
+
+function postAdd(Request $request, Response $response): Response
+{
     $data = $request->getParsedBody();
-    
+
     try {
         $db = new DB();
         $conn = $db->connect();
+
+        if (!$conn) :
+            die("Connection failed: " . !$conn);
+        endif;
 
         $name = $data["name"];
         $email = $data["email"];
         $phone = $data["phone"];
         $sql = "INSERT INTO collectors (name, email, phone) VALUES (:name, :email, :phone)";
-        
+
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":email", $email);
@@ -141,66 +135,97 @@ function postAdd(Request $request, Response $response, array $args): Response {
         return $response
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
-function postAddAll(Request $request, Response $response, array $args): Response {
-    $data = $request->getParsedBody();
-    
+
+function moveUploadedFile($directory, UploadedFile $uploadedFile): string
+{
+    $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+    $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+    $filename = sprintf("%s.%0.8s", $basename, $extension);
+    $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+    $strJsonFileContents = file_get_contents($filename);
+    return $filename;
+}
+
+function postAll(Request $request, Response $response, array $args): Response
+{
     try {
+        global $upload_directory;
+        $uploadedFiles = $request->getUploadedFiles();
+        // handle single input with single file upload
+        $uploadedFile = $uploadedFiles["file"];
+        $content = (string)$uploadedFile->getStream();
+        if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
+            // $filename = moveUploadedFile($upload_directory, $uploadedFile);
+            // $response->getBody()->write(json_encode($content));
+        }
+
         $db = new DB();
         $conn = $db->connect();
 
         if (!$conn) :
             die("Connection failed: " . !$conn);
         endif;
-        
-        // TO-DO "(?, ?,UTC_TIMESTAMP(),?)"
-        $sql = "INSERT INTO collectors (name, email, phone) VALUES ";
-        $values = array_fill(0, count($data), "(:name, :email, :phone)");
-        $sql .= implode(", ", $values);
-        
+
+        //UTC_TIMESTAMP();
+        $sql = "INSERT INTO collectors (name, email, phone) VALUES (:name, :email, :phone)";
         $stmt = $conn->prepare($sql);
-        $i = 1;
-        foreach($data as $record):
+        $result = false;
+        //$data = $request->getParsedBody();
+        $data = json_decode($content, true);;
+        foreach ($data as $record) :
             $name = $record["name"];
             $email = $record["email"];
             $phone = $record["phone"];
-            $stmt->bindValue( ":name", $name, PDO::PARAM_STR );
-            $stmt->bindValue( ":email", $email, PDO::PARAM_STR );
-            $stmt->bindValue( ":phone", $phone, PDO::PARAM_STR );
+            $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+            $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+            $stmt->bindValue(":phone", $phone, PDO::PARAM_STR);
+            $result = $stmt->execute();
         endforeach;
-        
-        $result = $stmt->execute();
-
         $db = null;
 
-        $response->getBody()->write(json_encode($result));
+        $origin = "";
+        if (array_key_exists("HTTP_ORIGIN", $_SERVER)) {
+            $origin = $_SERVER["HTTP_ORIGIN"];
+        } else if (array_key_exists("HTTP_REFERER", $_SERVER)) {
+            $origin = $_SERVER["HTTP_REFERER"];
+        } else {
+            $origin = $_SERVER["REMOTE_ADDR"];
+        }
+
+        var_dump($_SERVER["PHP_SELF"]);
+        var_dump($_SERVER["HTTP_ORIGIN"]);
+        var_dump($_SERVER["HTTP_REFERER"]);
+        var_dump($_SERVER["REMOTE_ADDR"]);
+
+        //$response->getBody()->write(json_encode($result));
         return $response
-            ->withHeader("content-type", "application/json")
-            ->withStatus(200);
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+            ->withHeader("Location", $origin)
+            ->withStatus(303); // 200 || 303
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
-function postUpload(Request $request, Response $response, array $args): Response {
+
+function postUpload(Request $request, Response $response, array $args): Response
+{
     try {
         // $directory = $this->get("upload_directory");
         $directory = __DIR__ . "../../var/www/uploads/";
         $files = $request->getUploadedFiles();
         $form = new Form();
-        $form->process($files, $directory, $response);
-        return $response
-            ->withHeader("content-type", "application/json")
-            ->withStatus(200);
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+        return $form->process($files, $directory, $response);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
 
 /* PUT functions */
-function updateId(Request $request, Response $response, array $args): Response {
+function updateId(Request $request, Response $response, array $args): Response
+{
     $id = $request->getAttribute("id");
     $data = $request->getParsedBody();
     $name = $data["name"];
@@ -230,13 +255,14 @@ function updateId(Request $request, Response $response, array $args): Response {
         return $response
             ->withHeader("content-type", "application/json")
             ->withStatus(200);
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
 
 /* DELETE functions */
-function deleteId(Request $request, Response $response, array $args): Response {
+function deleteId(Request $request, Response $response, array $args): Response
+{
     $id = $request->getAttribute("id");
     $sql = "DELETE FROM collectors WHERE id = $id";
 
@@ -248,21 +274,22 @@ function deleteId(Request $request, Response $response, array $args): Response {
         $result = $stmt->execute();
 
         $db = null;
-        if($result):
+        if ($result) :
             $response->getBody()->write(json_encode($result));
             return $response
                 ->withHeader("content-type", "application/json")
                 ->withStatus(200);
-        else:
+        else :
             return $response->getBody()->write("<p>Nothing</p>");
         endif;
-    } catch (PDOException $e) {
-        return handleErrors($e, $response);
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
     }
 }
 
 /* ERROR functions */
-function handleErrors(PDOException $error, Response $response): Response {
+function handleErrors(PDOException $error, Response $response): Response
+{
     $errorMessage = array(
         "message" => $error->getMessage()
     );
