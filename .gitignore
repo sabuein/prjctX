@@ -15,7 +15,7 @@ deploymentTargetDropDown.xml
 render.experimental.xml
 
 # Vendor
-/vendor/
+core/apis/v1/collectors/vendor
 
 # Logs
 /logs/*
