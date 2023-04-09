@@ -34,9 +34,9 @@
         <app-nav class="flexy"></app-nav>
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
-    <main id="main" class="flexy row cms">
+    <main id="main" class="flexy row nowrap cms">
         <section class="flexy nowrap start">
-            <a href="#" id="hide-cms-menu" title="Hide menu">&hellip;</a>
+            <a href="#" id="hide-cms-menu" title="Hide menu">&#9776;</a>
             <menu>
                 <li><a href="#">Search</a></li>
                 <li><a href="#">Artists</a></li>
@@ -48,11 +48,11 @@
                 <li><a href="#">Help Center</a></li>
             </menu>
         </section>
-        <a href="#" id="show-cms-menu" title="Show menu">&hellip;</a>
+        <a href="#" id="show-cms-menu" title="Show menu">&#9776;</a>
         <article class="flexy nowrap start gap-x1">
             <div>Welcome to your prjctX CMS</div>
             <hr />
-            <header class="flexy row start">
+            <header class="flexy row start nowrap">
                 <div>
                     <h1>Zawyeh Art Gallery</h1>
                     <h2>Ramallah - Dubai</h2>
@@ -123,21 +123,30 @@
             <hr />
             <details open class="flexy start full-width">
                 <summary><h3>Quick actions</h3></summary>
-                <div class="flexy row stretch gap-x3">
+                <div class="flexy row stretch nowrap gap-x3">
                     <div class="flexy stretch space gap-half center">
-                        <button>Add artists</button>
+                        <figure class="btn-svg">
+                            <img src="/assets/images/icons/users.svg" alt="Add artists" />
+                            <figcaption><button>Add artists</button></figcaption>
+                        </figure>
                         <span>87 artists</span>
                         <span>8 representted</span>
                         <span>79 non-representted</span>
                     </div>
                     <div class="flexy stretch space gap-half center">
-                        <button>Add works</button>
+                        <figure class="btn-svg">
+                            <img src="/assets/images/icons/photo.svg" alt="Add works" />
+                            <figcaption><button>Add works</button></figcaption>
+                        </figure>
                         <span>2165 artworks</span>
                         <span>1444 visible on prjctX</span>
                         <span>1689 for sale</span>
                     </div>
                     <div class="flexy stretch space gap-half center">
-                        <button>Add events</button>
+                        <figure class="btn-svg">
+                            <img src="/assets/images/icons/calendar.svg" alt="Add events" />
+                            <figcaption><button>Add events</button></figcaption>
+                        </figure>
                         <span>49 shows and fair booths</span>
                         <span>3 ongoing</span>
                         <span>2 upcoming</span>
