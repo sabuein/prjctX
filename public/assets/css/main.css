@@ -39,7 +39,6 @@ body > header {
 
 main {
   padding: 1rem;
-  padding-right: 2rem;
 }
 
 main ul,
@@ -68,8 +67,7 @@ button {
   cursor: pointer;
 }
 
-[type="submit"]:disabled,
-[type="reset"]:disabled,
+input:disabled,
 button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
@@ -87,9 +85,18 @@ a:hover {
   color: var(--color-font-main);
 }
 
+a#show-cms-menu,
+a#hide-cms-menu {
+  text-decoration: none;
+}
+
 p {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.btn-svg img {
+  max-width: 5rem;
 }
 
 pre {
@@ -171,7 +178,6 @@ main.cms > section:nth-child(1) {
 }
 
 main.cms > article:nth-child(3) {
-  margin-right: 2rem;
   width: 100%;
 }
 
@@ -285,8 +291,7 @@ main.cms > article:nth-child(3) > hr {
   justify-content: space-between;
 }
 
-[type="submit"],
-[type="reset"],
+input,
 button {
   padding: 0.85rem 1.5rem;
   background-color: transparent;
@@ -297,6 +302,11 @@ button {
   font-weight: 600;
   width: 100%;
   border-radius: 0.25rem;
+}
+
+[type="submit"],
+[type="reset"],
+button {
   text-transform: uppercase;
 }
 
