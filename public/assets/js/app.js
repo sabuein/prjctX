@@ -63,8 +63,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           break;
         case "members":
           const table = id("membersBody"),
-            getAll = new Request("/assets/collectors.json");
-          renderMembers(await loadMembers(getAll), table);
+            getLocal = new Request("/assets/collectors.json"),
+            getApi = new Request("http://localhost:8888/collectors/all");
+          renderMembers(await loadMembers(getApi), table);
           break;
         case "login":
           //let x = navigator.credentials.store(new PasswordCredential({id: 444, type: "password", password: "332211"}));
