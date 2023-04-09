@@ -26,7 +26,7 @@ $api->post("/collectors", "postHome");
 $api->post("/collectors/add", "postAdd");
 $api->post("/collectors/add/all", "postAll");
 $api->post("/collectors/upload", "postUpload");
-
+$api->post("/collectors/signin", "postSignin");
 /* PUT */
 $api->put("/collectors/update/{id}", "updateId");
 
@@ -187,7 +187,6 @@ function postAll(Request $request, Response $response, array $args): Response
         endforeach;
         $db = null;
 
-        $origin = "";
         if (array_key_exists("HTTP_ORIGIN", $_SERVER)) {
             $origin = $_SERVER["HTTP_ORIGIN"];
         } else if (array_key_exists("HTTP_REFERER", $_SERVER)) {
@@ -195,16 +194,28 @@ function postAll(Request $request, Response $response, array $args): Response
         } else {
             $origin = $_SERVER["REMOTE_ADDR"];
         }
-
+        var_dump($origin);
         var_dump($_SERVER["PHP_SELF"]);
-        var_dump($_SERVER["HTTP_ORIGIN"]);
-        var_dump($_SERVER["HTTP_REFERER"]);
-        var_dump($_SERVER["REMOTE_ADDR"]);
 
         //$response->getBody()->write(json_encode($result));
         return $response
-            ->withHeader("Location", $origin)
+            ->withHeader("location", $origin)
             ->withStatus(303); // 200 || 303
+    } catch (PDOException $error) {
+        return handleErrors($error, $response);
+    }
+}
+
+function postSignin(Request $request, Response $response, array $args): Response
+{
+    try {
+        $result = array("name" => "Salaheddin AbuEin");
+        $response->getBody()->write(json_encode($result));
+        return $response
+            ->withAddedHeader("access-control-allow-origin", "http://localhost:5501")
+            ->withAddedHeader("access-control-allow-credentials", "true")
+            ->withHeader("content-type", "application/json")
+            ->withStatus(200);
     } catch (PDOException $error) {
         return handleErrors($error, $response);
     }
