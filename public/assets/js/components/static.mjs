@@ -82,9 +82,9 @@ class AppFooter extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = `<div class="flexy row gap-x3 stretch space full-width">
+        this.innerHTML = `<div class="flexy row gap-x3 stretch space nowrap full-width">
             <div><a href="/">Homepage</a></div>
-            <menu class="flexy row gap-x3">
+            <menu class="flexy row nowrap gap-x3">
                 <li><a href="#">About prjctX</a></li>
                 <li><a href="statistics.html">Statistics</a></li>
                 <li><a href="#">Terms of service</a></li>

@@ -5,7 +5,6 @@ import {
   loadMembers,
   addMember,
   updateMember,
-  fakeCollector,
   getLogin,
 } from "./modules/members.mjs";
 import {
@@ -13,7 +12,8 @@ import {
   handlebars,
   startApp,
   startAdmin,
-  startCMS
+  startCMS,
+  startLogin
 } from "./modules/view.mjs";
 
 window.addEventListener("load", () => {
@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               ],
             };
           handlebars(source, data);
-          fakeCollector();
           break;
         case "members":
           const table = id("membersBody"),
@@ -68,21 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           renderMembers(await loadMembers(getApi), table);
           break;
         case "login":
-          //let x = navigator.credentials.store(new PasswordCredential({id: 444, type: "password", password: "332211"}));
-          const form = document.querySelector("#login");
-          form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const login = new PasswordCredential(e.target);
-            navigator.credentials
-              .store(login)
-              .then((status) => {
-                cl(`---| PWA: Save Password?`);
-                cl(login);
-                return status;
-              })
-              .then((profile) => cl(`Check the profile: ${profile}`))
-              .catch((error) => responseError(error));
-          });
+          startLogin();
           break;
         case "cms":
           startCMS();

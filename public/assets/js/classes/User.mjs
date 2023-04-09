@@ -45,7 +45,7 @@ export default class User {
         clientDetails = User.defaultDetails
     ) {
         this.clear;
-        Object.assign(this.userCredentials, userCredentials);
+        Object.assign(this.credentials, userCredentials);
         Object.assign(this.userAddress, userAddress);
         Object.assign(this.clientDetails, clientDetails);
         cl(`---| Creating new ${this.constructor.name}...\r\n`);

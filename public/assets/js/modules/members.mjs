@@ -1,12 +1,5 @@
 import Collector from "../classes/Collector.mjs";
 import { cl, responseError } from "./helpers.mjs";
-import {
-  cookieEnabled,
-  getUserAgentController,
-  getUserAgentData,
-  getUserLanguages,
-  insertUserLocation,
-} from "./hints.mjs";
 import { getStatus, setStatus } from "./storage.mjs";
 
 const loadMembers = async (request) => {
@@ -86,47 +79,25 @@ const updateMember = async (request, id) => {
   }
 };
 
-const fakeCollector = async () => {
+const setCollector = (credentials, address, data = {}) => {
   try {
-    let userCredentials = {
-        credentials: {
-          type: "password",
-          id: 4567,
-          email: "sabuein@gmail.com",
-          password: "123456789",
-          name: "Salaheddin AbuEin",
-          iconURL: null,
-        },
-      },
-      userAddress = {
-        address: {
-          number: 129,
-          street: "Seymour Road",
-          postcode: "E10 7LZ",
-          city: "London",
-          country: "United Kingdom",
-        },
-      },
-      client = {
-        cookieEnabled: await cookieEnabled(),
-        clientController: getUserAgentController(),
-        clientLocation: await insertUserLocation(),
-        clientLanguages: await getUserLanguages(),
-        clientData: await getUserAgentData(),
-        clientX: { key: "add more information" },
-      };
+    const creds = {
+      credentials: {
+        type: credentials.type,
+        id: credentials.id,
+        email: credentials.email,
+        password: credentials.password,
+        name: credentials.name,
+        iconURL: credentials.iconURL
+      }
+    }, user = new Collector(creds, address, { client: data });
 
-    // Getting some hints to use as extra information
-    const user = new Collector(userCredentials, userAddress, {
-      client: client,
-    });
+    cl(JSON.stringify(credentials));
     cl(`${user.constructor.name} #${user.id}: ${user.whois}`);
 
-    window.localStorage.setItem(
-      "userCredentials",
-      JSON.stringify(userCredentials)
-    );
-    cl(JSON.parse(window.localStorage.getItem("userCredentials")));
+    setStatus("user", JSON.stringify(user));
+    //cl(JSON.parse(getStatus("user")));
+    return user;
   } catch (error) {
     responseError(error);
   }
@@ -143,11 +114,11 @@ const getLogin = async () => {
     cl(`Welcome aboard, ${account}`);
     return account;
   }
-}
+};
 
 const setLogin = async () => {
   try {
-    const creds = await navigator.credentials.get({"password": true});
+    const creds = await navigator.credentials.get({ password: true });
     if (creds && creds.type === "password" /*&& u.isValidJID(creds.id)*/) {
       /*await setUserJID(creds.id);*/
       const account = {
@@ -157,7 +128,7 @@ const setLogin = async () => {
           type: creds.type,
           email: creds.email,
           password: creds.password,
-          iconURL: creds.iconURL
+          iconURL: creds.iconURL,
         },
       };
       setStatus("account", JSON.stringify(account));
@@ -169,7 +140,7 @@ const setLogin = async () => {
     window.location.href = "/login.html";
     responseError(error);
   }
-}
+};
 
 const signOut = () => {
   // First terminate the session
@@ -178,6 +149,6 @@ const signOut = () => {
   if (navigator.credentials && navigator.credentials.preventSilentAccess) {
     navigator.credentials.preventSilentAccess();
   }
-}
+};
 
-export { loadMembers, addMember, updateMember, fakeCollector, getLogin };
+export { loadMembers, addMember, updateMember, setCollector, getLogin };
