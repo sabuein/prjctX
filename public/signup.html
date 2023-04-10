@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=1.0" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     <link rel="modulepreload" href="/assets/js/modules/helpers.mjs" type="module" />
     <link rel="modulepreload" type="module" href="/assets/js/modules/members.mjs" />
     <link rel="modulepreload" type="module" href="/assets/js/modules/pwa.mjs" />
@@ -36,22 +36,31 @@
     </header>
     <main id="main" class="flexy start">
         <header><h1>Signup</h1></header>
-        <section class="flexy nowrap start">
-            <header class="flexy start">
-                <h2>A community management system and tools for art collectors&period;</h2>
-                <h3>Use all features of prjctX with only one account&period;</h3>
-                <h4>Start free, pay as your grow&period;</h4>
-            </header>
-            <blockquote><p>We offer a range of plans to cater to the needs of all types of art collectors&period; Our packages are designed to give you the best experience possible, so you can focus on building your collection&period; If you find that our packages are too small for your needs, please contact us for an individual offer for bigger packages&period;</p></blockquote>
-            <p>All our plans come with the following features:</p>
-            <form action="/process.html">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" />
-                <div>
-                    <input type="submit" value="Submit" />
-                    <input type="reset" value="Reset" />
-                </div>
-            </form>
+        <section>
+            <header><h2>Please enter your details&hellip;</h2></header>
+            <div>
+                <form id="formSignup" method="post" action="http://localhost:7654/apis/collectors/register">
+                    <fieldset>
+                        <legend>Ahlan wa sahlan&excl;</legend>
+                        <label for="identity"><span class="requiredInput">*</span>Username:</label>
+                        <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
+                        <label for="fullname"><span class="requiredInput">*</span>Fullname:</label>
+                        <input type="text" name="name" id="fullname" autocomplete="name" value="Salaheddin AbuEin" required />
+                        <label for="mail"><span class="requiredInput">*</span>Email:</label>
+                        <input type="email" name="email" id="mail" autocomplete="email" value="sabuein@gmail.com" required />
+                        <label for="pwd"><span class="requiredInput">*</span>Password:</label>
+                        <input type="password" name="password" id="pwd" autocomplete="new-password" value="1234567890" minlength="8" required />
+                        <label for="pwdAgain"><span class="requiredInput">*</span>Retype password:</label>
+                        <input type="password" name="duplicate" id="pwdAgain" autocomplete="new-password" value="1234567890" minlength="8" required />
+                        <label for="url">IconURL:</label>
+                        <input type="text" name="iconURL" id="url" autocomplete="photo" value="https://sabuein.github.io/assets/images/salaheddin-abuein-moustache.jpg" />
+                        <input type="hidden" name="csrf_token" value="*****" />
+                        <br /><br />
+                        <input type="submit" value="Sign up" />
+                        <input type="reset" value="Reset" />
+                    </fieldset>
+                </form>
+            </div>
         </section>
     </main>
     <footer>

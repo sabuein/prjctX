@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>prjctX - Login</title>
+    <title>prjctX - Signin</title>
     <link rel="manifest" type="application/manifest+json" href="/app.webmanifest?v=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1.0" />
     <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" sizes="180x180" />
@@ -20,7 +20,7 @@
     <script type="text/javascript">
         var meta = {
             document: {
-                slug: "login",
+                slug: "signin",
                 type: "html"
             }
         };
@@ -35,23 +35,23 @@
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
     <main id="main" class="flexy start">
-        <header><h1>Login</h1></header>
+        <header><h1>Signin</h1></header>
         <section>
             <header><h2>Please enter your credentials&hellip;</h2></header>
             <div>
-                <form id="login" method="post"><!-- action="http://localhost:7654/apis/collectors/all" -->
-                    <label for="identity">Username:</label>
-                    <input type="text" name="id" id="identity" autocomplete="username" value="sabuein"/>
-                    <label for="fullname">Fullname:</label>
-                    <input type="text" name="name" id="fullname" autocomplete="name" value="Salaheddin AbuEin"/>
-                    <label for="mail">Email:</label>
-                    <input type="email" name="email" id="mail" autocomplete="email" value="sabuein@gmail.com" />
-                    <label for="pwd">Password:</label>
-                    <input type="password" name="password" id="pwd" autocomplete="current-password" value="1234567890" />
-                    <label for="url">IconURL:</label>
-                    <input type="text" name="iconURL" id="url" autocomplete="photo" value="https://sabuein.github.io/assets/images/salaheddin-abuein-moustache.jpg" />
-                    <input type="hidden" name="csrf_token" value="*****" />
-                    <input type="submit" value="Login" />
+                <form id="formSignin" method="post" action="http://localhost:7654/apis/collectors/login">
+                    <fieldset>
+                        <legend>Ahlan wa sahlan&excl;</legend>
+                        <label for="identity"><span class="requiredInput">*</span>Username:</label>
+                        <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
+                        <label for="pwd"><span class="requiredInput">*</span>Password:</label>
+                        <input type="password" name="password" id="pwd" autocomplete="current-password" value="1234567890" minlength="8" required />
+                        <input type="hidden" name="csrf_token" value="*****" />
+                        <br /><br />
+                        <input type="submit" value="Sign in" />
+                        <input type="reset" value="Reset" />
+                        <p><span>Lost password&quest;</span><span><a href="signup.html">Sign up</a></span></p>
+                    </fieldset>
                 </form>
             </div>
         </section>
