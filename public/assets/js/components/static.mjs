@@ -70,8 +70,8 @@ class AppNav extends HTMLElement {
             </ul>
             <ul class="flexy row wrap gap-x1 nav-item">
                 <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
-                <li><a href="signup.html"><span>x</span> Sign Up</a></li>
-                <li><a href="login.html"><span>x</span> Login</a></li>
+                <li><a href="signup.html"><span>x</span> Sign up</a></li>
+                <li><a href="signin.html"><span>x</span> Sign in</a></li>
             </ul>
         </nav>`;
     }

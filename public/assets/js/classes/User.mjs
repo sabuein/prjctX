@@ -5,7 +5,7 @@ import { cl } from "../modules/helpers.mjs";
 export default class User {
     
     static get keys() {
-        return ["userCredentials", "userAddress", "clientDetails"];
+        return ["credentials", "address", "client", "extra"];
     }
 
     static get defaultCredentials() {
@@ -33,36 +33,47 @@ export default class User {
         };
     }
 
-    static get defaultDetails() {
+    static get defaultClient() {
         return {
             client: null
+        };
+    }
+
+    static get defaultExtra() {
+        return {
+            extra: null
         };
     }
 
     constructor(
         userCredentials = User.defaultCredentials,
         userAddress = User.defaultAddress,
-        clientDetails = User.defaultDetails
+        userClient = User.defaultClient,
+        userExtra = User.defaultExtra
     ) {
         this.clear;
         Object.assign(this.credentials, userCredentials);
-        Object.assign(this.userAddress, userAddress);
-        Object.assign(this.clientDetails, clientDetails);
-        cl(`---| Creating new ${this.constructor.name}...\r\n`);
-        cl(`---| New ${this.constructor.name} has been created. Welcome aboard, ${this.userCredentials.credentials.name}.`);
+        Object.assign(this.address, userAddress);
+        Object.assign(this.client, userClient);
+        Object.assign(this.extra, userExtra);
+        let type = this.constructor.name, user = this.credentials.credentials;
+        cl(`Creating new ${type}...`);
+        cl(`New ${type} has been created successfully with ID: ${user.id}.`);
+        cl(`Welcome aboard, ${user.name}.`);
     }
 
     get clear() {
-        const { defaultCredentials, defaultAddress, defaultDetails } = User;
+        const { defaultCredentials, defaultAddress, defaultClient, defaultExtra } = User;
         Object.assign(this, {
-            userCredentials: defaultCredentials,
-            userAddress: defaultAddress,
-            clientDetails: defaultDetails
+            credentials: defaultCredentials,
+            address: defaultAddress,
+            client: defaultClient,
+            extra: defaultExtra
         });
     }
 
     set id(newId) {
-        this.userCredentials.credentials.id = newId;
+        this.credentials.id = newId;
     }
 
     get id() {
@@ -70,7 +81,10 @@ export default class User {
     }
 
     get whois() {
-        return JSON.stringify({ ...this.userCredentials, ...this.userAddress, ...this.clientDetails }, null, "\t");
+        const str = JSON.stringify({ ...this.credentials, ...this.address, ...this.client, ...this.extra }, null, "\t");
+        const obj = JSON.parse(str);
+        console.dir(obj);
+        return obj;
     }
 
     get fullAddress() {
@@ -79,9 +93,5 @@ export default class User {
             result.push(`${key}: ${this.userAddress.address[key]}`);
         });
         return result.join(", ");
-    }
-
-    get extra() {
-        return `${JSON.stringify({ ...this.defaultDetails }, null, "\t")}`;
     }
 }

@@ -79,24 +79,10 @@ const updateMember = async (request, id) => {
   }
 };
 
-const setCollector = (credentials, address, data = {}) => {
+const setCollector = (credentials, address, client, extra) => {
   try {
-    const creds = {
-      credentials: {
-        type: credentials.type,
-        id: credentials.id,
-        email: credentials.email,
-        password: credentials.password,
-        name: credentials.name,
-        iconURL: credentials.iconURL
-      }
-    }, user = new Collector(creds, address, { client: data });
-
-    cl(JSON.stringify(credentials));
-    cl(`${user.constructor.name} #${user.id}: ${user.whois}`);
-
+    const user = new Collector(credentials, address, client, extra);
     setStatus("user", JSON.stringify(user));
-    //cl(JSON.parse(getStatus("user")));
     return user;
   } catch (error) {
     responseError(error);

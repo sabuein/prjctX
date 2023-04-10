@@ -14,9 +14,13 @@ const startCookies = async () => {
             expires: Date.now() + day,
             domain: "localhost",
         });
-        cookies ? cl("Cookies worked!") : cl("Cookies failed");
-    } catch (reason) {
-        console.error(`Error: ${reason}`);
+        if (cookies) {
+            cl("Cookies worked!");
+        } else {
+            throw new Error("Cookies failed");
+        }
+    } catch (error) {
+        responseError(error);
     }
 }
 
@@ -33,30 +37,65 @@ const startLocalStorage = () => {
 }
 
 const clearLocalStorage = () => {
-    window.localStorage.clear(); // delete everything
+    try {
+        if (typeof Storage !== "undefined") {
+            return window.localStorage.clear(); // delete everything
+        } else {
+            throw new Error(`There is no local storage support`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
 }
 
 const sizeLocalStorage = () => {
-    return window.localStorage.length; // the number of stored items
+    try {
+        if (typeof Storage !== "undefined") {
+            return window.localStorage.length; // the number of stored items
+        } else {
+            throw new Error(`There is no local storage support`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
 }
 
 const printLocalStorage = (trigger, output) => {
     try {
-        trigger.addEventListener("click", () => {
-            output.innerText = pJson(window.localStorage);
-        });
+        if (typeof Storage !== "undefined") {
+            trigger.addEventListener("click", () => {
+                output.innerText = pJson(window.localStorage);
+            });
+        } else {
+            throw new Error(`There is no local storage support`);
+        }
     } catch (error) {
-        ce(`Error in printLocalStorage();`);
-        cl(`${error}`);
+        responseError(error);
     }
 }
 
 const getStatus = (key) => {
-    return window.localStorage.getItem(key);
+    try {
+        if (typeof Storage !== "undefined") {
+            return window.localStorage.getItem(key);
+        } else {
+            throw new Error(`There is no local storage support`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
 }
 
 const setStatus = (key, value) => {
-    return window.localStorage.setItem(key, value);
+    try {
+        if (typeof Storage !== "undefined") {
+            return window.localStorage.setItem(key, value);
+        } else {
+          throw new Error(`There is no local storage support`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
 }
 
 const startSessionStorage = () => {
@@ -65,12 +104,15 @@ const startSessionStorage = () => {
 
 const printSessionStorage = (trigger, output) => {
     try {
-        trigger.addEventListener("click", () => {
-            output.innerText = pJson(window.sessionStorage);
-        });
+        if (typeof Storage !== "undefined") {
+            trigger.addEventListener("click", () => {
+                output.innerText = pJson(window.sessionStorage);
+            });
+        } else {
+            throw new Error(`There is no session storage support`);
+        }
     } catch (error) {
-        ce(`Error in printLocalStorage();`);
-        cl(`${error}`);
+        responseError(error);
     }
 }
 

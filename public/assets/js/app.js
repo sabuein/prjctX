@@ -13,7 +13,8 @@ import {
   startApp,
   startAdmin,
   startCMS,
-  startLogin
+  startLogin,
+  startRegister
 } from "./modules/view.mjs";
 
 window.addEventListener("load", () => {
@@ -66,8 +67,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             getApi = new Request("http://localhost:8888/collectors/all");
           renderMembers(await loadMembers(getApi), table);
           break;
-        case "login":
+        case "signin":
           startLogin();
+          break;
+        case "signup":
+          startRegister();
           break;
         case "cms":
           startCMS();
