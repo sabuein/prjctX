@@ -23,10 +23,11 @@ $api->get("/collectors/{id}", "getId");
 /* POST */
 $api->post("/", "postRoot");
 $api->post("/collectors", "postHome");
-$api->post("/collectors/add", "postAdd");
+$api->post("/collectors/login", "postLogin");
+$api->post("/collectors/register", "postRegister");
 $api->post("/collectors/add/all", "postAll");
 $api->post("/collectors/upload", "postUpload");
-$api->post("/collectors/signin", "postSignin");
+
 /* PUT */
 $api->put("/collectors/update/{id}", "updateId");
 
@@ -106,7 +107,7 @@ function postHome(Request $request, Response $response, array $args): Response
     return $response;
 }
 
-function postAdd(Request $request, Response $response): Response
+function postRegister(Request $request, Response $response): Response
 {
     $data = $request->getParsedBody();
 
@@ -206,7 +207,7 @@ function postAll(Request $request, Response $response, array $args): Response
     }
 }
 
-function postSignin(Request $request, Response $response, array $args): Response
+function postLogin(Request $request, Response $response, array $args): Response
 {
     try {
         $result = array("name" => "Salaheddin AbuEin");
