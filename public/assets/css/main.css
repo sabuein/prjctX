@@ -34,11 +34,12 @@ body > header {
   padding: 0.25rem;
   position: sticky;
   top: 0;
-  /*background-color: steelblue;*/
+  background-color: steelblue;
 }
 
 main {
   padding: 1rem;
+  width: 100%;
 }
 
 main ul,
@@ -136,6 +137,7 @@ footer hr {
 .start {
   align-items: start;
   text-align: start;
+  justify-content: flex-start;
 }
 
 .start li {
@@ -154,7 +156,6 @@ footer hr {
 
 .nav-container {
   gap: 5rem;
-  background-color: steelblue;
   width: 100%;
   border-radius: 0.25rem;
 }
@@ -289,6 +290,10 @@ main.cms > article:nth-child(3) > hr {
 
 .space {
   justify-content: space-between;
+}
+
+fieldset {
+  padding: 1.5rem;
 }
 
 input,
@@ -429,5 +434,9 @@ table {
 
   .plans-container {
     gap: 1rem;
+  }
+
+  main.cms > section:nth-child(1) {
+    flex-basis: 100%;
   }
 }
