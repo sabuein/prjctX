@@ -211,7 +211,7 @@ function postLogin(Request $request, Response $response, array $args): Response
 {
     try {
         $result = array("name" => "Salaheddin AbuEin");
-        $response->getBody()->write(json_encode($result));
+        $response->getBody()->write(json_encode(true));
         return $response
             ->withAddedHeader("access-control-allow-origin", "http://localhost:5501")
             ->withAddedHeader("access-control-allow-credentials", "true")
