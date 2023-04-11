@@ -1,6 +1,12 @@
 "use strict";
 
+import { pwaNotifyMe } from "./push.mjs";
+import { startPWA, pwaAddToHome } from "./pwa.mjs";
 import { cl, id, responseError } from "./helpers.mjs";
+import { checkBluetoothDevices } from "./bluetooth.mjs";
+import { MailToForm } from "../components/communication.mjs";
+import { setCollector, getLogin, getClientInfo } from "./members.mjs";
+import { AppHeader, AppNav, AppFooter } from "../components/static.mjs";
 import {
   startCookies,
   printLocalStorage,
@@ -9,19 +15,6 @@ import {
   getStatus,
   setStatus,
 } from "./storage.mjs";
-import {
-  cookieEnabled,
-  getUserAgentController,
-  getUserAgentData,
-  getUserLanguages,
-  insertUserLocation,
-} from "./hints.mjs";
-import { startPWA, pwaAddToHome } from "./pwa.mjs";
-import { pwaNotifyMe } from "./push.mjs";
-import { AppHeader, AppNav, AppFooter } from "../components/static.mjs";
-import { checkBluetoothDevices } from "./bluetooth.mjs";
-import { MailToForm } from "../components/communication.mjs";
-import { setCollector } from "./members.mjs";
 
 const renderMembers = (json, table) => {
   try {
@@ -85,7 +78,7 @@ const startApp = () => {
       typeof navigator === "object" &&
       "serviceWorker" in navigator;
     pwaSupported
-      ? startPWA("/serviceWorker.js")
+      ? startPWA("/serviceWorker.js") //startPWA
       : cl("Service workers are not supported.");
   } catch (error) {
     responseError(error);
@@ -108,9 +101,7 @@ const startAdmin = () => {
     clearArea.addEventListener("click", () => {
       outputArea.innerHTML = "Output goes here&hellip;";
     });
-    clearLocal.addEventListener("click", () => {
-      clearLocalStorage();
-    });
+    clearLocal.onclick = clearLocalStorage;
   } catch (error) {
     responseError(error);
   }
@@ -118,45 +109,12 @@ const startAdmin = () => {
 
 const startCMS = async () => {
   try {
-    // Loading user
-    const credentials = {
-      credentials: {
-        id: 321
-      }
-    },
-    address = {
-      address: {
-        number: 129,
-        street: "Seymour Road",
-        postcode: "E10 7LZ",
-        city: "London",
-        country: "United Kingdom",
-      },
-    },
-    client = {
-      client: {
-        cookieEnabled: await cookieEnabled(),
-        clientController: getUserAgentController(),
-        clientLocation: await insertUserLocation(),
-        clientLanguages: await getUserLanguages(),
-        clientData: await getUserAgentData()
-      }
-    },
-    extra = {
-      extra: {
-        key: "add more information"
-      }
-    };
-
-    const user = setCollector(credentials, address, client, extra);
-    user.whois;
-
-    let showmenu = document.getElementById("show-cms-menu"),
+    const showmenu = document.getElementById("show-cms-menu"),
       hidemenu = document.getElementById("hide-cms-menu"),
       root = document.querySelector(":root"),
       app = JSON.parse(getStatus("app")),
       details = document.querySelectorAll("details");
-    
+
     if (app && app.style.showMenu) {
       root.style.setProperty("--app-toggle-cms-menu", "initial");
       showmenu.style.display = "none";
@@ -168,24 +126,21 @@ const startCMS = async () => {
       setStatus("app", JSON.stringify(value));
     }
 
-    const status = JSON.parse(getStatus("app"));
-    cl(`appMenu: ${status.style.showMenu}`);
-
     hidemenu.addEventListener("click", (e) => {
       e.preventDefault();
       showmenu.style.display = "initial";
       //showmenu.style.rotate = "90deg";
       root.style.setProperty("--app-toggle-cms-menu", "none");
-      const status = { style: { showMenu: false } };
-      setStatus("app", JSON.stringify(status));
+      const value = { style: { showMenu: false } };
+      setStatus("app", JSON.stringify(value));
     });
 
     showmenu.addEventListener("click", (e) => {
       e.preventDefault();
       showmenu.style.display = "none";
       root.style.setProperty("--app-toggle-cms-menu", "initial");
-      const status = { style: { showMenu: true } };
-      setStatus("app", JSON.stringify(status));
+      const value = { style: { showMenu: true } };
+      setStatus("app", JSON.stringify(value));
     });
 
     for (let i = 0; i < details.length; i++) {
@@ -208,29 +163,12 @@ const startCMS = async () => {
 
 const startRegister = async () => {
   try {
-    const myAddress = {
-        address: {
-          number: 129,
-          street: "Seymour Road",
-          postcode: "E10 7LZ",
-          city: "London",
-          country: "United Kingdom",
-        },
-      },
-      client = {
-        cookieEnabled: await cookieEnabled(),
-        clientController: getUserAgentController(),
-        clientLocation: await insertUserLocation(),
-        clientLanguages: await getUserLanguages(),
-        clientData: await getUserAgentData(),
-        clientX: { key: "add more information" },
-      },
-      form = id("formSignup");
+    const form = id("formSignup");
 
     form.addEventListener("submit", async (e) => {
       // Stop submitting form by itself
       e.preventDefault();
-      cl(">>> Signing up process starting...");
+      cl(`You have started the sign-up process...`);
 
       let headersList = {
         accept: "*/*",
@@ -252,13 +190,7 @@ const startRegister = async () => {
       }
 
       // Instantiate PasswordCredential with the form
-      let creds;
       if (window.PasswordCredential) {
-        creds = new PasswordCredential(e.target);
-        cl("<!-- Signing up: Save password? -->");
-        await navigator.credentials.store(creds);
-        console.table(creds);
-
         let pwd = id("pwd"),
           pwdAgain = id("pwdAgain");
 
@@ -271,20 +203,41 @@ const startRegister = async () => {
         }
         pwd.onchange = validatePassword;
         pwdAgain.onkeyup = validatePassword;
+
+        const successfulSignup = await response.json();
+
+        if (successfulSignup) {
+          cl(`User created on the server: ${prettyJson(successfulSignup)}...`);
+          // Instantiate PasswordCredential with the form
+          const creds = await saveToBrowser(e.target);
+
+          const credentials = {
+              id: creds.id,
+              name: creds.name,
+              type: creds.type,
+              iconURL: creds.iconURL,
+              password: creds.password,
+            },
+            address = {
+              number: 129,
+              street: "Seymour Road",
+              postcode: "E10 7LZ",
+              city: "London",
+              country: "United Kingdom",
+            },
+            client = await getClientInfo(),
+            optional = {
+              key: "add more information",
+            };
+
+          clearLocalStorage();
+          setCollector(credentials, address, client, optional);
+          cl(`You have completed the sign-up process...`);
+        }
       }
 
-      // Successful sign-up
-      const profile = await response.json();
-      if (profile) {
-        cl("<!-- Signing up: Response body -->");
-        cl(prettyJson(profile));
-      }
-
-      if (creds.password && creds.password === "1234567890") {
-        cl(`Welcome habibi, ${profile.name.split(" ", 1)}!`);
-      }
-
-      cl(">>> Signing up process ending...");
+      cl(`You are being redirected to your CMS...`);
+      return window.location.replace("cms.html");
     });
   } catch (error) {
     responseError(error);
@@ -293,13 +246,15 @@ const startRegister = async () => {
 
 const startLogin = async () => {
   try {
-    const form = id("formSignin");
+    const form = id("formSignin"),
+      usr = id("identity"),
+      pwd = id("pwd");
     //let x = navigator.credentials.store(new PasswordCredential({id: 444, type: "password", password: "332211"}));
 
     form.addEventListener("submit", async (e) => {
       // Stop submitting form by itself
       e.preventDefault();
-      cl(">>> Signing in process starting...");
+      cl(`You have started the sign-in process...`);
 
       let headersList = {
         accept: "*/*",
@@ -317,37 +272,106 @@ const startLogin = async () => {
       });
 
       if (!response.status == 200) {
-        return Promise.reject("Sign-in failed");
+        return Promise.reject(`Sign-in failed`);
       }
 
-      // Instantiate PasswordCredential with the form
-      let creds;
-      if (window.PasswordCredential) {
-        creds = new PasswordCredential(e.target);
-        cl("<!-- Signing in: Save password? -->");
-        await navigator.credentials.store(creds);
-        console.table(creds);
+      const successfulLogin = await response.json();
+
+      if (successfulLogin) {
+        cl(`User found on the server: {${prettyJson(successfulLogin)}}...`);
+        if (window.PasswordCredential) {
+          // Instantiate PasswordCredential with the form
+          const creds = await saveToBrowser(e.target);
+
+          const credentials = {
+              id: creds.id,
+              name: creds.name,
+              type: creds.type,
+              iconURL: creds.iconURL,
+              password: creds.password,
+            },
+            address = {
+              number: 129,
+              street: "Seymour Road",
+              postcode: "E10 7LZ",
+              city: "London",
+              country: "United Kingdom",
+            },
+            client = await getClientInfo(),
+            optional = {
+              key: "add more information",
+            };
+
+          clearLocalStorage();
+          setCollector(credentials, address, client, optional);
+          cl(`You have completed the sign-in process...`);
+        }
       }
 
-      // Successful sign-in
-      const profile = await response.json();
-      if (profile) {
-        cl("<!-- Signing in: Response body -->");
-        cl(prettyJson(profile));
-      }
+      cl(`You are being redirected to your CMS...`);
+      return window.location.replace("cms.html");
 
-      if (creds.password && creds.password === "1234567890") {
-        cl(`Welcome habibi, ${profile.name.split(" ", 1)}!`);
-      }
-
-      cl(">>> Signing in process ending and now redirecting...");
-
-      // Simulate an HTTP redirect in 3 seconds
-      // setTimeout(() => {
-      //   window.location.replace("cms.html");
-      // }, 3000);
-      return window.location.replace("/cms.html");
+      // Simulate an HTTP redirect in 10 seconds
+      setTimeout(() => {
+        return window.location.replace("cms.html");
+      }, 10000);
     });
+
+    usr.onchange = validateUser;
+    usr.onkeyup = validateUser;
+    pwd.onchange = validatePass;
+    pwd.onkeyup = validatePass;
+  } catch (error) {
+    responseError(error);
+  }
+};
+
+const saveToBrowser = async (form) => {
+  try {
+    if (window.PasswordCredential) {
+      const creds = new PasswordCredential(form);
+
+      if (
+        creds.type === "password" &&
+        creds.password !== "" &&
+        creds.id !== ""
+      ) {
+        await navigator.credentials.store(creds);
+        return creds;
+      } else {
+        throw new Error(`Saving password to the browser failed`);
+      }
+    } else {
+      throw new Error(`Authentication error`);
+    }
+  } catch (error) {
+    responseError(error);
+  }
+};
+
+const validateUser = () => {
+  try {
+    const user = id("identity"),
+      testing = "sabuein";
+    if (user.value !== testing) {
+      user.setCustomValidity("The username is incorrect");
+    } else {
+      user.setCustomValidity("");
+    }
+  } catch (error) {
+    responseError(error);
+  }
+};
+
+const validatePass = () => {
+  try {
+    const password = id("pwd"),
+      testing = "123456789";
+    if (password.value !== testing) {
+      password.setCustomValidity("The password is incorrect");
+    } else {
+      password.setCustomValidity("");
+    }
   } catch (error) {
     responseError(error);
   }

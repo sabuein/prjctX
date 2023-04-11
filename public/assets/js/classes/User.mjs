@@ -3,95 +3,91 @@
 import { cl } from "../modules/helpers.mjs";
 
 export default class User {
-    
-    static get keys() {
-        return ["credentials", "address", "client", "extra"];
-    }
+  static get keys() {
+    return ["credentials", "address", "client", "optional"];
+  }
 
-    static get defaultCredentials() {
-        return {
-            credentials: {
-                type: null,
-                id: null,
-                email: null,
-                password: null,
-                name: null,
-                iconURL: null
-            }
-        };
-    }
-    
-    static get defaultAddress() {
-        return {
-            address: {
-                number: null,
-                street: null,
-                postcode: null,
-                city: null,
-                country: null
-            }
-        };
-    }
+  static get defaultCredentials() {
+    return {
+      id: null,
+      name: null,
+      type: null,
+      iconURL: null,
+      password: null
+    };
+  }
 
-    static get defaultClient() {
-        return {
-            client: null
-        };
-    }
+  static get defaultAddress() {
+    return {};
+  }
 
-    static get defaultExtra() {
-        return {
-            extra: null
-        };
-    }
+  static get defaultClient() {
+    return {};
+  }
 
-    constructor(
-        userCredentials = User.defaultCredentials,
-        userAddress = User.defaultAddress,
-        userClient = User.defaultClient,
-        userExtra = User.defaultExtra
-    ) {
-        this.clear;
-        Object.assign(this.credentials, userCredentials);
-        Object.assign(this.address, userAddress);
-        Object.assign(this.client, userClient);
-        Object.assign(this.extra, userExtra);
-        let type = this.constructor.name, user = this.credentials.credentials;
-        cl(`Creating new ${type}...`);
-        cl(`New ${type} has been created successfully with ID: ${user.id}.`);
-        cl(`Welcome aboard, ${user.name}.`);
-    }
+  static get defaultOptional() {
+    return {};
+  }
 
-    get clear() {
-        const { defaultCredentials, defaultAddress, defaultClient, defaultExtra } = User;
-        Object.assign(this, {
-            credentials: defaultCredentials,
-            address: defaultAddress,
-            client: defaultClient,
-            extra: defaultExtra
-        });
-    }
+  constructor(
+    userCredentials = User.defaultCredentials,
+    userAddress = User.defaultAddress,
+    userClient = User.defaultClient,
+    userOptional = User.defaultOptional
+  ) {
+    this.clear;
+    Object.assign(this.credentials, userCredentials);
+    Object.assign(this.address, userAddress);
+    Object.assign(this.client, userClient);
+    Object.assign(this.optional, userOptional);
+    let type = this.constructor.name,
+      user = this.credentials;
+    cl(`Creating new ${type}...`);
+    cl(`New ${type} has been created successfully...`);
+    cl(`Welcome aboard, ${user.name}...`);
+    cl(this.loginDetails);
+  }
 
-    set id(newId) {
-        this.credentials.id = newId;
-    }
+  get clear() {
+    const { defaultCredentials, defaultAddress, defaultClient, defaultOptional } =
+      User;
+    Object.assign(this, {
+      credentials: defaultCredentials,
+      address: defaultAddress,
+      client: defaultClient,
+      optional: defaultOptional,
+    });
+  }
 
-    get id() {
-        return this.userCredentials.credentials.id;
-    }
+  set id(newId) {
+    this.credentials.id = newId;
+  }
 
-    get whois() {
-        const str = JSON.stringify({ ...this.credentials, ...this.address, ...this.client, ...this.extra }, null, "\t");
-        const obj = JSON.parse(str);
-        console.dir(obj);
-        return obj;
-    }
+  get id() {
+    return this.userCredentials.credentials.id;
+  }
 
-    get fullAddress() {
-        const result = [];
-        Object.keys(this.userAddress.address).forEach((key) => {
-            result.push(`${key}: ${this.userAddress.address[key]}`);
-        });
-        return result.join(", ");
-    }
+  get whois() {
+    const str = JSON.stringify(
+      { ...this.credentials, ...this.address, ...this.client, ...this.optional },
+      null,
+      "\t"
+    );
+    const obj = JSON.parse(str);
+    console.log(obj);
+    return obj;
+  }
+
+  get fullAddress() {
+    const result = [];
+    Object.keys(this.userAddress.address).forEach((key) => {
+      result.push(`${key}: ${this.userAddress.address[key]}`);
+    });
+    return result.join(", ");
+  }
+
+  get loginDetails() {
+    let user = this.credentials;
+    return JSON.stringify({ username: user.id, password: user.password }, null, "\t");
+  }
 }

@@ -17,8 +17,11 @@ import {
   startRegister
 } from "./modules/view.mjs";
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   startApp();
+  const account = await getLogin();
+  cl(`Welcome back, ${account.name}.`);
+
   if ("credentials" in navigator) {
     const cred = new PasswordCredential({
       id: 54321,
@@ -42,7 +45,6 @@ window.addEventListener("load", () => {
 
 // startCookies();
 document.addEventListener("DOMContentLoaded", async () => {
-  const account = getLogin();
   if (window.fetch) {
     if (typeof meta !== "undefined") {
       let slug = meta.document.slug;
@@ -62,10 +64,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           handlebars(source, data);
           break;
         case "members":
-          const table = id("membersBody"),
+          const tbody = id("membersBody"),
             getLocal = new Request("/assets/collectors.json"),
             getApi = new Request("http://localhost:8888/collectors/all");
-          renderMembers(await loadMembers(getApi), table);
+          renderMembers(await loadMembers(getApi), tbody);
           break;
         case "signin":
           startLogin();

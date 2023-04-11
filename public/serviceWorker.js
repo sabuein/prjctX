@@ -1,9 +1,29 @@
 self.addEventListener("install", (event) => {
   let cacheName = "prjctx",
     appShell = [
-      "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css",
+      "/404.html",
+      "/admin.html",
+      "/android-chrome-192x192.png",
+      "/android-chrome-512x512.png",
       "/app.webmanifest",
+      "/cms.html",
+      "/collector.html",
+      "/communication.html",
+      "/favicon-16x16.png",
+      "/favicon-32x32.png",
+      "/favicon.ico",
+      "/forums.html",
+      "/index.html",
+      "/members.html",
+      "/offline.html",
+      "/plans.html",
+      "/signin.html",
+      "/signup.html",
+      "/statistics.html",
+      "/subscribe.html",
+      "/upload.html",
       "/assets/collectors.json",
+      "/assets/css/main.css",
       "/assets/js/app.js",
       "/assets/js/lib/handlebars-v4.7.7.js",
       "/assets/js/classes/User.mjs",
@@ -18,23 +38,11 @@ self.addEventListener("install", (event) => {
       "/assets/js/modules/push.mjs",
       "/assets/js/modules/view.mjs",
       "/assets/js/components/static.mjs",
-      "/assets/css/main.css",
+      "/assets/images/icons/users.svg",
       "/assets/images/notifications/tetris.jpg",
       "/assets/images/notifications/minecraft.jpg",
       "/assets/images/notifications/super-mario-bros.jpg",
-      "/assets/images/notifications/the-legend-of-zelda.jpg",
-      "/404.html",
-      "/collector.html",
-      "/communication.html",
-      "/dashboard.html",
-      "/forums.html",
-      "/login.html",
-      "/members.html",
-      "/offline.html",
-      "/signup.html",
-      "/subscribe.html",
-      "/upload.html",
-      "/index.html"
+      "/assets/images/notifications/the-legend-of-zelda.jpg"
     ];
   // Cache the core assets
   event.waitUntil(addManyToCache(cacheName, appShell));
@@ -64,69 +72,55 @@ self.addEventListener("activate", (event) => {
   });
 });
 
-self.addEventListener("fetch", (event) => {
-  if (
-    event.request.cache === "only-if-cached" &&
-    event.request.mode !== "same-origin"
-  ) {
-    console.log(`Bug fix https://stackoverflow.com/a/49719964`);
-    return;
-  }
-
-  let request = event.request,
-    cacheName = "prjctx";
-
-  /*
-  // Log request URL
-  console.log(`[Service Worker] Fetched resource ${request.url}`);
-
-  // Log headers
-  request.headers.forEach((value, key) => {
-    console.log(`${key} ==> ${value}`);
-  });
-  */
-  if (
-    request.headers.get("accept").includes("image") ||
-    request.headers.get("accept").includes("text/plain") ||
-    request.headers.get("accept").includes("text/html") ||
-    request.headers.get("accept").includes("application/xml") ||
-    request.headers.get("accept").includes("application/xhtml+xml") ||
-    request.headers.get("accept").includes("text/css")/* ||
-    request.headers.get("accept").includes("text/javascript") ||
-    request.headers.get("accept").includes("application/javascript") ||
-    request.headers.get("accept").includes("module") ||
-    request.headers.get("accept").includes("application/json") ||
-    request.headers.get("accept").includes("manifest+json") ||
-    request.headers.get("accept").includes("application/manifest+json") ||
-    request.headers.get("accept").includes("json") ||
-    request.headers.get("accept").includes("manifest")*/
-  ) {
-      try {
-        const fetched = getCachedResource(cacheName, request);
-        if (fetched) return fetched;
-        const response = fetchTheResource(cacheName, request);;
-        if (response) return response;
-      } catch (error) {
-        console.error(`Error occured returning the resource...`);
-        console.log(error);
-      } finally {
-      console.log("The End #1: Main");
+self.addEventListener("fetch", (event) => {  
+  try {
+    if (
+      event.request.cache === "only-if-cached" &&
+      event.request.mode !== "same-origin"
+    ) {
+      console.log(`Bug fix https://stackoverflow.com/a/49719964`);
+      return;
     }
-    /*
-    try {
-      event.respondWith(async () => {
+
+    let request = event.request, cacheName = "prjctx";
+
+    // Log request URL
+    //console.log(`[Service Worker] Fetched resource ${request.url}`);
+
+    // Log headers
+    // request.headers.forEach((value, key) => {
+    //   console.log(`${key} ==> ${value}`);
+    // });
+    
+    if (
+      request.headers.get("accept").includes("image") ||
+      request.headers.get("accept").includes("text/plain") ||
+      request.headers.get("accept").includes("text/html") ||
+      request.headers.get("accept").includes("application/xml") ||
+      request.headers.get("accept").includes("application/xhtml+xml") ||
+      request.headers.get("accept").includes("text/css") ||
+      request.headers.get("accept").includes("text/javascript") ||
+      request.headers.get("accept").includes("application/javascript") ||
+      request.headers.get("accept").includes("module") ||
+      request.headers.get("accept").includes("application/json") ||
+      request.headers.get("accept").includes("manifest+json") ||
+      request.headers.get("accept").includes("application/manifest+json") ||
+      request.headers.get("accept").includes("json") ||
+      request.headers.get("accept").includes("manifest")
+    ) {
+      event.respondWith((async () => {
         const cached = await getCachedResource(cacheName, request);
         const fetching = await fetchTheResource(cacheName, request);
         return cached || fetching;
-      });
-    } catch (error) {
-      console.error(`The requested resource is not available...`);
-      console.log(error);
-    }
-    */
-   console.log("Take care. Salam....")
-  }
+    })());
 
+    }
+  } catch (error) {
+    console.error(`Error occured returning the resource...`);
+    console.log(error);
+  } finally {
+    //console.log("Take care. Salam habibi...");
+  }
 });
 
 // Receive push messages
@@ -174,7 +168,7 @@ const fetchTheResource = async (cacheName, request) => {
     const response = await fetch(request, { mode: "cors" });
     if (!response || response.status !== 200 || response.type !== "basic") {
       await addOneToCache(request, cacheName, response.clone());
-      return response;
+      return getCachedResource(cacheName, request);
     }
   } catch (error) {
     console.error(`Error occured while fetching...`);

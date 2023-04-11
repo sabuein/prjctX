@@ -39,13 +39,15 @@
         <section>
             <header><h2>Please enter your credentials&hellip;</h2></header>
             <div>
-                <form id="formSignin" method="post" action="http://localhost:7654/apis/collectors/login">
+                <form id="formSignin" method="post">
                     <fieldset>
                         <legend>Ahlan wa sahlan&excl;</legend>
                         <label for="identity"><span class="requiredInput">*</span>Username:</label>
                         <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
+                        <input type="hidden" name="name" autocomplete="name" value="Salaheddin AbuEin" />
+                        <input type="hidden" name="image" autocomplete="photo" value="https://sabuein.github.io/assets/images/salaheddin-abuein-moustache.jpg" />
                         <label for="pwd"><span class="requiredInput">*</span>Password:</label>
-                        <input type="password" name="password" id="pwd" autocomplete="current-password" value="1234567890" minlength="8" required />
+                        <input type="password" name="password" id="pwd" autocomplete="current-password" value="123456789" minlength="8" required />
                         <input type="hidden" name="csrf_token" value="*****" />
                         <br /><br />
                         <input type="submit" value="Sign in" />
