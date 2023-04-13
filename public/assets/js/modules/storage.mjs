@@ -1,4 +1,4 @@
-import { cl, ce } from "./helpers.mjs";
+import { cl, ce, clAlert, clOk, clNew, clWarn, responseError } from "./helpers.mjs";
 import { pJson } from "./view.mjs";
 
 const startCookies = async () => {
@@ -22,11 +22,19 @@ const startCookies = async () => {
     } catch (error) {
         responseError(error);
     }
-}
+};
+
+const clearCookies = () => {
+    clAlert(`TODO: Clearing Cookies...`);
+};
 
 const startIndexedDb = () => {
     cl(`TODO: IndexedDB`);
-}
+};
+
+const clearIndexedDb = () => {
+    clAlert(`TODO: Clearing IndexedDB...`);
+};
 
 const startLocalStorage = () => {
     window.localStorage.setItem(key, value); // store key/value pair
@@ -34,19 +42,33 @@ const startLocalStorage = () => {
     window.localStorage.removeItem(key); // remove the key with its value
     window.localStorage.key(index); // get the key on a given position
     cl(`---| Local storage started.`);
-}
+};
 
 const clearLocalStorage = () => {
     try {
         if (typeof Storage !== "undefined") {
-            return window.localStorage.clear(); // delete everything
+            clAlert(`Clearing local storage...`);
+            return window.localStorage.clear();
         } else {
             throw new Error(`There is no local storage support`);
         }
     } catch (error) {
         responseError(error);
     }
-}
+};
+
+const clearSessionStorage = () => {
+    try {
+        if (typeof Storage !== "undefined") {
+            clAlert(`Clearing session storage...`);
+            return window.sessionStorage.clear();
+        } else {
+            throw new Error(`There is no session storage support`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
+};
 
 const sizeLocalStorage = () => {
     try {
@@ -58,7 +80,7 @@ const sizeLocalStorage = () => {
     } catch (error) {
         responseError(error);
     }
-}
+};
 
 const printLocalStorage = (trigger, output) => {
     try {
@@ -72,7 +94,7 @@ const printLocalStorage = (trigger, output) => {
     } catch (error) {
         responseError(error);
     }
-}
+};
 
 const getStatus = (key) => {
     try {
@@ -84,23 +106,23 @@ const getStatus = (key) => {
     } catch (error) {
         responseError(error);
     }
-}
+};
 
 const setStatus = (key, value) => {
     try {
         if (typeof Storage !== "undefined") {
             return window.localStorage.setItem(key, value);
         } else {
-          throw new Error(`There is no local storage support`);
+            throw new Error(`There is no local storage support`);
         }
     } catch (error) {
         responseError(error);
     }
-}
+};
 
 const startSessionStorage = () => {
     cl(`TODO: Session storage`);
-}
+};
 
 const printSessionStorage = (trigger, output) => {
     try {
@@ -114,11 +136,134 @@ const printSessionStorage = (trigger, output) => {
     } catch (error) {
         responseError(error);
     }
-}
+};
 
 const startWebSql = () => {
     cl(`TODO: Web SQL`);
+};
+
+const clearWebSql = () => {
+    clAlert(`TODO: Clearing Web SQL...`);
+};
+
+const startServiceWorker = async (uri = "/serviceWorker.js") => {
+    try {
+        if (window.isSecureContext && "serviceWorker" in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            if (!navigator.serviceWorker.controller) {
+                clWarn(`Registering service worker...`);
+                const registeredWorker = await navigator.serviceWorker.register(
+                    uri,
+                    {
+                        scope: "/",
+                    }
+                );
+                // Start
+                registeredWorker.addEventListener("updatefound", async () => {
+                    const installingWorker = registeredWorker.installing;
+                    switch (installingWorker.state) {
+                        case "installing": // We are here!
+                            cl(
+                                `The service worker in this state is considered an installing worker. During this state, ExtendableEvent.waitUntil() can be called inside the install event handler to extend the life of the installing worker until the passed promise resolves successfully. This is primarily used to ensure that the service worker is not active until all of the core caches are populated.`
+                            );
+                            break;
+                        case "installed":
+                            cl(
+                                `The service worker in "installed" state is considered a waiting worker.`
+                            );
+                            if (navigator.serviceWorker.controller) {
+                                cl(`TODO: notify user: "New or updated content is available."`);
+                            } else {
+                                cl(`TODO: notify user: "Content is now available offline."`);
+                            }
+                            break;
+                        case "activating":
+                            cl(
+                                `The service worker in this state is considered an active worker. During this state, ExtendableEvent.waitUntil() can be called inside the onactivate event handler to extend the life of the active worker until the passed promise resolves successfully. No functional events are dispatched until the state becomes activated.`
+                            );
+                            break;
+                        case "activated":
+                            cl(
+                                `The service worker in this state is considered an active worker ready to handle functional events.`
+                            );
+                            break;
+                        case "redundant":
+                            cl(
+                                `A new service worker is replacing the current service worker, or the current service worker is being discarded due to an install failure.`
+                            );
+                            break;
+                        default:
+                            cl(`Service worker state reporting ended.`);
+                    }
+                });
+                // End
+                clOk(`The service worker is running and active`);
+            }
+
+            logServiceWorkerState();
+
+        } else {
+            throw new Error(`The broswer does not support service workers`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
+};
+
+const checkServiceWorkerState = () => {
+    try {
+        let controller = navigator.serviceWorker.controller || "null";
+        switch(controller.state) {
+            case "activated":
+                clAlert(`The service worker has been activated and is running...`);
+                break;
+            case "null":
+                clWarn(`No state found`);
+                break;
+        }
+    } catch (error) {
+        responseError(error);
+    }
 }
+
+const logServiceWorkerState = async () => {
+    try {
+        navigator.serviceWorker.addEventListener("statechange", (e) => {
+            clNew(e.target.state);
+        });
+    } catch (error) {
+        responseError(error);
+    }
+};
+const unregisterServiceWorker = () => {
+    try {
+        if (window.isSecureContext && "serviceWorker" in navigator) {
+            clAlert(`TODO: Unregistering service worker...`);
+        }
+    } catch (error) {
+        responseError(error);
+    }
+};
+
+const clearSiteData = () => {
+    try {
+        // Application
+        unregisterServiceWorker();
+        // Local and session storage
+        clearLocalStorage();
+        clearSessionStorage();
+        // IndexedDB
+        clearIndexedDb();
+        // Web SQL
+        clearWebSql();
+        // Cookies
+        clearCookies();
+        // Done
+        clOk(`Site data has been cleared successfully.`);
+    } catch (error) {
+        responseError(error);
+    }
+};
 
 export {
     startCookies,
@@ -131,5 +276,10 @@ export {
     printLocalStorage,
     startSessionStorage,
     printSessionStorage,
-    startWebSql
+    startWebSql,
+    clearSiteData,
+    startServiceWorker,
+    unregisterServiceWorker,
+    checkServiceWorkerState,
+    logServiceWorkerState,
 };

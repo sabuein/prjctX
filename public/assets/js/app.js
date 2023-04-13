@@ -1,6 +1,6 @@
 "use strict";
 
-import { cl, id, responseError } from "./modules/helpers.mjs";
+import { cl, clCurrent, id, responseError } from "./modules/helpers.mjs";
 import {
   loadMembers,
   addMember,
@@ -18,10 +18,13 @@ import {
 } from "./modules/view.mjs";
 
 window.addEventListener("load", async () => {
-  startApp();
-  const account = await getLogin();
-  cl(`Welcome back, ${account.name}.`);
+  let account = await getLogin();
+  account ?
+  clCurrent(`Welcome back, ${account.name}.`) :
+  clCurrent(`Welcome, Anonymous.`);
 
+  startApp();
+  
   if ("credentials" in navigator) {
     const cred = new PasswordCredential({
       id: 54321,

@@ -156,7 +156,8 @@ const addManyToCache = async (cacheName, appShellResources) => {
 const getCachedResource = async (cacheName, request) => {
   try {
     const cache = await caches.open(cacheName);
-    if (cache) return await cache.match(request, { ignoreSearch: true });
+    const result = await cache.match(request, { ignoreSearch: true });
+    return result;
   } catch (error) {
     console.error(`Error occured returning cached resource...`);
     console.log(error);
@@ -167,7 +168,9 @@ const fetchTheResource = async (cacheName, request) => {
   try {
     const response = await fetch(request, { mode: "cors" });
     if (!response || response.status !== 200 || response.type !== "basic") {
-      await addOneToCache(request, cacheName, response.clone());
+      throw new Error(`No response`);
+    } else {
+      await addOneToCache(request, cacheName, response);
       return getCachedResource(cacheName, request);
     }
   } catch (error) {

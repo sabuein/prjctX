@@ -21,6 +21,16 @@ const getUserAgentController = () => {
   }
 };
 
+const getClientInfo = async () => {
+  return {
+    cookieEnabled: await cookieEnabled(),
+    clientController: getUserAgentController(),
+    clientLocation: await insertUserLocation(),
+    clientLanguages: await getUserLanguages(),
+    clientData: await getUserAgentData(),
+  }
+};
+
 const getUserAgentData = async () => {
   const keys = [
     "architecture",
@@ -83,5 +93,6 @@ export {
   getUserAgentController,
   getUserAgentData,
   getUserLanguages,
+  getClientInfo,
   insertUserLocation,
 };

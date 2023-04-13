@@ -1,15 +1,8 @@
 "use strict";
 
 import Collector from "../classes/Collector.mjs";
-import { cl, responseError } from "./helpers.mjs";
-import { getStatus, setStatus } from "./storage.mjs";
-import {
-  cookieEnabled,
-  getUserAgentController,
-  getUserAgentData,
-  getUserLanguages,
-  insertUserLocation,
-} from "./hints.mjs";
+import { cl, clCurrent, clNew, responseError } from "./helpers.mjs";
+import { getStatus, setStatus, clearSiteData } from "./storage.mjs";
 
 const loadMembers = async (request) => {
   try {
@@ -88,9 +81,9 @@ const updateMember = async (request, id) => {
   }
 };
 
-const setCollector = (credentials, address, client, optional) => {
+const setCollector = (credentials) => {
   try {
-    const account = new Collector(credentials, address, client, optional);
+    const account = new Collector(credentials);
     setStatus("account", JSON.stringify(account));
     return account;
   } catch (error) {
@@ -98,41 +91,70 @@ const setCollector = (credentials, address, client, optional) => {
   }
 };
 
-const getLogin = async () => {
+const getLogin = (form = null) => {
   try {
     const account = JSON.parse(getStatus("account"));
-    if (account) {
-      const credentials = account.credentials;
-      return credentials;
-    } else {
-      const account = await setLogin();
-      return account;
+    if (form || account) {
+      clNew(`############ New account ############`);
+      return getNewLogin(form);
+    } else if (account) {
+      clCurrent(`############ Current account ############`);
+      return account.credentials;
     }
   } catch (error) {
     responseError(error);
   }
 };
 
-const setLogin = async () => {
+const getRandomString = (size) => {
   try {
-    const creds = await navigator.credentials.get({ password: true });
-    if (creds && creds.type === "password" /*&& u.isValidJID(creds.id)*/) {
-      /*await setUserJID(creds.id);*/
-      const credentials = {
-        id: creds.id,
-        name: creds.name,
-        type: creds.type,
-        email: creds.email,
-        password: creds.password,
-        iconURL: creds.iconURL,
-      };
-      setStatus("account", JSON.stringify({ credentials: credentials }));
-      return account;
-    } else {
-      return getLogin();
+    let result = "", characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (let i = 0; i < size; i++) result += characters.charAt(Math.floor(Math.random() * characters.length));
+    return result;
+  } catch (error) {
+    responseError(error);
+  }
+};
+
+const getNewLogin = async (form = null) => {
+  try {
+    if (window.PasswordCredential) {
+      if (form) {
+
+        const creds = new PasswordCredential(form);
+
+        const credentials = {
+            id: creds.id,
+            name: creds.name,
+            type: creds.type,
+            iconURL: creds.iconURL,
+            password: creds.password
+          };
+
+        const user = setCollector(credentials);
+        setStatus("visit", JSON.stringify({ id: user.visit.id}));
+        return user.credentials;
+      
+      } else {
+        const creds = await navigator.credentials.get({ password: true });
+        if (creds && creds.type === "password" /*&& u.isValidJID(creds.id)*/) {
+          /*await setUserJID(creds.id);*/
+          const credentials = {
+            id: creds.id,
+            name: creds.name,
+            type: creds.type,
+            iconURL: creds.iconURL,
+            password: creds.password
+          };
+
+          const user = setCollector(credentials);
+          setStatus("visit", JSON.stringify({ id: user.visit.id}));
+          return user.credentials;
+
+        } 
+      }
     }
   } catch (error) {
-    window.location.replace = "signin.html";
     responseError(error);
   }
 };
@@ -146,14 +168,10 @@ const signOut = () => {
   }
 };
 
-const getClientInfo = async () => {
-  return {
-    cookieEnabled: await cookieEnabled(),
-    clientController: getUserAgentController(),
-    clientLocation: await insertUserLocation(),
-    clientLanguages: await getUserLanguages(),
-    clientData: await getUserAgentData(),
-  };
+export {
+  loadMembers,
+  addMember,
+  updateMember,
+  setCollector,
+  getLogin,
 };
-
-export { loadMembers, addMember, updateMember, setCollector, getLogin, getClientInfo };

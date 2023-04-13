@@ -2,10 +2,10 @@
 
 import { pwaNotifyMe } from "./push.mjs";
 import { startPWA, pwaAddToHome } from "./pwa.mjs";
-import { cl, id, responseError } from "./helpers.mjs";
+import { cl, clOk, clAlert, id, responseError } from "./helpers.mjs";
 import { checkBluetoothDevices } from "./bluetooth.mjs";
 import { MailToForm } from "../components/communication.mjs";
-import { setCollector, getLogin, getClientInfo } from "./members.mjs";
+import { getLogin } from "./members.mjs";
 import { AppHeader, AppNav, AppFooter } from "../components/static.mjs";
 import {
   startCookies,
@@ -14,6 +14,7 @@ import {
   clearLocalStorage,
   getStatus,
   setStatus,
+  clearSiteData
 } from "./storage.mjs";
 
 const renderMembers = (json, table) => {
@@ -78,8 +79,8 @@ const startApp = () => {
       typeof navigator === "object" &&
       "serviceWorker" in navigator;
     pwaSupported
-      ? startPWA("/serviceWorker.js") //startPWA
-      : cl("Service workers are not supported.");
+      ? startPWA()
+      : clAlert("Service workers are not supported");
   } catch (error) {
     responseError(error);
   }
@@ -93,7 +94,8 @@ const startAdmin = () => {
       printLocal = id("printLocal"),
       outputArea = id("outputArea"),
       clearArea = id("clearOutput"),
-      clearLocal = id("clearLocal");
+      clearLocal = id("clearLocal"),
+      clearSite = id("clearSiteData");
     pwaAddToHome(appAdd);
     pwaNotifyMe(appNotify);
     printSessionStorage(printSession, outputArea);
@@ -102,6 +104,12 @@ const startAdmin = () => {
       outputArea.innerHTML = "Output goes here&hellip;";
     });
     clearLocal.onclick = clearLocalStorage;
+    clearSite.addEventListener("click", ()=> {
+      if (confirm(`This will delete everything. Are you sure?`)) {
+        clearSiteData();
+        alert(`Site data has been cleared successfully.`);
+      }
+    });
   } catch (error) {
     responseError(error);
   }
@@ -168,7 +176,7 @@ const startRegister = async () => {
     form.addEventListener("submit", async (e) => {
       // Stop submitting form by itself
       e.preventDefault();
-      cl(`You have started the sign-up process...`);
+      clAlert(`You have started the sign-up process...`);
 
       let headersList = {
         accept: "*/*",
@@ -208,36 +216,19 @@ const startRegister = async () => {
 
         if (successfulSignup) {
           cl(`User created on the server: ${prettyJson(successfulSignup)}...`);
-          // Instantiate PasswordCredential with the form
-          const creds = await saveToBrowser(e.target);
-
-          const credentials = {
-              id: creds.id,
-              name: creds.name,
-              type: creds.type,
-              iconURL: creds.iconURL,
-              password: creds.password,
-            },
-            address = {
-              number: 129,
-              street: "Seymour Road",
-              postcode: "E10 7LZ",
-              city: "London",
-              country: "United Kingdom",
-            },
-            client = await getClientInfo(),
-            optional = {
-              key: "add more information",
-            };
-
-          clearLocalStorage();
-          setCollector(credentials, address, client, optional);
-          cl(`You have completed the sign-up process...`);
+          let browser = await saveToBrowser(e.target);
+          let processed = await getLogin(e.target);
+          if (
+            browser.id === processed.id &&
+            browser.password === processed.password
+          ) {
+            clOk(`You have completed the sign-up process...`);
+            cl(`You are now being redirected to your CMS...`);
+            // Simulate an HTTP redirect
+            return window.location.replace("cms.html");
+          }
         }
       }
-
-      cl(`You are being redirected to your CMS...`);
-      return window.location.replace("cms.html");
     });
   } catch (error) {
     responseError(error);
@@ -254,7 +245,7 @@ const startLogin = async () => {
     form.addEventListener("submit", async (e) => {
       // Stop submitting form by itself
       e.preventDefault();
-      cl(`You have started the sign-in process...`);
+      clAlert(`You have started the sign-in process...`);
 
       let headersList = {
         accept: "*/*",
@@ -278,43 +269,19 @@ const startLogin = async () => {
       const successfulLogin = await response.json();
 
       if (successfulLogin) {
-        cl(`User found on the server: {${prettyJson(successfulLogin)}}...`);
-        if (window.PasswordCredential) {
-          // Instantiate PasswordCredential with the form
-          const creds = await saveToBrowser(e.target);
-
-          const credentials = {
-              id: creds.id,
-              name: creds.name,
-              type: creds.type,
-              iconURL: creds.iconURL,
-              password: creds.password,
-            },
-            address = {
-              number: 129,
-              street: "Seymour Road",
-              postcode: "E10 7LZ",
-              city: "London",
-              country: "United Kingdom",
-            },
-            client = await getClientInfo(),
-            optional = {
-              key: "add more information",
-            };
-
-          clearLocalStorage();
-          setCollector(credentials, address, client, optional);
-          cl(`You have completed the sign-in process...`);
+        cl(`User found on the server: ${prettyJson(successfulLogin)}...`);
+        let browser = await saveToBrowser(e.target);
+        let processed = await getLogin(e.target);
+        if (
+          browser.id === processed.id &&
+          browser.password === processed.password
+        ) {
+          clOk(`You have completed the sign-in process...`);
+          clAlert(`You are being redirected to your CMS...`);
+          // Simulate an HTTP redirect
+          return window.location.replace("cms.html");
         }
       }
-
-      cl(`You are being redirected to your CMS...`);
-      return window.location.replace("cms.html");
-
-      // Simulate an HTTP redirect in 10 seconds
-      setTimeout(() => {
-        return window.location.replace("cms.html");
-      }, 10000);
     });
 
     usr.onchange = validateUser;

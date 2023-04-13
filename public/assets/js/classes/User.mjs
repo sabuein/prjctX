@@ -1,10 +1,28 @@
 "use strict";
 
 import { cl } from "../modules/helpers.mjs";
+import {
+  cookieEnabled,
+  getUserAgentController,
+  getUserAgentData,
+  getUserLanguages,
+  insertUserLocation,
+} from "../modules/hints.mjs";
 
 export default class User {
+
+  static async clientInfo() {
+    return ({
+      cookieEnabled: await cookieEnabled(),
+      clientController: getUserAgentController(),
+      clientLocation: await insertUserLocation(),
+      clientLanguages: await getUserLanguages(),
+      clientData: await getUserAgentData(),
+    });
+  }
+
   static get keys() {
-    return ["credentials", "address", "client", "optional"];
+    return ["credentials", "profile", "client", "visit"];
   }
 
   static get defaultCredentials() {
@@ -17,45 +35,59 @@ export default class User {
     };
   }
 
-  static get defaultAddress() {
-    return {};
+  static get defaultProfile() {
+    return {
+      email: null,
+      address: {
+        number: 129,
+        street: "Seymour Road",
+        postcode: "E10 7LZ",
+        city: "London",
+        country: "United Kingdom"
+      },
+    };
   }
 
   static get defaultClient() {
-    return {};
+    return User.clientInfo();
   }
 
-  static get defaultOptional() {
-    return {};
+  static get defaultVisit() {
+    return {
+      id: Math.random(2).toString(21).substring(2, 12),
+      uid: Math.random().toString(36).replace(/[^a-z]+/g, ""),
+      time: new Date(),
+      visit: "Welcome to prjctX",
+    };
   }
 
   constructor(
     userCredentials = User.defaultCredentials,
-    userAddress = User.defaultAddress,
+    userProfile = User.defaultProfile,
     userClient = User.defaultClient,
-    userOptional = User.defaultOptional
+    userVisit = User.defaultVisit
   ) {
     this.clear;
     Object.assign(this.credentials, userCredentials);
-    Object.assign(this.address, userAddress);
+    Object.assign(this.profile, userProfile);
     Object.assign(this.client, userClient);
-    Object.assign(this.optional, userOptional);
+    Object.assign(this.visit, userVisit);
     let type = this.constructor.name,
       user = this.credentials;
     cl(`Creating new ${type}...`);
     cl(`New ${type} has been created successfully...`);
     cl(`Welcome aboard, ${user.name}...`);
     cl(this.loginDetails);
+    cl(this.visitDetails);
   }
 
   get clear() {
-    const { defaultCredentials, defaultAddress, defaultClient, defaultOptional } =
-      User;
+    const { defaultCredentials, defaultProfile, defaultClient, defaultVisit } = User;
     Object.assign(this, {
       credentials: defaultCredentials,
-      address: defaultAddress,
+      profile: defaultProfile,
       client: defaultClient,
-      optional: defaultOptional,
+      visit: defaultVisit,
     });
   }
 
@@ -87,7 +119,19 @@ export default class User {
   }
 
   get loginDetails() {
-    let user = this.credentials;
-    return JSON.stringify({ username: user.id, password: user.password }, null, "\t");
+    let creds = this.credentials;
+    return JSON.stringify({
+      username: creds.id,
+      password: creds.password,
+    }, null, "\t");
   }
+
+  get visitDetails() {
+    let visit = this.visit;
+    return JSON.stringify({
+      id: visit.id,
+      time: visit.time,
+    }, null, "\t");
+  }
+
 }
