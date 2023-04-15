@@ -75,3 +75,7 @@ google-services.json
 
 # Ignore built ts files
 /dist/**/*
+
+# Testing uploads
+/public/upload.php
+/public/uploads
