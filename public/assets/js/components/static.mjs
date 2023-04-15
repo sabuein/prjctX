@@ -1,3 +1,5 @@
+"use strict";
+
 class AppHeader extends HTMLElement {
     constructor() {
         super();

@@ -1,6 +1,6 @@
 "use strict";
 
-import { cl, responseError } from "./helpers.mjs";
+import { cl, responseError } from "helpers";
 
 const getPost = (id) => {
     cl(`TODO: getPost(id)`);

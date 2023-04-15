@@ -1,5 +1,5 @@
-import { cd, cl, responseError } from "./helpers.mjs";
-import { pJson } from "./view.mjs";
+import { cd, cl, responseError } from "helpers";
+import { pJson } from "view";
 
 const cookieEnabled = async () => {
   return navigator.cookieEnabled;

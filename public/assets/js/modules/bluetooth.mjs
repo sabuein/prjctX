@@ -1,3 +1,5 @@
+"use strict";
+
 import { cl } from "helpers";
 
 const checkDevices = () => {

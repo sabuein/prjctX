@@ -1,3 +1,5 @@
+"use strict";
+
 // Console
 const cl = (something) => console.log(something);
 

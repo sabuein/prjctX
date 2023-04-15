@@ -1,6 +1,6 @@
 "use strict";
 
-import { cl } from "./helpers.mjs";
+import { cl } from "helpers";
 
 // step 1 : Ask user consent to show notifications
 // Ask user permission

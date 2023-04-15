@@ -1,13 +1,13 @@
 "use strict";
 
-import { cl } from "../modules/helpers.mjs";
+import { cl } from "helpers";
 import {
   cookieEnabled,
   getUserAgentController,
   getUserAgentData,
   getUserLanguages,
   insertUserLocation,
-} from "../modules/hints.mjs";
+} from "hints";
 
 export default class User {
 

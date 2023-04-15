@@ -1,8 +1,8 @@
 "use strict";
 
-import Collector from "../classes/Collector.mjs";
-import { cl, clCurrent, clNew, responseError } from "./helpers.mjs";
-import { getStatus, setStatus, clearSiteData } from "./storage.mjs";
+import Collector from "Collector";
+import { cl, clCurrent, clNew, responseError } from "helpers";
+import { getStatus, setStatus, clearSiteData } from "storage";
 
 const loadMembers = async (request) => {
   try {

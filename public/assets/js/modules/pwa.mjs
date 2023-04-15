@@ -1,8 +1,8 @@
 "use strict";
 
-import { cl, clWarn, responseError } from "./helpers.mjs";
-import { startServiceWorker, checkServiceWorkerState } from "./storage.mjs";
-import { activatePush } from "./push.mjs";
+import { cl, clWarn, responseError } from "helpers";
+import { startServiceWorker, checkServiceWorkerState } from "storage";
+import { activatePush } from "push";
 
 const pwaAddToHome = (homeButton) => {
   homeButton.style.display = "none";

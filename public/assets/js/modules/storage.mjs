@@ -1,5 +1,5 @@
-import { cl, ce, clAlert, clOk, clNew, clWarn, responseError } from "./helpers.mjs";
-import { pJson } from "./view.mjs";
+import { cl, ce, clAlert, clOk, clNew, clWarn, responseError } from "helpers";
+import { pJson } from "view";
 
 const startCookies = async () => {
     // CookieStore.delete()

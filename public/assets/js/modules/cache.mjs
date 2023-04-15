@@ -1,4 +1,6 @@
-import { cl } from "./helpers.mjs";
+"use strict";
+
+import { cl } from "helpers";
 
 const startCacheStorage = () => {
     cl(`TODO: Cache storage`);

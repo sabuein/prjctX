@@ -1,3 +1,5 @@
+"use strict";
+
 class MailToForm extends HTMLElement {
     constructor() {
         super();
