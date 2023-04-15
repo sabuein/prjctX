@@ -1,12 +1,12 @@
 "use strict";
 
-import { pwaNotifyMe } from "./push.mjs";
-import { startPWA, pwaAddToHome } from "./pwa.mjs";
-import { cl, clOk, clAlert, id, responseError } from "./helpers.mjs";
-import { checkBluetoothDevices } from "./bluetooth.mjs";
-import { MailToForm } from "../components/communication.mjs";
-import { getLogin } from "./members.mjs";
-import { AppHeader, AppNav, AppFooter } from "../components/static.mjs";
+import { pwaNotifyMe } from "push";
+import { startPWA, pwaAddToHome } from "pwa";
+import { cl, clOk, clAlert, id, responseError } from "helpers";
+import { checkBluetoothDevices } from "bluetooth";
+import { MailToForm } from "communication";
+import { getLogin } from "members";
+import { AppHeader, AppNav, AppFooter } from "static";
 import {
   startCookies,
   printLocalStorage,
@@ -15,7 +15,7 @@ import {
   getStatus,
   setStatus,
   clearSiteData
-} from "./storage.mjs";
+} from "storage";
 
 const renderMembers = (json, table) => {
   try {
@@ -69,6 +69,9 @@ const handlebars = (source, data) => {
 
 const startApp = () => {
   try {
+    if (HTMLScriptElement.supports("importmap")) {
+      cl(`The importmap feature is supported.`);
+    }
     // checkBluetoothDevices();
     setCustomComponent(AppHeader, "app-header");
     setCustomComponent(AppNav, "app-nav");

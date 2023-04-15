@@ -1,12 +1,12 @@
 "use strict";
 
-import { cl, clCurrent, id, responseError } from "./modules/helpers.mjs";
+import { cl, clCurrent, id, responseError } from "helpers";
 import {
   loadMembers,
   addMember,
   updateMember,
   getLogin,
-} from "./modules/members.mjs";
+} from "members";
 import {
   renderMembers,
   handlebars,
@@ -15,16 +15,21 @@ import {
   startCMS,
   startLogin,
   startRegister
-} from "./modules/view.mjs";
+} from "view";
+import {
+  handleSingleInputFile,
+  handleMultipleInputFile,
+  dragAndDrop
+} from "process";
 
 window.addEventListener("load", async () => {
   let account = await getLogin();
   account ?
-  clCurrent(`Welcome back, ${account.name}.`) :
-  clCurrent(`Welcome, Anonymous.`);
+    clCurrent(`Welcome back, ${account.name}.`) :
+    clCurrent(`Welcome, Anonymous.`);
 
   startApp();
-  
+
   if ("credentials" in navigator) {
     const cred = new PasswordCredential({
       id: 54321,
@@ -43,7 +48,7 @@ window.addEventListener("load", async () => {
       });
   } else {
     cl(`Handle sign-in the other way.`);
-  }  
+  }
 });
 
 // startCookies();
@@ -83,6 +88,19 @@ document.addEventListener("DOMContentLoaded", async () => {
           break;
         case "admin":
           startAdmin();
+          break;
+        case "dropzone":
+          const dropzone = id("dropZone"),
+            fileInput = id("readTextFile"),
+            imageInput = id("uploadImages"),
+            dragDropArea = id("dragAndDropArea"),
+            outputArea = id("outputList");
+          handleSingleInputFile(fileInput);
+          handleMultipleInputFile(imageInput, outputArea);
+          dragAndDrop(dragDropArea, outputArea);
+          // prevent the drag & drop on the page
+          document.addEventListener("dragover", (e) => e.preventDefault());
+          document.addEventListener("drop", (e) => e.preventDefault());
           break;
         default:
           cl(`Document slug: ${slug}`);

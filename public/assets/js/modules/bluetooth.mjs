@@ -1,4 +1,4 @@
-import { cl } from "./helpers.mjs";
+import { cl } from "helpers";
 
 const checkDevices = () => {
   let options = { filter: [{ services: ["battery_service"] }] };
