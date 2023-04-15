@@ -11,12 +11,29 @@
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-    <link rel="modulepreload" href="/assets/js/modules/helpers.mjs" type="module" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/members.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/pwa.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/storage.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/util.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/view.mjs" />
+    <script type="importmap">
+        {
+            "imports": {
+                "Collector": "./assets/js/classes/Collector.mjs",
+                "User": "./assets/js/classes/User.mjs",
+                "communication": "./assets/js/components/communication.mjs",
+                "static": "./assets/js/components/static.mjs",
+                "bluetooth": "./assets/js/modules/bluetooth.mjs",
+                "cache": "./assets/js/modules/cache.mjs",
+                "helpers": "./assets/js/modules/helpers.mjs",
+                "hints": "./assets/js/modules/hints.mjs",
+                "members": "./assets/js/modules/members.mjs",
+                "posts": "./assets/js/modules/posts.mjs",
+                "process": "./assets/js/modules/process.mjs",
+                "push": "./assets/js/modules/push.mjs",
+                "pwa": "./assets/js/modules/pwa.mjs",
+                "storage": "./assets/js/modules/storage.mjs",
+                "testing": "./assets/js/modules/testing.mjs",
+                "utilities": "./assets/js/modules/utilities.mjs",
+                "view": "./assets/js/modules/view.mjs"
+            }
+        }
+    </script>
     <script type="text/javascript">
         var meta = {
             document: {
