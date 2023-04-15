@@ -305,7 +305,19 @@ button {
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
-  width: 100%;
+  max-width: 100%;
+  border-radius: 0.25rem;
+}
+
+select {
+  padding: 0.85rem 0;
+  background-color: transparent;
+  border: 2px solid #000000;
+  text-align: start;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  max-width: 100%;
   border-radius: 0.25rem;
 }
 
@@ -420,6 +432,11 @@ table {
   margin: 2rem;
   padding: 1rem;
   background-color: #cccccc;
+}
+
+#handle,
+#twoFactor {
+  display: none;
 }
 
 @media screen and (max-width: 1080px) {
