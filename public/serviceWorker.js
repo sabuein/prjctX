@@ -9,6 +9,7 @@ self.addEventListener("install", (event) => {
       "/cms.html",
       "/collector.html",
       "/communication.html",
+      "/dropzone.html",
       "/favicon-16x16.png",
       "/favicon-32x32.png",
       "/favicon.ico",
@@ -21,7 +22,7 @@ self.addEventListener("install", (event) => {
       "/signup.html",
       "/statistics.html",
       "/subscribe.html",
-      "/upload.html",
+      "/upload.php",
       "/assets/collectors.json",
       "/assets/css/main.css",
       "/assets/js/app.js",
@@ -29,22 +30,26 @@ self.addEventListener("install", (event) => {
       "/assets/js/classes/User.mjs",
       "/assets/js/classes/Collector.mjs",
       "/assets/js/components/communication.mjs",
-      "/assets/js/modules/pwa.mjs",
-      "/assets/js/modules/storage.mjs",
+      "/assets/js/components/static.mjs",
       "/assets/js/modules/bluetooth.mjs",
-      "/assets/js/modules/members.mjs",
+      "/assets/js/modules/cache.mjs",
       "/assets/js/modules/helpers.mjs",
       "/assets/js/modules/hints.mjs",
+      "/assets/js/modules/members.mjs",
+      "/assets/js/modules/posts.mjs",
+      "/assets/js/modules/process.mjs",
       "/assets/js/modules/push.mjs",
+      "/assets/js/modules/pwa.mjs",
+      "/assets/js/modules/storage.mjs",
+      "/assets/js/modules/testing.mjs",
+      "/assets/js/modules/utilities.mjs",
       "/assets/js/modules/view.mjs",
-      "/assets/js/components/static.mjs",
       "/assets/images/icons/users.svg",
       "/assets/images/notifications/tetris.jpg",
       "/assets/images/notifications/minecraft.jpg",
       "/assets/images/notifications/super-mario-bros.jpg",
       "/assets/images/notifications/the-legend-of-zelda.jpg"
     ];
-  // Cache the core assets
   event.waitUntil(addManyToCache(cacheName, appShell));
   // Activate right away
   self.skipWaiting();
@@ -146,7 +151,10 @@ const addOneToCache = async (request, cacheName, response) => {
 const addManyToCache = async (cacheName, appShellResources) => {
   try {
     const cache = await caches.open(cacheName);
-    if (cache) return await cache.addAll(appShellResources);
+    if (cache) {
+      console.log(`Caching assets...`);
+      return await cache.addAll(appShellResources);
+    }
   } catch (error) {
     console.error(`Error occured while caching...`);
     console.log(error);
