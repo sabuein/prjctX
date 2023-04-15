@@ -57,7 +57,7 @@ class AppNav extends HTMLElement {
         <nav class="flexy row nav-container">
             <div class="flexy row gap-x1 nav-item">
                 <figure>
-                    <a href="/" class="flexy row">
+                    <a href="/index.html" class="flexy row">
                         <img src="/favicon-32x32.png" />
                         <figcaption>prjctX</figcaption>
                     </a>
@@ -85,7 +85,7 @@ class AppFooter extends HTMLElement {
     }
     connectedCallback() {
         this.innerHTML = `<div class="flexy row gap-x3 stretch space nowrap full-width">
-            <div><a href="/">Homepage</a></div>
+            <div><a href="/index.html">Index</a></div>
             <menu class="flexy row nowrap gap-x3">
                 <li><a href="#">About prjctX</a></li>
                 <li><a href="statistics.html">Statistics</a></li>
