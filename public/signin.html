@@ -11,12 +11,29 @@
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
-    <link rel="modulepreload" href="/assets/js/modules/helpers.mjs" type="module" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/members.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/pwa.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/storage.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/util.mjs" />
-    <link rel="modulepreload" type="module" href="/assets/js/modules/view.mjs" />
+    <script type="importmap">
+        {
+            "imports": {
+                "Collector": "./assets/js/classes/Collector.mjs",
+                "User": "./assets/js/classes/User.mjs",
+                "communication": "./assets/components/communication.mjs",
+                "static": "./assets/components/static.mjs",
+                "bluetooth": "./assets/js/modules/bluetooth.mjs",
+                "cache": "./assets/js/modules/cache.mjs",
+                "helpers": "./assets/js/modules/helpers.mjs",
+                "hints": "./assets/js/modules/hints.mjs",
+                "members": "./assets/js/modules/members.mjs",
+                "posts": "./assets/js/modules/posts.mjs",
+                "process": "./assets/js/modules/process.mjs",
+                "push": "./assets/js/modules/push.mjs",
+                "pwa": "./assets/js/modules/pwa.mjs",
+                "storage": "./assets/js/modules/storage.mjs",
+                "testing": "./assets/js/modules/testing.mjs",
+                "utilities": "./assets/js/modules/utilities.mjs",
+                "view": "./assets/js/modules/view.mjs"
+            }
+        }
+    </script>
     <script type="text/javascript">
         var meta = {
             document: {
@@ -55,6 +72,28 @@
                         <p><span>Lost password&quest;</span><span><a href="signup.html">Sign up</a></span></p>
                     </fieldset>
                 </form>
+            </div>
+        </section>
+        <section>
+            <header><h2>Protect your account in just two steps</h2></header>
+            <div>
+                <ol>
+                    <li>
+                        <h3>Link an authentication app to your Twitter account</h3>
+                        <p>Use a compatible authentication app (like Google Authenticator&comma; Authy&comma; Duo Mobile&comma; 1Password&comma; etc&period;) We&apos;ll generate a QR code for you to scan&period;</p>
+                    </li>
+                    <li>
+                        <h3>Enter the confirmation code</h3>
+                        <p>Two-factor authentication will then be turned on for authentication app&comma; which you can turn off at any time&period;</p>
+                    </li>
+                </ol>
+                <button>Get started</button>
+            </div>
+        </section>
+        <section>
+            <header><h2>Link the app to your prjctX account</h2></header>
+            <div>
+                &nbsp;
             </div>
         </section>
     </main>
