@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=1.1" />
     <script type="importmap">
         {
             "imports": {
@@ -51,7 +51,7 @@
         <app-nav></app-nav>
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
-    <main id="main" class="flexy start">
+    <main id="main" class="flexy">
         <header><h1>Subscribe</h1></header>
         <section>
             <header>
@@ -59,20 +59,37 @@
                 <h3>Get the hottest prjctX news</h3>
             </header>
             <p>Sign up for our monthly prjctX newsletter to stay up to date on the latest product releases, upcoming webinars, events, and more!</p>
-            <div>
-                <h3>Subscribe Now</h3>
-                <input type="text" />
-                <input type="email" />
-                <select>
-                    <option>Palestine</option>
-                    <option selected>United Kingdom</option>
-                </select>
-                <input type="radio" value="Yes, please" />
-                <input type="radio" value="No, thank you" />
-                May we use your contact details to update you on offers, products, and services? You may unsubscribe anytime.
-                <input type="checkbox">I have read and I agree to the prjctX Privacy Policy.
-                <input type="submit" value="ADD ME"/>
-            </div>
+            <form>
+                <fieldset>
+                    <legend><h3>Subscribe Now</h3></legend>
+                    <div>
+                        <label for="fullName">Full name&colon;</label>
+                        <input type="text" id="fullName" name="name" />
+                        <label for="emailAddress">Email address&colon;</label>
+                        <input type="email" id="emailAddress" name="email" />
+                        <label for="countryList">Country&colon;</label>
+                        <select id="countryList">
+                            <option>United Kingdom</option>
+                            <option selected>Occupied Palestine</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>May we use your contact details to update you on offers&comma; products&comma; and services&quest; You may unsubscribe anytime&period;</p>
+                        <input type="radio" id="yesPlease" name="subscribe" value="yes" checked />
+                        <label for="yesPlease">Yes&comma; please</label>
+                        <input type="radio" id="noThanks" name="subscribe" value="no" />
+                        <label for="noThanks">No&comma; thank you</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="terms" name="agreement" value="agree" checked>
+                        <label for="terms">I agree to the terms and conditions as set out by the <a href="#">user agreement</a>&period;</label>
+                    </div>
+                    <div>
+                        <input type="submit" value="Subscribe" />
+                        <input type="reset" value="Reset" />
+                    </div>
+                </fieldset>
+            </form>
         </section>
     </main>
     <footer>

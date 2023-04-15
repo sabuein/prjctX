@@ -51,14 +51,14 @@
         <app-nav></app-nav>
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
-    <main id="main" class="flexy start">
+    <main id="main" class="flexy">
         <header><h1>Signin</h1></header>
         <section>
             <header><h2>Please enter your credentials&hellip;</h2></header>
             <div>
                 <form id="formSignin" method="post">
                     <fieldset>
-                        <legend>Ahlan wa sahlan&excl;</legend>
+                        <legend><h3>Ahlan wa sahlan&excl;</h3></legend>
                         <label for="identity"><span class="requiredInput">*</span>Username:</label>
                         <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
                         <input type="hidden" name="name" autocomplete="name" value="Salaheddin AbuEin" />
@@ -74,27 +74,29 @@
                 </form>
             </div>
         </section>
-        <section>
-            <header><h2>Protect your account in just two steps</h2></header>
-            <div>
-                <ol>
-                    <li>
-                        <h3>Link an authentication app to your Twitter account</h3>
-                        <p>Use a compatible authentication app (like Google Authenticator&comma; Authy&comma; Duo Mobile&comma; 1Password&comma; etc&period;) We&apos;ll generate a QR code for you to scan&period;</p>
-                    </li>
-                    <li>
-                        <h3>Enter the confirmation code</h3>
-                        <p>Two-factor authentication will then be turned on for authentication app&comma; which you can turn off at any time&period;</p>
-                    </li>
-                </ol>
-                <button>Get started</button>
-            </div>
-        </section>
-        <section>
-            <header><h2>Link the app to your prjctX account</h2></header>
-            <div>
-                &nbsp;
-            </div>
+        <section id="twoFactor">
+            <article>
+                <header><h2>Protect your account in just two steps</h2></header>
+                <div>
+                    <ol>
+                        <li>
+                            <h3>Link an authentication app to your prjctX account</h3>
+                            <p>Use a compatible authentication app (like Google Authenticator&comma; Authy&comma; Duo Mobile&comma; 1Password&comma; etc&period;) We&apos;ll generate a QR code for you to scan&period;</p>
+                        </li>
+                        <li>
+                            <h3>Enter the confirmation code</h3>
+                            <p>Two-factor authentication will then be turned on for authentication app&comma; which you can turn off at any time&period;</p>
+                        </li>
+                    </ol>
+                    <button>Get started</button>
+                </div>
+            </article>
+            <article>
+                <header><h2>Link the app to your prjctX account</h2></header>
+                <div>
+                    &nbsp;
+                </div>
+            </article>
         </section>
     </main>
     <footer>
