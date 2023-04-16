@@ -102,6 +102,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           document.addEventListener("dragover", (e) => e.preventDefault());
           document.addEventListener("drop", (e) => e.preventDefault());
           break;
+        case "subscribe":
+          const countries = id("countryList");
         default:
           cl(`Document slug: ${slug}`);
       }
