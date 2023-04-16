@@ -53,43 +53,35 @@
     </header>
     <main id="main" class="flexy">
         <header><h1>Dropzone</h1></header>
-        <section id="dropZone">
+        <section id="dropZone" class="full-width">
             <header><h2>Upload your files below</h2></header>
-            <div>
-                <label for="readTextFile">Select a text file</label>
-                <input type="file" id="readTextFile" accept="text/plain" />
-            </div>
-            <div>
-                <label for="uploadImages">Choose multiple images</label>
-                <input type="file" id="uploadImages" accept="image/png, image/jpeg" multiple />
-                <p id="dragAndDropArea" class="flexy row full-width">or drag &amp; drop your PNG or JPEG files here</p>
-            </div>
-            <div id="outputList">&nbsp;</div>
-        </section>
-        <section>
-            <header><h2>Select file(s)</h2></header>
-                <form id="upload" enctype="multipart/form-data" action="http://localhost:8888/collectors/upload" method="post">
-                    <p>
-                        <!-- MAX_FILE_SIZE must precede the file input field -->
-                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-                        <!-- Name of input element determines name in $_FILES array -->
-                        <label>Add file (single): </label><br />
-                        <input name="photo" type="file" />
-                    </p>
-                    <p>
-                        <label>Add files (up to 2): </label><br />
-                        <input type="file" name="example2[]" /><br />
-                        <input type="file" name="example2[]" />
-                    </p>
-                    <p>
-                        <label>Add files (multiple): </label><br />
-                        <input type="file" name="example3[]" multiple="multiple" />
-                    </p>
-                    <p>
-                        <input type="submit" value="Send file(s)" />
-                    </p>
-                </form>
-            </div>
+            <form id="upload" enctype="multipart/form-data" action="http://localhost:8888/collectors/upload" method="post" class="flexy gap-x1">
+                <fieldset class="full-width">
+                    <legend>Add file (single)&colon;</legend>
+                    <!-- MAX_FILE_SIZE must precede the file input field -->
+                    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                    <!-- Name of input element determines name in $_FILES array -->
+                    <label for="readTextFile">Select a text file</label>
+                    <input type="file" id="readTextFile" name="txtfile" accept="text/plain" />
+                </fieldset>
+                <fieldset class="flexy start full-width">
+                    <legend>Add files (up to 2)&colon;</legend>
+                    <input type="file" name="example2[]" />
+                    <input type="file" name="example2[]" />
+                </fieldset>
+                <fieldset class="full-width">
+                    <legend>Add files (multiple)&colon;</legend>
+                    <!-- <input type="file" name="example3[]" multiple="multiple" /> -->
+                    <label for="uploadImages">Choose multiple images</label>
+                    <input type="file" id="uploadImages" name="images" accept="image/png, image/jpeg" multiple />
+                </fieldset>
+                <fieldset id="dragAndDropArea" class="flexy row full-width">
+                    <legend>or drag &amp; drop your PNG or JPEG files here</legend>
+                    <code>Dropzone</code>
+                </fieldset>
+                <div class="flexy row full-width"><input type="submit" value="Send file(s)" /></div>
+            </form>
+            <div id="outputList" class="flexy full-width">&nbsp;</div>
         </section>
     </main>
     <footer>

@@ -54,29 +54,29 @@
     </header>
     <main id="main" class="flexy start">
         <header><h1>Index</h1></header>
-        <section>
+        <section class="full-width">
             <header>
                 <h2>PWA key features&colon;</h2>
             </header>
-            <blockquote><h3>Construction work in progress&hellip;</h3></blockquote>
             <ul>
                 <li>Rich offline experience</li>
                 <li>Push notifications</li>
                 <li>Add to home screen</li>
                 <li>Installing protocol handlers</li>
             </ul>
+            <blockquote><h3>Construction work in progress&hellip;</h3></blockquote>
         </section>
+        <aside id="handle" class="flexy start">
+            <h2>Some magic by Handlebars&period;js&colon;</h2>
+            <p>Hello, my name is {{name}}. I am from {{hometown}}, I live and work in {{live}}, and I am {{age}} years old.</p>
+            <p>I have {{siblings.length}} siblings:</p>
+            <ul>
+                {{#siblings}}
+                <li>{{name}} is {{age}} years old.</li>
+                {{/siblings}}
+            </ul>
+        </aside>
     </main>
-    <aside id="handle" class="flexy start">
-        <h2>Some magic by Handlebars&period;js&colon;</h2>
-        <p>Hello, my name is {{name}}. I am from {{hometown}}, I live and work in {{live}}, and I am {{age}} years old.</p>
-        <p>I have {{siblings.length}} siblings:</p>
-        <ul>
-            {{#siblings}}
-            <li>{{name}} is {{age}} years old.</li>
-            {{/siblings}}
-        </ul>
-    </aside>
     <footer>
         <app-footer class="flexy gap-x3"></app-footer>
         <noscript>Your browser does not support JavaScript!</noscript>
