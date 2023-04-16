@@ -39,7 +39,7 @@
 }
 
 body {
-  width: var(--app-max-width);
+  width: 100%;
   max-width: 100%;
   font-size: var(--app-font-size);
   font-family: var(--app-font-family);
@@ -60,7 +60,7 @@ body > header {
 
 main {
   padding: 1rem;
-  width: 100%;
+  width: var(--app-max-width);
 }
 
 main ul,
@@ -334,6 +334,11 @@ button {
   border-radius: 0.25rem;
 }
 
+input[type="file"] {
+  padding: 0.85rem;
+  border: none;
+}
+
 select {
   padding: 0.85rem 0;
   background-color: transparent;
@@ -467,6 +472,10 @@ table {
 #dragAndDropArea {
   background-color: var(--yellow);
   min-height: 10rem;
+}
+
+#outputList img {
+  max-width: 85%;
 }
 
 @media screen and (max-width: 1080px) {
