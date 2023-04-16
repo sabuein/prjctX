@@ -79,6 +79,9 @@ const handleUploadedImages = (files, output) => {
 };
 
 const renderImage = (image, output) => {
+    while (output.hasChildNodes()) {
+        output.firstChild.remove();
+    }
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.addEventListener("load", (e) => {
@@ -90,6 +93,8 @@ const renderImage = (image, output) => {
         figcaption.innerHTML = `${image.name} - ${bytesToText(image.size)}`;
         figure.appendChild(img);
         figure.appendChild(figcaption);
+        figure.classList.add("flexy");
+        figure.classList.add("fullWidth");
         output.appendChild(figure);
     });
 };
