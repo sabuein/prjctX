@@ -224,6 +224,10 @@ main.cms > article:nth-child(3) > hr {
   gap: 1rem;
 }
 
+.gap-x2 {
+  gap: 2rem;
+}
+
 .gap-x3 {
   gap: 3rem;
 }
@@ -464,9 +468,22 @@ table {
   background-color: var(--yellow);
   min-height: 10rem;
 }
+
 @media screen and (max-width: 1080px) {
   .nowrap {
     flex-wrap: wrap;
+  }
+
+  .gap-x1 {
+    gap: .5rem;
+  }
+
+  .gap-x2 {
+    gap: .75rem;
+  }
+
+  .gap-x3 {
+    gap: 1rem;
   }
 
   .nav-container {
