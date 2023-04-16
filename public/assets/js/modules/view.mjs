@@ -322,8 +322,14 @@ const saveToBrowser = async (form) => {
 const validateUser = () => {
   try {
     const user = id("identity"),
-      testing = "sabuein";
-    if (user.value !== testing) {
+      users = [
+        "sabuein",
+        "sabuein@gmail.com",
+        "salah@abuein.com",
+        "zanani",
+        "zanani@gmail.com"
+      ];
+    if (!users.includes(user.value)) {
       user.setCustomValidity("The username is incorrect");
     } else {
       user.setCustomValidity("");
@@ -336,8 +342,14 @@ const validateUser = () => {
 const validatePass = () => {
   try {
     const password = id("pwd"),
-      testing = "123456789";
-    if (password.value !== testing) {
+      passwords = [
+        "12345678",
+        "123456789",
+        "01234567",
+        "012345678",
+        "0123456789"
+      ];
+    if (!passwords.includes(password.value)) {
       password.setCustomValidity("The password is incorrect");
     } else {
       password.setCustomValidity("");
