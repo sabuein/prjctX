@@ -54,35 +54,31 @@
     <main id="main" class="flexy">
         <header><h1>Subscribe</h1></header>
         <section>
-            <header>
-                <h2>Monthly newsletter</h2>
-                <h3>Get the hottest prjctX news</h3>
-            </header>
+            <header><h2>Monthly newsletter</h2></header>
             <p>Sign up for our monthly prjctX newsletter to stay up to date on the latest product releases, upcoming webinars, events, and more!</p>
             <form>
-                <fieldset>
-                    <legend><h3>Subscribe Now</h3></legend>
-                    <div>
+                <fieldset class="flexy start gap-x1">
+                    <legend><h3>Get the hottest prjctX news</h3></legend>
+                    <div class="full-width">
                         <label for="fullName">Full name&colon;</label>
-                        <input type="text" id="fullName" name="name" placeholder="Salaheddin AbuEin" />
+                        <input type="text" id="fullName" name="name" placeholder="Salaheddin AbuEin" autocomplete="name" />
+                    </div>
+                    <div>
                         <label for="emailAddress">Email address&colon;</label>
-                        <input type="email" id="emailAddress" name="email" placeholder="sabuein@gmail.com" />
+                        <input type="email" id="emailAddress" name="email" placeholder="sabuein@gmail.com" autocomplete="email" />
+                    </div>
+                    <div>
                         <label for="countryList">Country&colon;</label>
                         <select id="countryList" name="country">
                             <option value="none" selected>--Please choose an option--</option>
-                            <option value="ps">Occupied Palestine</option>
-                            <option value="uk">United Kingdom</option>
                         </select>
                     </div>
                     <div>
-                        <p>May we use your contact details to update you on offers&comma; products&comma; and services&quest; You may unsubscribe anytime&period;</p>
-                        <input type="radio" id="yesPlease" name="subscribe" value="yes" checked />
-                        <label for="yesPlease">Yes&comma; please</label>
-                        <input type="radio" id="noThanks" name="subscribe" value="no" />
-                        <label for="noThanks">No&comma; thank you</label>
+                        <input type="checkbox" id="terms" name="subscribe" value="yes" checked />
+                        <label for="subscribe">We may use your contact details to update you on offers&comma; products&comma; and services&quest; You may unsubscribe anytime&period;</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="terms" name="agreement" value="agree" checked>
+                        <input type="checkbox" id="terms" name="agree" value="yes" checked />
                         <label for="terms">I agree to the terms and conditions as set out by the <a href="#">user agreement</a>&period;</label>
                     </div>
                     <div>
