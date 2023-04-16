@@ -2,7 +2,7 @@
 
 import { pwaNotifyMe } from "push";
 import { startPWA, pwaAddToHome } from "pwa";
-import { cl, clOk, clAlert, id, responseError } from "helpers";
+import { cl, clOk, clAlert, clWarn, id, responseError } from "helpers";
 import { checkBluetoothDevices } from "bluetooth";
 import { MailToForm } from "communication";
 import { getLogin } from "members";
@@ -16,6 +16,7 @@ import {
   setStatus,
   clearSiteData
 } from "storage";
+import { readCountriesJson } from "process";
 
 const renderMembers = (json, table) => {
   try {
@@ -238,6 +239,10 @@ const startRegister = async () => {
   }
 };
 
+const startSubscribe = (select, api) => {
+  renderCountries(api, select);
+}
+
 const startLogin = async () => {
   try {
     const form = id("formSignin"),
@@ -359,6 +364,28 @@ const validatePass = () => {
   }
 };
 
+const renderCountries = async (input, output) => {
+  const json = await readCountriesJson(input);
+  const countries = JSON.parse(json);
+  let options = [];
+  clOk(`You got ${countries.length} countries`);
+  for (const country of countries) {
+    options.push({
+      name: country.name,
+      id: country.alpha3Code.toLowerCase(),
+    });
+  }
+  clOk(`You got ${options.length} countries`);
+  options.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+  for (const option of options) {
+    let opt = document.createElement("option");
+    opt.innerHTML = option.name;
+    opt.value = option.id;
+    output.appendChild(opt);
+  }
+
+}
+
 export {
   renderMembers,
   setCustomComponent,
@@ -368,5 +395,6 @@ export {
   startAdmin,
   startCMS,
   startRegister,
-  startLogin,
+  startSubscribe,
+  startLogin
 };

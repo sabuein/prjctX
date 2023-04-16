@@ -112,8 +112,30 @@ const sendAcceptedImages = async (files) => {
     }
 };
 
+const readCountriesJson = async (request) => {
+    try {
+        let headersList = {
+            accept: "*/*",
+            "accept-charset": "utf-8",
+            "user-agent": "prjctX (https://github.com/sabuein/prjctX)",
+            Connection: "keep-alive",
+        };
+        // http://localhost:8888/collectors/upload
+        return await (
+            await fetch(request, {
+              method: "get",
+              mode: "cors",
+              headers: headersList,
+            })
+          ).text();
+    } catch (error) {
+        responseError(error);
+    }
+};
+
 export {
     handleSingleInputFile,
     handleMultipleInputFile,
-    dragAndDrop
+    dragAndDrop,
+    readCountriesJson
 };

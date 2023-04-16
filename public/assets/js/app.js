@@ -14,7 +14,8 @@ import {
   startAdmin,
   startCMS,
   startLogin,
-  startRegister
+  startRegister,
+  startSubscribe
 } from "view";
 import {
   handleSingleInputFile,
@@ -103,7 +104,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           document.addEventListener("drop", (e) => e.preventDefault());
           break;
         case "subscribe":
-          const countries = id("countryList");
+          const countries = id("countryList"), api = "/assets/countries.json";
+          startSubscribe(countries, api);
         default:
           cl(`Document slug: ${slug}`);
       }
