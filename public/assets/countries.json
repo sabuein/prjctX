@@ -1,0 +1,3829 @@
+[
+    {
+        "name": "Afghanistan",
+        "alpha2Code": "AF",
+        "alpha3Code": "AFG",
+        "capital": "Kabul",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 38928346,
+        "languages": [
+            {
+                "name": "Pashto",
+                "iso639_1": "ps",
+                "iso639_2": "pus"
+            },
+            {
+                "name": "Dari",
+                "iso639_1": "fa",
+                "iso639_2": "fas"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AFN",
+                "name": "Afghan afghani",
+                "symbol": "؋"
+            }
+        ]
+    },
+    {
+        "name": "Angola",
+        "alpha2Code": "AO",
+        "alpha3Code": "AGO",
+        "capital": "Luanda",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 29250009,
+        "languages": [
+            {
+                "name": "Portuguese",
+                "iso639_1": "pt",
+                "iso639_2": "por"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AOA",
+                "name": "Angolan kwanza",
+                "symbol": "Kz"
+            }
+        ]
+    },
+    {
+        "name": "Albania",
+        "alpha2Code": "AL",
+        "alpha3Code": "ALB",
+        "capital": "Tirana",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 2877797,
+        "languages": [
+            {
+                "name": "Albanian",
+                "iso639_1": "sq",
+                "iso639_2": "sqi"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ALL",
+                "name": "Albanian lek",
+                "symbol": "L"
+            }
+        ]
+    },
+    {
+        "name": "Algeria",
+        "alpha2Code": "DZ",
+        "alpha3Code": "DZA",
+        "capital": "Algiers",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 43851044,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "DZD",
+                "name": "Algerian dinar",
+                "symbol": "د.ج"
+            }
+        ]
+    },
+    {
+        "name": "Bahrain",
+        "alpha2Code": "BH",
+        "alpha3Code": "BHR",
+        "capital": "Manama",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 1701575,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BHD",
+                "name": "Bahraini dinar",
+                "symbol": ".د.ب"
+            }
+        ]
+    },
+    {
+        "name": "Comoros",
+        "alpha2Code": "KM",
+        "alpha3Code": "COM",
+        "capital": "Moroni",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 869601,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            },
+            {
+                "name": "Comorian",
+                "iso639_1": "swb",
+                "iso639_2": "swb"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "KMF",
+                "name": "Comorian franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Djibouti",
+        "alpha2Code": "DJ",
+        "alpha3Code": "DJI",
+        "capital": "Djibouti",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 988000,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "DJF",
+                "name": "Djiboutian franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Egypt",
+        "alpha2Code": "EG",
+        "alpha3Code": "EGY",
+        "capital": "Cairo",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 100388073,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EGP",
+                "name": "Egyptian pound",
+                "symbol": "£"
+            }
+        ]
+    },
+    {
+        "name": "Egypt",
+        "alpha2Code": "EG",
+        "alpha3Code": "EGY",
+        "capital": "Cairo",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 100388073,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EGP",
+                "name": "Egyptian pound",
+                "symbol": "£"
+            }
+        ]
+    },
+    {
+        "name": "United Arab Emirates",
+        "alpha2Code": "AE",
+        "alpha3Code": "ARE",
+        "capital": "Abu Dhabi",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 9890402,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AED",
+                "name": "United Arab Emirates dirham",
+                "symbol": "د.إ"
+            }
+        ]
+    },
+    {
+        "name": "Occupied Palestine",
+        "alpha2Code": "PS",
+        "alpha3Code": "PSE",
+        "capital": "Jerusalem",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 5155000,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ILS",
+                "name": "Israeli new shekel",
+                "symbol": "₪"
+            }
+        ]
+    },
+    {
+        "name": "Lebanon",
+        "alpha2Code": "LB",
+        "alpha3Code": "LBN",
+        "capital": "Beirut",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 6859408,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "LBP",
+                "name": "Lebanese pound",
+                "symbol": "ل.ل"
+            }
+        ]
+    },
+    {
+        "name": "Syrian Arab Republic",
+        "alpha2Code": "SY",
+        "alpha3Code": "SYR",
+        "capital": "Damascus",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 17070135,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SYP",
+                "name": "Syrian pound",
+                "symbol": "£"
+            }
+        ]
+    },
+    {
+        "name": "Jordan",
+        "alpha2Code": "JO",
+        "alpha3Code": "JOR",
+        "capital": "Amman",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 10203134,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "JOD",
+                "name": "Jordanian dinar",
+                "symbol": "د.ا"
+            }
+        ]
+    },
+    {
+        "name": "Turkey",
+        "alpha2Code": "TR",
+        "alpha3Code": "TUR",
+        "capital": "Ankara",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 84339067,
+        "languages": [
+            {
+                "name": "Turkish",
+                "iso639_1": "tr",
+                "iso639_2": "tur"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TRY",
+                "name": "Turkish lira",
+                "symbol": "₺"
+            }
+        ]
+    },
+    {
+        "name": "Tunisia",
+        "alpha2Code": "TN",
+        "alpha3Code": "TUN",
+        "capital": "Tunis",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 11818619,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TND",
+                "name": "Tunisian dinar",
+                "symbol": "د.ت"
+            }
+        ]
+    },
+    {
+        "name": "France",
+        "alpha2Code": "FR",
+        "alpha3Code": "FRA",
+        "capital": "Paris",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 67012883,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "United States of America",
+        "alpha2Code": "US",
+        "alpha3Code": "USA",
+        "capital": "Washington, D.C.",
+        "region": "Americas",
+        "subregion": "Northern America",
+        "population": 331449281,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "United Kingdom of Great Britain and Northern Ireland",
+        "alpha2Code": "GB",
+        "alpha3Code": "GBR",
+        "capital": "London",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 66959016,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "GBP",
+                "name": "British pound",
+                "symbol": "£"
+            }
+        ]
+    },
+    {
+        "name": "Lithuania",
+        "alpha2Code": "LT",
+        "alpha3Code": "LTU",
+        "capital": "Vilnius",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 2794357,
+        "languages": [
+            {
+                "name": "Lithuanian",
+                "iso639_1": "lt",
+                "iso639_2": "lit"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Finland",
+        "alpha2Code": "FI",
+        "alpha3Code": "FIN",
+        "capital": "Helsinki",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 5527573,
+        "languages": [
+            {
+                "name": "Finnish",
+                "iso639_1": "fi",
+                "iso639_2": "fin"
+            },
+            {
+                "name": "Swedish",
+                "iso639_1": "sv",
+                "iso639_2": "swe"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Russian Federation",
+        "alpha2Code": "RU",
+        "alpha3Code": "RUS",
+        "capital": "Moscow",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 146171015,
+        "languages": [
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "RUB",
+                "name": "Russian ruble",
+                "symbol": "₽"
+            }
+        ]
+    },
+    {
+        "name": "Oman",
+        "alpha2Code": "OM",
+        "alpha3Code": "OMN",
+        "capital": "Muscat",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 5106626,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "OMR",
+                "name": "Omani rial",
+                "symbol": "ر.ع."
+            }
+        ]
+    },
+    {
+        "name": "Morocco",
+        "alpha2Code": "MA",
+        "alpha3Code": "MAR",
+        "capital": "Rabat",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 37345935,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            },
+            {
+                "name": "Berber",
+                "iso639_1": "ber",
+                "iso639_2": "ber"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "MAD",
+                "name": "Moroccan dirham",
+                "symbol": "د.م."
+            }
+        ]
+    },
+    {
+        "name": "Libya",
+        "alpha2Code": "LY",
+        "alpha3Code": "LBY",
+        "capital": "Tripoli",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 6871287,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "LYD",
+                "name": "Libyan dinar",
+                "symbol": "ل.د"
+            }
+        ]
+    },
+    {
+        "name": "South Sudan",
+        "alpha2Code": "SS",
+        "alpha3Code": "SSD",
+        "capital": "Juba",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 11216360,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SSP",
+                "name": "South Sudanese pound",
+                "symbol": "£"
+            }
+        ]
+    },
+    {
+        "name": "Sudan",
+        "alpha2Code": "SD",
+        "alpha3Code": "SDN",
+        "capital": "Khartoum",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 41801533,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SDG",
+                "name": "Sudanese pound",
+                "symbol": "ج.س."
+            }
+        ]
+    },
+    {
+        "name": "Iraq",
+        "alpha2Code": "IQ",
+        "alpha3Code": "IRQ",
+        "capital": "Baghdad",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 40222493,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            },
+            {
+                "name": "Kurdish",
+                "iso639_1": "ku",
+                "iso639_2": "kur"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "IQD",
+                "name": "Iraqi dinar",
+                "symbol": "ع.د"
+            }
+        ]
+    },
+    {
+        "name": "Kuwait",
+        "alpha2Code": "KW",
+        "alpha3Code": "KWT",
+        "capital": "Kuwait City",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 4270571,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "KWD",
+                "name": "Kuwaiti dinar",
+                "symbol": "د.ك"
+            }
+        ]
+    },
+    {
+        "name": "Mauritania",
+        "alpha2Code": "MR",
+        "alpha3Code": "MRT",
+        "capital": "Nouakchott",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 4696200,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "MRU",
+                "name": "Mauritanian ouguiya",
+                "symbol": "UM"
+            }
+        ]
+    },
+    {
+        "name": "Qatar",
+        "alpha2Code": "QA",
+        "alpha3Code": "QAT",
+        "capital": "Doha",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 2930524,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "QAR",
+                "name": "Qatari riyal",
+                "symbol": "ر.ق"
+            }
+        ]
+    },
+    {
+        "name": "Saudi Arabia",
+        "alpha2Code": "SA",
+        "alpha3Code": "SAU",
+        "capital": "Riyadh",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 35041038,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SAR",
+                "name": "Saudi riyal",
+                "symbol": "ر.س"
+            }
+        ]
+    },
+    {
+        "name": "Yemen",
+        "alpha2Code": "YE",
+        "alpha3Code": "YEM",
+        "capital": "Sana'a",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 29935468,
+        "languages": [
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "YER",
+                "name": "Yemeni rial",
+                "symbol": "﷼"
+            }
+        ]
+    },
+    {
+        "name": "Somalia",
+        "alpha2Code": "SO",
+        "alpha3Code": "SOM",
+        "capital": "Mogadishu",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 15893219,
+        "languages": [
+            {
+                "name": "Somali",
+                "iso639_1": "so",
+                "iso639_2": "som"
+            },
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SOS",
+                "name": "Somali shilling",
+                "symbol": "Sh"
+            }
+        ]
+    },
+    {
+        "name": "Croatia",
+        "alpha2Code": "HR",
+        "alpha3Code": "HRV",
+        "capital": "Zagreb",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 4105267,
+        "languages": [
+            {
+                "name": "Croatian",
+                "iso639_1": "hr",
+                "iso639_2": "hrv"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "HRK",
+                "name": "Croatian kuna",
+                "symbol": "kn"
+            }
+        ]
+    },
+    {
+        "name": "Bulgaria",
+        "alpha2Code": "BG",
+        "alpha3Code": "BGR",
+        "capital": "Sofia",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 6907288,
+        "languages": [
+            {
+                "name": "Bulgarian",
+                "iso639_1": "bg",
+                "iso639_2": "bul"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BGN",
+                "name": "Bulgarian lev",
+                "symbol": "лв"
+            }
+        ]
+    },
+    {
+        "name": "Belgium",
+        "alpha2Code": "BE",
+        "alpha3Code": "BEL",
+        "capital": "Brussels",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 11555997,
+        "languages": [
+            {
+                "name": "Dutch",
+                "iso639_1": "nl",
+                "iso639_2": "nld"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "German",
+                "iso639_1": "de",
+                "iso639_2": "deu"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Austria",
+        "alpha2Code": "AT",
+        "alpha3Code": "AUT",
+        "capital": "Vienna",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 8917205,
+        "languages": [
+            {
+                "name": "German",
+                "iso639_1": "de",
+                "iso639_2": "deu"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Estonia",
+        "alpha2Code": "EE",
+        "alpha3Code": "EST",
+        "capital": "Tallinn",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 1324820,
+        "languages": [
+            {
+                "name": "Estonian",
+                "iso639_1": "et",
+                "iso639_2": "est"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Denmark",
+        "alpha2Code": "DK",
+        "alpha3Code": "DNK",
+        "capital": "Copenhagen",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 5792202,
+        "languages": [
+            {
+                "name": "Danish",
+                "iso639_1": "da",
+                "iso639_2": "dan"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "DKK",
+                "name": "Danish krone",
+                "symbol": "kr"
+            }
+        ]
+    },
+    {
+        "name": "Czech Republic",
+        "alpha2Code": "CZ",
+        "alpha3Code": "CZE",
+        "capital": "Prague",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 10708981,
+        "languages": [
+            {
+                "name": "Czech",
+                "iso639_1": "cs",
+                "iso639_2": "ces"
+            },
+            {
+                "name": "Slovak",
+                "iso639_1": "sk",
+                "iso639_2": "slk"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CZK",
+                "name": "Czech koruna",
+                "symbol": "Kč"
+            }
+        ]
+    },
+    {
+        "name": "Republic of Cyprus",
+        "alpha2Code": "CY",
+        "alpha3Code": "CYP",
+        "capital": "Nicosia",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 1207359,
+        "languages": [
+            {
+                "name": "Greek (modern)",
+                "iso639_1": "el",
+                "iso639_2": "ell"
+            },
+            {
+                "name": "Turkish",
+                "iso639_1": "tr",
+                "iso639_2": "tur"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Ireland",
+        "alpha2Code": "IE",
+        "alpha3Code": "IRL",
+        "capital": "Dublin",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 4982900,
+        "languages": [
+            {
+                "name": "Irish",
+                "iso639_1": "ga",
+                "iso639_2": "gle"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Hungary",
+        "alpha2Code": "HU",
+        "alpha3Code": "HUN",
+        "capital": "Budapest",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 9775564,
+        "languages": [
+            {
+                "name": "Hungarian",
+                "iso639_1": "hu",
+                "iso639_2": "hun"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "HUF",
+                "name": "Hungarian forint",
+                "symbol": "Ft"
+            }
+        ]
+    },
+    {
+        "name": "Greece",
+        "alpha2Code": "GR",
+        "alpha3Code": "GRC",
+        "capital": "Athens",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 10724599,
+        "languages": [
+            {
+                "name": "Greek (modern)",
+                "iso639_1": "el",
+                "iso639_2": "ell"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Germany",
+        "alpha2Code": "DE",
+        "alpha3Code": "DEU",
+        "capital": "Berlin",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 83190556,
+        "languages": [
+            {
+                "name": "German",
+                "iso639_1": "de",
+                "iso639_2": "deu"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Italy",
+        "alpha2Code": "IT",
+        "alpha3Code": "ITA",
+        "capital": "Rome",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 60252824,
+        "languages": [
+            {
+                "name": "Italian",
+                "iso639_1": "it",
+                "iso639_2": "ita"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Latvia",
+        "alpha2Code": "LV",
+        "alpha3Code": "LVA",
+        "capital": "Riga",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 1901548,
+        "languages": [
+            {
+                "name": "Latvian",
+                "iso639_1": "lv",
+                "iso639_2": "lav"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Luxembourg",
+        "alpha2Code": "LU",
+        "alpha3Code": "LUX",
+        "capital": "Luxembourg",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 626108,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "German",
+                "iso639_1": "de",
+                "iso639_2": "deu"
+            },
+            {
+                "name": "Luxembourgish",
+                "iso639_1": "lb",
+                "iso639_2": "ltz"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Malta",
+        "alpha2Code": "MT",
+        "alpha3Code": "MLT",
+        "capital": "Valletta",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 514564,
+        "languages": [
+            {
+                "name": "Maltese",
+                "iso639_1": "mt",
+                "iso639_2": "mlt"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Netherlands",
+        "alpha2Code": "NL",
+        "alpha3Code": "NLD",
+        "capital": "Amsterdam",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 17424978,
+        "languages": [
+            {
+                "name": "Dutch",
+                "iso639_1": "nl",
+                "iso639_2": "nld"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Poland",
+        "alpha2Code": "PL",
+        "alpha3Code": "POL",
+        "capital": "Warsaw",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 38386000,
+        "languages": [
+            {
+                "name": "Polish",
+                "iso639_1": "pl",
+                "iso639_2": "pol"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "PLN",
+                "name": "Polish złoty",
+                "symbol": "zł"
+            }
+        ]
+    },
+    {
+        "name": "Portugal",
+        "alpha2Code": "PT",
+        "alpha3Code": "PRT",
+        "capital": "Lisbon",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 10374822,
+        "languages": [
+            {
+                "name": "Portuguese",
+                "iso639_1": "pt",
+                "iso639_2": "por"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Romania",
+        "alpha2Code": "RO",
+        "alpha3Code": "ROU",
+        "capital": "Bucharest",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 19286123,
+        "languages": [
+            {
+                "name": "Romanian",
+                "iso639_1": "ro",
+                "iso639_2": "ron"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "RON",
+                "name": "Romanian leu",
+                "symbol": "lei"
+            }
+        ]
+    },
+    {
+        "name": "Sweden",
+        "alpha2Code": "SE",
+        "alpha3Code": "SWE",
+        "capital": "Stockholm",
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "population": 10379295,
+        "languages": [
+            {
+                "name": "Swedish",
+                "iso639_1": "sv",
+                "iso639_2": "swe"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SEK",
+                "name": "Swedish krona",
+                "symbol": "kr"
+            }
+        ]
+    },
+    {
+        "name": "Spain",
+        "alpha2Code": "ES",
+        "alpha3Code": "ESP",
+        "capital": "Madrid",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 46733038,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Slovenia",
+        "alpha2Code": "SI",
+        "alpha3Code": "SVN",
+        "capital": "Ljubljana",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 2064188,
+        "languages": [
+            {
+                "name": "Slovenian",
+                "iso639_1": "sl",
+                "iso639_2": "slv"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Slovakia",
+        "alpha2Code": "SK",
+        "alpha3Code": "SVK",
+        "capital": "Bratislava",
+        "region": "Europe",
+        "subregion": "Central Europe",
+        "population": 5455000,
+        "languages": [
+            {
+                "name": "Slovak",
+                "iso639_1": "sk",
+                "iso639_2": "slk"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "Australia",
+        "alpha2Code": "AU",
+        "alpha3Code": "AUS",
+        "capital": "Canberra",
+        "region": "Oceania",
+        "subregion": "Australia and New Zealand",
+        "population": 25687041,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AUD",
+                "name": "Australian dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Chile",
+        "alpha2Code": "CL",
+        "alpha3Code": "CHL",
+        "capital": "Santiago",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 19116201,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CLP",
+                "name": "Chilean peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Mexico",
+        "alpha2Code": "MX",
+        "alpha3Code": "MEX",
+        "capital": "Mexico City",
+        "region": "Americas",
+        "subregion": "Central America",
+        "population": 126190788,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "MXN",
+                "name": "Mexican peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Belarus",
+        "alpha2Code": "BY",
+        "alpha3Code": "BLR",
+        "capital": "Minsk",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 9498700,
+        "languages": [
+            {
+                "name": "Belarusian",
+                "iso639_1": "be",
+                "iso639_2": "bel"
+            },
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BYN",
+                "name": "Belarusian ruble",
+                "symbol": "Br"
+            }
+        ]
+    },
+    {
+        "name": "New Zealand",
+        "alpha2Code": "NZ",
+        "alpha3Code": "NZL",
+        "capital": "Wellington",
+        "region": "Oceania",
+        "subregion": "Australia and New Zealand",
+        "population": 4984670,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Māori",
+                "iso639_1": "mi",
+                "iso639_2": "mri"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "NZD",
+                "name": "New Zealand dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "China",
+        "alpha2Code": "CN",
+        "alpha3Code": "CHN",
+        "capital": "Beijing",
+        "region": "Asia",
+        "subregion": "Eastern Asia",
+        "population": 1401812360,
+        "languages": [
+            {
+                "name": "Chinese",
+                "iso639_1": "zh",
+                "iso639_2": "zho"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CNY",
+                "name": "Chinese yuan",
+                "symbol": "¥"
+            }
+        ]
+    },
+    {
+        "name": "Canada",
+        "alpha2Code": "CA",
+        "alpha3Code": "CAN",
+        "capital": "Ottawa",
+        "region": "Americas",
+        "subregion": "Northern America",
+        "population": 38048738,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CAD",
+                "name": "Canadian dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "South Africa",
+        "alpha2Code": "ZA",
+        "alpha3Code": "ZAF",
+        "capital": "Pretoria",
+        "region": "Africa",
+        "subregion": "Southern Africa",
+        "population": 60064740,
+        "languages": [
+            {
+                "name": "Afrikaans",
+                "iso639_1": "af",
+                "iso639_2": "afr"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Southern Ndebele",
+                "iso639_1": "nr",
+                "iso639_2": "nbl"
+            },
+            {
+                "name": "Northern Sotho",
+                "iso639_1": "nso",
+                "iso639_2": "nso"
+            },
+            {
+                "name": "Sotho",
+                "iso639_1": "st",
+                "iso639_2": "sot"
+            },
+            {
+                "name": "Swazi",
+                "iso639_1": "ss",
+                "iso639_2": "ssw"
+            },
+            {
+                "name": "Tsonga",
+                "iso639_1": "ts",
+                "iso639_2": "tso"
+            },
+            {
+                "name": "Tswana",
+                "iso639_1": "tn",
+                "iso639_2": "tsn"
+            },
+            {
+                "name": "Venda",
+                "iso639_1": "ve",
+                "iso639_2": "ven"
+            },
+            {
+                "name": "Xhosa",
+                "iso639_1": "xh",
+                "iso639_2": "xho"
+            },
+            {
+                "name": "Zulu",
+                "iso639_1": "zu",
+                "iso639_2": "zul"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ZAR",
+                "name": "South African rand",
+                "symbol": "R"
+            }
+        ]
+    },
+    {
+        "name": "Japan",
+        "alpha2Code": "JP",
+        "alpha3Code": "JPN",
+        "capital": "Tokyo",
+        "region": "Asia",
+        "subregion": "Eastern Asia",
+        "population": 126010000,
+        "languages": [
+            {
+                "name": "Japanese",
+                "iso639_1": "ja",
+                "iso639_2": "jpn"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "JPY",
+                "name": "Japanese yen",
+                "symbol": "¥"
+            }
+        ]
+    },
+    {
+        "name": "South Korea",
+        "alpha2Code": "KR",
+        "alpha3Code": "KOR",
+        "capital": "Seoul",
+        "region": "Asia",
+        "subregion": "Eastern Asia",
+        "population": 51780579,
+        "languages": [
+            {
+                "name": "Korean",
+                "iso639_1": "ko",
+                "iso639_2": "kor"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "KRW",
+                "name": "South Korean won",
+                "symbol": "₩"
+            }
+        ]
+    },
+    {
+        "name": "North Korea",
+        "topLevelDomain": [
+            ".kp"
+        ],
+        "alpha2Code": "KP",
+        "alpha3Code": "PRK",
+        "callingCodes": [
+            "850"
+        ],
+        "capital": "Pyongyang",
+        "altSpellings": [
+            "KP",
+            "Democratic People's Republic of Korea",
+            "조선민주주의인민공화국",
+            "Chosŏn Minjujuŭi Inmin Konghwaguk"
+        ],
+        "region": "Asia",
+        "subregion": "Eastern Asia",
+        "population": 25778816,
+        "latlng": [
+            40.0,
+            127.0
+        ],
+        "demonym": "North Korean",
+        "area": 120538.0,
+        "gini": null,
+        "timezones": [
+            "UTC+09:00"
+        ],
+        "borders": [
+            "CHN",
+            "KOR",
+            "RUS"
+        ],
+        "nativeName": "북한",
+        "numericCode": "408",
+        "currencies": [
+            {
+                "code": "KPW",
+                "name": "North Korean won",
+                "symbol": "₩"
+            }
+        ],
+        "languages": [
+            {
+                "iso639_1": "ko",
+                "iso639_2": "kor",
+                "name": "Korean",
+                "nativeName": "한국어"
+            }
+        ],
+        "translations": {
+            "de": "Nordkorea",
+            "es": "Corea del Norte",
+            "fr": "Corée du Nord",
+            "ja": "朝鮮民主主義人民共和国",
+            "it": "Corea del Nord",
+            "br": "Coreia do Norte",
+            "pt": "Coreia do Norte",
+            "nl": "Noord-Korea",
+            "hr": "Sjeverna Koreja",
+            "fa": "کُره شُمالی",
+            "hu": "Észak-Korea",
+            "ar": "كوريا الشمالية",
+            "no": "Nord-Korea",
+            "pl": "Korea Północna",
+            "ro": "Coreea de Nord",
+            "ru": "Северная Корея",
+            "tr": "Kuzey Kore",
+            "vi": "Bắc Triều Tiên",
+            "zh": "朝鲜"
+        },
+        "flag": "https://restcountries.com/data/prk.svg",
+        "regionalBlocs": [],
+        "cioc": "PRK"
+    },
+    {
+        "name": "India",
+        "alpha2Code": "IN",
+        "alpha3Code": "IND",
+        "capital": "New Delhi",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 1393409038,
+        "languages": [
+            {
+                "name": "Hindi",
+                "iso639_1": "hi",
+                "iso639_2": "hin"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "INR",
+                "name": "Indian rupee",
+                "symbol": "₹"
+            }
+        ]
+    },
+    {
+        "name": "Pakistan",
+        "alpha2Code": "PK",
+        "alpha3Code": "PAK",
+        "capital": "Islamabad",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 225199937,
+        "languages": [
+            {
+                "name": "Urdu",
+                "iso639_1": "ur",
+                "iso639_2": "urd"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "PKR",
+                "name": "Pakistani rupee",
+                "symbol": "₨"
+            }
+        ]
+    },
+    {
+        "name": "Iran (Islamic Republic of)",
+        "alpha2Code": "IR",
+        "alpha3Code": "IRN",
+        "capital": "Tehran",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 83992949,
+        "languages": [
+            {
+                "name": "Persian (Farsi)",
+                "iso639_1": "fa",
+                "iso639_2": "fas"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "IRR",
+                "name": "Iranian rial",
+                "symbol": "﷼"
+            }
+        ]
+    },
+    {
+        "name": "Zimbabwe",
+        "alpha2Code": "ZW",
+        "alpha3Code": "ZWE",
+        "capital": "Harare",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 15092171,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Shona",
+                "iso639_1": "sn",
+                "iso639_2": "sna"
+            },
+            {
+                "name": "Northern Ndebele",
+                "iso639_1": "nd",
+                "iso639_2": "nde"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ZWL",
+                "name": "Zimbabwean dollar",
+                "symbol": "Z$"
+            },
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            },
+            {
+                "code": "ZAR",
+                "name": "South African rand",
+                "symbol": "R"
+            }
+        ]
+    },
+    {
+        "name": "Vietnam",
+        "alpha2Code": "VN",
+        "alpha3Code": "VNM",
+        "capital": "Hanoi",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 96208984,
+        "languages": [
+            {
+                "name": "Vietnamese",
+                "iso639_1": "vi",
+                "iso639_2": "vie"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "VND",
+                "name": "Vietnamese đồng",
+                "symbol": "₫"
+            }
+        ]
+    },
+    {
+        "name": "Wallis and Futuna",
+        "alpha2Code": "WF",
+        "alpha3Code": "WLF",
+        "capital": "Mata-Utu",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 11750,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Wallisian",
+                "iso639_2": "wls"
+            },
+            {
+                "name": "Futunan",
+                "iso639_2": "fud"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XPF",
+                "name": "CFP franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Western Sahara",
+        "alpha2Code": "EH",
+        "alpha3Code": "ESH",
+        "capital": "El Aaiún",
+        "region": "Africa",
+        "subregion": "Northern Africa",
+        "population": 510713,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            },
+            {
+                "name": "Hassaniya",
+                "iso639_2": "mey"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "MAD",
+                "name": "Moroccan dirham",
+                "symbol": "د.م."
+            },
+            {
+                "code": "DZD",
+                "name": "Algerian dinar",
+                "symbol": "د.ج"
+            },
+            {
+                "code": "MRO",
+                "name": "Mauritanian ouguiya",
+                "symbol": "UM"
+            }
+        ]
+    },
+    {
+        "name": "Zambia",
+        "alpha2Code": "ZM",
+        "alpha3Code": "ZMB",
+        "capital": "Lusaka",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 15933883,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ZMW",
+                "name": "Zambian kwacha",
+                "symbol": "ZK"
+            }
+        ]
+    },
+    {
+        "name": "United States Virgin Islands",
+        "alpha2Code": "VI",
+        "alpha3Code": "VIR",
+        "capital": "Charlotte Amalie",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 106235,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Uzbekistan",
+        "alpha2Code": "UZ",
+        "alpha3Code": "UZB",
+        "capital": "Tashkent",
+        "region": "Asia",
+        "subregion": "Central Asia",
+        "population": 34232050,
+        "languages": [
+            {
+                "name": "Uzbek",
+                "iso639_1": "uz",
+                "iso639_2": "uzb"
+            },
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "UZS",
+                "name": "Uzbekistani so'm",
+                "symbol": null
+            }
+        ]
+    },
+    {
+        "name": "Vanuatu",
+        "alpha2Code": "VU",
+        "alpha3Code": "VUT",
+        "capital": "Port Vila",
+        "region": "Oceania",
+        "subregion": "Melanesia",
+        "population": 307145,
+        "languages": [
+            {
+                "name": "Bislama",
+                "iso639_1": "bi",
+                "iso639_2": "bis"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "VUV",
+                "name": "Vanuatu vatu",
+                "symbol": "VT"
+            }
+        ]
+    },
+    {
+        "name": "Venezuela",
+        "alpha2Code": "VE",
+        "alpha3Code": "VEN",
+        "capital": "Caracas",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 28435940,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "VES",
+                "name": "Venezuelan bolívar soberano",
+                "symbol": "Bs.S."
+            }
+        ]
+    },
+    {
+        "name": "Turks and Caicos Islands",
+        "alpha2Code": "TC",
+        "alpha3Code": "TCA",
+        "capital": "Cockburn Town",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 31458,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Tuvalu",
+        "alpha2Code": "TV",
+        "alpha3Code": "TUV",
+        "capital": "Funafuti",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 11792,
+        "languages": [
+            {
+                "name": "Tuvaluan",
+                "iso639_1": "tv",
+                "iso639_2": "tvl"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AUD",
+                "name": "Australian dollar",
+                "symbol": "$"
+            },
+            {
+                "code": "TVD[G]",
+                "name": "Tuvaluan dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Uganda",
+        "alpha2Code": "UG",
+        "alpha3Code": "UGA",
+        "capital": "Kampala",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 45741007,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Swahili",
+                "iso639_1": "sw",
+                "iso639_2": "swa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "UGX",
+                "name": "Ugandan shilling",
+                "symbol": "Sh"
+            }
+        ]
+    },
+    {
+        "name": "Ukraine",
+        "alpha2Code": "UA",
+        "alpha3Code": "UKR",
+        "capital": "Kyiv",
+        "region": "Europe",
+        "subregion": "Eastern Europe",
+        "population": 42692393,
+        "languages": [
+            {
+                "name": "Ukrainian",
+                "iso639_1": "uk",
+                "iso639_2": "ukr"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "UAH",
+                "name": "Ukrainian hryvnia",
+                "symbol": "₴"
+            }
+        ]
+    },
+    {
+        "name": "Tokelau",
+        "alpha2Code": "TK",
+        "alpha3Code": "TKL",
+        "capital": "",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 1411,
+        "languages": [
+            {
+                "name": "Tokelauan",
+                "iso639_1": "tkl",
+                "iso639_2": "tkl"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "NZD",
+                "name": "New Zealand dollar",
+                "symbol": "$"
+            },
+            {
+                "code": "TOK",
+                "name": "Tokelauan dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Tonga",
+        "alpha2Code": "TO",
+        "alpha3Code": "TON",
+        "capital": "Nuku'alofa",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 105695,
+        "languages": [
+            {
+                "name": "Tongan",
+                "iso639_1": "to",
+                "iso639_2": "ton"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TOP",
+                "name": "Tongan paʻanga",
+                "symbol": "T$"
+            }
+        ]
+    },
+    {
+        "name": "Trinidad and Tobago",
+        "alpha2Code": "TT",
+        "alpha3Code": "TTO",
+        "capital": "Port of Spain",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 1399488,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TTD",
+                "name": "Trinidad and Tobago dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Turkmenistan",
+        "alpha2Code": "TM",
+        "alpha3Code": "TKM",
+        "capital": "Ashgabat",
+        "region": "Asia",
+        "subregion": "Central Asia",
+        "population": 6031187,
+        "languages": [
+            {
+                "name": "Turkmen",
+                "iso639_1": "tk",
+                "iso639_2": "tuk"
+            },
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TMT",
+                "name": "Turkmenistan manat",
+                "symbol": "m"
+            }
+        ]
+    },
+    {
+        "name": "Tanzania, United Republic of",
+        "alpha2Code": "TZ",
+        "alpha3Code": "TZA",
+        "capital": "Dodoma",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 57310019,
+        "languages": [
+            {
+                "name": "Swahili",
+                "iso639_1": "sw",
+                "iso639_2": "swa"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TZS",
+                "name": "Tanzanian shilling",
+                "symbol": "Sh"
+            }
+        ]
+    },
+    {
+        "name": "Thailand",
+        "alpha2Code": "TH",
+        "alpha3Code": "THA",
+        "capital": "Bangkok",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 69428524,
+        "languages": [
+            {
+                "name": "Thai",
+                "iso639_1": "th",
+                "iso639_2": "tha"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "THB",
+                "name": "Thai baht",
+                "symbol": "฿"
+            }
+        ]
+    },
+    {
+        "name": "Timor-Leste",
+        "alpha2Code": "TL",
+        "alpha3Code": "TLS",
+        "capital": "Dili",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 1318445,
+        "languages": [
+            {
+                "name": "Tetum",
+                "iso639_1": "tet",
+                "iso639_2": "tet"
+            },
+            {
+                "name": "Portuguese",
+                "iso639_1": "pt",
+                "iso639_2": "por"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Togo",
+        "alpha2Code": "TG",
+        "alpha3Code": "TGO",
+        "capital": "Lomé",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 8278724,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Ewe",
+                "iso639_1": "ee",
+                "iso639_2": "ewe"
+            },
+            {
+                "name": "Kabye",
+                "iso639_1": "kbp",
+                "iso639_2": "kbp"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XOF",
+                "name": "West African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Suriname",
+        "alpha2Code": "SR",
+        "alpha3Code": "SUR",
+        "capital": "Paramaribo",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 587000,
+        "languages": [
+            {
+                "name": "Dutch",
+                "iso639_1": "nl",
+                "iso639_2": "nld"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SRD",
+                "name": "Surinamese dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Switzerland",
+        "alpha2Code": "CH",
+        "alpha3Code": "CHE",
+        "capital": "Bern",
+        "region": "Europe",
+        "subregion": "Western Europe",
+        "population": 8513227,
+        "languages": [
+            {
+                "name": "German",
+                "iso639_1": "de",
+                "iso639_2": "deu"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Italian",
+                "iso639_1": "it",
+                "iso639_2": "ita"
+            },
+            {
+                "name": "Romansh",
+                "iso639_1": "rm",
+                "iso639_2": "roh"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CHF",
+                "name": "Swiss franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Taiwan",
+        "alpha2Code": "TW",
+        "alpha3Code": "TWN",
+        "capital": "Taipei",
+        "region": "Asia",
+        "subregion": "Eastern Asia",
+        "population": 23780452,
+        "languages": [
+            {
+                "name": "Chinese",
+                "iso639_1": "zh",
+                "iso639_2": "zho"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TWD",
+                "name": "New Taiwan dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Tajikistan",
+        "alpha2Code": "TJ",
+        "alpha3Code": "TJK",
+        "capital": "Dushanbe",
+        "region": "Asia",
+        "subregion": "Central Asia",
+        "population": 9127000,
+        "languages": [
+            {
+                "name": "Tajik",
+                "iso639_1": "tg",
+                "iso639_2": "tgk"
+            },
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "TJS",
+                "name": "Tajikistani somoni",
+                "symbol": "ЅМ"
+            }
+        ]
+    },
+    {
+        "name": "Solomon Islands",
+        "alpha2Code": "SB",
+        "alpha3Code": "SLB",
+        "capital": "Honiara",
+        "region": "Oceania",
+        "subregion": "Melanesia",
+        "population": 642000,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SBD",
+                "name": "Solomon Islands dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Sri Lanka",
+        "alpha2Code": "LK",
+        "alpha3Code": "LKA",
+        "capital": "Colombo",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 20966000,
+        "languages": [
+            {
+                "name": "Sinhalese",
+                "iso639_1": "si",
+                "iso639_2": "sin"
+            },
+            {
+                "name": "Tamil",
+                "iso639_1": "ta",
+                "iso639_2": "tam"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "LKR",
+                "name": "Sri Lankan rupee",
+                "symbol": "Rs"
+            }
+        ]
+    },
+    {
+        "name": "Senegal",
+        "alpha2Code": "SN",
+        "alpha3Code": "SEN",
+        "capital": "Dakar",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 16743930,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Wolof",
+                "iso639_1": "wo",
+                "iso639_2": "wol"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XOF",
+                "name": "West African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Singapore",
+        "alpha2Code": "SG",
+        "alpha3Code": "SGP",
+        "capital": "Singapore",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 5703569,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Malay",
+                "iso639_1": "ms",
+                "iso639_2": "msa"
+            },
+            {
+                "name": "Tamil",
+                "iso639_1": "ta",
+                "iso639_2": "tam"
+            },
+            {
+                "name": "Chinese",
+                "iso639_1": "zh",
+                "iso639_2": "zho"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SGD",
+                "name": "Singapore dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Sierra Leone",
+        "alpha2Code": "SL",
+        "alpha3Code": "SLE",
+        "capital": "Freetown",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 7650154,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Krio",
+                "iso639_1": "",
+                "iso639_2": "kri"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SLL",
+                "name": "Sierra Leonean leone",
+                "symbol": "Le"
+            }
+        ]
+    },
+    {
+        "name": "Seychelles",
+        "alpha2Code": "SC",
+        "alpha3Code": "SYC",
+        "capital": "Victoria",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 98453,
+        "languages": [
+            {
+                "name": "Seychellois Creole",
+                "iso639_1": "crs",
+                "iso639_2": "crs"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "SCR",
+                "name": "Seychellois rupee",
+                "symbol": "₨"
+            }
+        ]
+    },
+    {
+        "name": "Serbia",
+        "alpha2Code": "RS",
+        "alpha3Code": "SRB",
+        "capital": "Belgrade",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 7076372,
+        "languages": [
+            {
+                "name": "Serbian",
+                "iso639_1": "sr",
+                "iso639_2": "srp"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "RSD",
+                "name": "Serbian dinar",
+                "symbol": "дин."
+            }
+        ]
+    },
+    {
+        "name": "Andorra",
+        "alpha2Code": "AD",
+        "alpha3Code": "AND",
+        "capital": "Andorra la Vella",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 77543,
+        "languages": [
+            {
+                "name": "Catalan",
+                "iso639_1": "ca",
+                "iso639_2": "cat"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "EUR",
+                "name": "Euro",
+                "symbol": "€"
+            }
+        ]
+    },
+    {
+        "name": "American Samoa",
+        "alpha2Code": "AS",
+        "alpha3Code": "ASM",
+        "capital": "Pago Pago",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 57100,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Samoan",
+                "iso639_1": "sm",
+                "iso639_2": "smo"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States Dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Anguilla",
+        "alpha2Code": "AI",
+        "alpha3Code": "AIA",
+        "capital": "The Valley",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 14764,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XCD",
+                "name": "East Caribbean dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Antigua and Barbuda",
+        "alpha2Code": "AG",
+        "alpha3Code": "ATG",
+        "capital": "St. John's",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 103050,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XCD",
+                "name": "East Caribbean dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Argentina",
+        "alpha2Code": "AR",
+        "alpha3Code": "ARG",
+        "capital": "Buenos Aires",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 45376763,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            },
+            {
+                "name": "Guaraní",
+                "iso639_1": "gn",
+                "iso639_2": "grn"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "ARS",
+                "name": "Argentine peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Armenia",
+        "alpha2Code": "AM",
+        "alpha3Code": "ARM",
+        "capital": "Yerevan",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 2963234,
+        "languages": [
+            {
+                "name": "Armenian",
+                "iso639_1": "hy",
+                "iso639_2": "hye"
+            },
+            {
+                "name": "Russian",
+                "iso639_1": "ru",
+                "iso639_2": "rus"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AMD",
+                "name": "Armenian dram",
+                "symbol": "֏"
+            }
+        ]
+    },
+    {
+        "name": "Aruba",
+        "alpha2Code": "AW",
+        "alpha3Code": "ABW",
+        "capital": "Oranjestad",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 107394,
+        "languages": [
+            {
+                "name": "Dutch",
+                "iso639_1": "nl",
+                "iso639_2": "nld"
+            },
+            {
+                "name": "Papiamento",
+                "iso639_1": null,
+                "iso639_2": "pap"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AWG",
+                "name": "Aruban florin",
+                "symbol": "ƒ"
+            }
+        ]
+    },
+    {
+        "name": "Bahamas",
+        "alpha2Code": "BS",
+        "alpha3Code": "BHS",
+        "capital": "Nassau",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 385640,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BSD",
+                "name": "Bahamian dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Azerbaijan",
+        "alpha2Code": "AZ",
+        "alpha3Code": "AZE",
+        "capital": "Baku",
+        "region": "Asia",
+        "subregion": "Western Asia",
+        "population": 10110116,
+        "languages": [
+            {
+                "name": "Azerbaijani",
+                "iso639_1": "az",
+                "iso639_2": "aze"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AZN",
+                "name": "Azerbaijani manat",
+                "symbol": "₼"
+            }
+        ]
+    },
+    {
+        "name": "Bangladesh",
+        "alpha2Code": "BD",
+        "alpha3Code": "BGD",
+        "capital": "Dhaka",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 164689383,
+        "languages": [
+            {
+                "name": "Bengali",
+                "iso639_1": "bn",
+                "iso639_2": "ben"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BDT",
+                "name": "Bangladeshi taka",
+                "symbol": "৳"
+            }
+        ]
+    },
+    {
+        "name": "Barbados",
+        "alpha2Code": "BB",
+        "alpha3Code": "BRB",
+        "capital": "Bridgetown",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 287025,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BBD",
+                "name": "Barbadian dollar",
+                "symbol": "$"
+            },
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Belize",
+        "alpha2Code": "BZ",
+        "alpha3Code": "BLZ",
+        "capital": "Belmopan",
+        "region": "Americas",
+        "subregion": "Central America",
+        "population": 397621,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BZD",
+                "name": "Belize dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Botswana",
+        "alpha2Code": "BW",
+        "alpha3Code": "BWA",
+        "capital": "Gaborone",
+        "region": "Africa",
+        "subregion": "Southern Africa",
+        "population": 2374636,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Tswana",
+                "iso639_1": "tn",
+                "iso639_2": "tsn"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BWP",
+                "name": "Botswana pula",
+                "symbol": "P"
+            }
+        ]
+    },
+    {
+        "name": "Bhutan",
+        "alpha2Code": "BT",
+        "alpha3Code": "BTN",
+        "capital": "Thimphu",
+        "region": "Asia",
+        "subregion": "Southern Asia",
+        "population": 763092,
+        "languages": [
+            {
+                "name": "Dzongkha",
+                "iso639_1": "dz",
+                "iso639_2": "dzo"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BTN",
+                "name": "Bhutanese ngultrum",
+                "symbol": "Nu."
+            },
+            {
+                "code": "INR",
+                "name": "Indian rupee",
+                "symbol": "₹"
+            }
+        ]
+    },
+    {
+        "name": "Bermuda",
+        "alpha2Code": "BM",
+        "alpha3Code": "BMU",
+        "capital": "Hamilton",
+        "region": "Americas",
+        "subregion": "Northern America",
+        "population": 63968,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BMD",
+                "name": "Bermudian dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Benin",
+        "alpha2Code": "BJ",
+        "alpha3Code": "BEN",
+        "capital": "Porto-Novo",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 11485048,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Yoruba",
+                "iso639_1": null,
+                "iso639_2": "yor"
+            },
+            {
+                "name": "Fon",
+                "iso639_1": null,
+                "iso639_2": "fon"
+            },
+            {
+                "name": "Ewe",
+                "iso639_1": null,
+                "iso639_2": "ewe"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XOF",
+                "name": "West African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "British Virgin Islands",
+        "alpha2Code": "VG",
+        "alpha3Code": "VGB",
+        "capital": "Road Town",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 30237,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Brazil",
+        "alpha2Code": "BR",
+        "alpha3Code": "BRA",
+        "capital": "Brasília",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 212559417,
+        "languages": [
+            {
+                "name": "Portuguese",
+                "iso639_1": "pt",
+                "iso639_2": "por"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BRL",
+                "name": "Brazilian real",
+                "symbol": "R$"
+            }
+        ]
+    },
+    {
+        "name": "Bolivia",
+        "alpha2Code": "BO",
+        "alpha3Code": "BOL",
+        "capital": "Sucre",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 11673021,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            },
+            {
+                "name": "Quechua",
+                "iso639_1": "qu",
+                "iso639_2": "que"
+            },
+            {
+                "name": "Aymara",
+                "iso639_1": "ay",
+                "iso639_2": "aym"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BOB",
+                "name": "Bolivian boliviano",
+                "symbol": "Bs."
+            }
+        ]
+    },
+    {
+        "name": "Bosnia and Herzegovina",
+        "alpha2Code": "BA",
+        "alpha3Code": "BIH",
+        "capital": "Sarajevo",
+        "region": "Europe",
+        "subregion": "Southern Europe",
+        "population": 3301000,
+        "languages": [
+            {
+                "name": "Bosnian",
+                "iso639_1": "bs",
+                "iso639_2": "bos"
+            },
+            {
+                "name": "Croatian",
+                "iso639_1": "hr",
+                "iso639_2": "hrv"
+            },
+            {
+                "name": "Serbian",
+                "iso639_1": "sr",
+                "iso639_2": "srp"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BAM",
+                "name": "Bosnia and Herzegovina convertible mark",
+                "symbol": "KM"
+            }
+        ]
+    },
+    {
+        "name": "Brunei Darussalam",
+        "alpha2Code": "BN",
+        "alpha3Code": "BRN",
+        "capital": "Bandar Seri Begawan",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 442400,
+        "languages": [
+            {
+                "name": "Malay",
+                "iso639_1": "ms",
+                "iso639_2": "msa"
+            },
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BND",
+                "name": "Brunei dollar",
+                "symbol": "$"
+            },
+            {
+                "code": "SGD",
+                "name": "Singapore dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Burkina Faso",
+        "alpha2Code": "BF",
+        "alpha3Code": "BFA",
+        "capital": "Ouagadougou",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 20244080,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Fula",
+                "iso639_1": "ff",
+                "iso639_2": "ful"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XOF",
+                "name": "West African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Burundi",
+        "alpha2Code": "BI",
+        "alpha3Code": "BDI",
+        "capital": "Bujumbura",
+        "region": "Africa",
+        "subregion": "Eastern Africa",
+        "population": 11890784,
+        "languages": [
+            {
+                "name": "Kirundi",
+                "iso639_1": "rn",
+                "iso639_2": "run"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "BIF",
+                "name": "Burundian franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Cambodia",
+        "alpha2Code": "KH",
+        "alpha3Code": "KHM",
+        "capital": "Phnom Penh",
+        "region": "Asia",
+        "subregion": "South-Eastern Asia",
+        "population": 16913584,
+        "languages": [
+            {
+                "name": "Khmer",
+                "iso639_1": "km",
+                "iso639_2": "khm"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "KHR",
+                "name": "Cambodian riel",
+                "symbol": "៛"
+            },
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Central African Republic",
+        "alpha2Code": "CF",
+        "alpha3Code": "CAF",
+        "capital": "Bangui",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 4829764,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Sango",
+                "iso639_1": null,
+                "iso639_2": "sag"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XAF",
+                "name": "Central African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Cape Verde",
+        "alpha2Code": "CV",
+        "alpha3Code": "CPV",
+        "capital": "Praia",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 560899,
+        "languages": [
+            {
+                "name": "Portuguese",
+                "iso639_1": "pt",
+                "iso639_2": "por"
+            },
+            {
+                "name": "Cape Verdean Creole",
+                "iso639_1": null,
+                "iso639_2": "kea"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CVE",
+                "name": "Cape Verdean escudo",
+                "symbol": "Esc"
+            }
+        ]
+    },
+    {
+        "name": "Cameroon",
+        "alpha2Code": "CM",
+        "alpha3Code": "CMR",
+        "capital": "Yaoundé",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 26545864,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XAF",
+                "name": "Central African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Chad",
+        "alpha2Code": "TD",
+        "alpha3Code": "TCD",
+        "capital": "N'Djamena",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 16877000,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Arabic",
+                "iso639_1": "ar",
+                "iso639_2": "ara"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XAF",
+                "name": "Central African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Cocos (Keeling) Islands",
+        "alpha2Code": "CC",
+        "alpha3Code": "CCK",
+        "capital": "West Island",
+        "region": "Oceania",
+        "subregion": "Australia and New Zealand",
+        "population": 600,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "AUD",
+                "name": "Australian dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Colombia",
+        "alpha2Code": "CO",
+        "alpha3Code": "COL",
+        "capital": "Bogotá",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 50339443,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "COP",
+                "name": "Colombian peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Democratic Republic of the Congo",
+        "alpha2Code": "CD",
+        "alpha3Code": "COD",
+        "capital": "Kinshasa",
+        "region": "Africa",
+        "subregion": "Middle Africa",
+        "population": 101780263,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            },
+            {
+                "name": "Lingala",
+                "iso639_1": null,
+                "iso639_2": "lin"
+            },
+            {
+                "name": "Kongo",
+                "iso639_1": null,
+                "iso639_2": "kon"
+            },
+            {
+                "name": "Swahili",
+                "iso639_1": null,
+                "iso639_2": "swa"
+            },
+            {
+                "name": "Tshiluba",
+                "iso639_1": null,
+                "iso639_2": "lua"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CDF",
+                "name": "Congolese franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Côte d'Ivoire",
+        "alpha2Code": "CI",
+        "alpha3Code": "CIV",
+        "capital": "Yamoussoukro",
+        "region": "Africa",
+        "subregion": "Western Africa",
+        "population": 26378275,
+        "languages": [
+            {
+                "name": "French",
+                "iso639_1": "fr",
+                "iso639_2": "fra"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XOF",
+                "name": "West African CFA franc",
+                "symbol": "Fr"
+            }
+        ]
+    },
+    {
+        "name": "Costa Rica",
+        "alpha2Code": "CR",
+        "alpha3Code": "CRI",
+        "capital": "San José",
+        "region": "Americas",
+        "subregion": "Central America",
+        "population": 5058007,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CRC",
+                "name": "Costa Rican colón",
+                "symbol": "₡"
+            }
+        ]
+    },
+    {
+        "name": "Cook Islands",
+        "alpha2Code": "CK",
+        "alpha3Code": "COK",
+        "capital": "Avarua",
+        "region": "Oceania",
+        "subregion": "Polynesia",
+        "population": 18100,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            },
+            {
+                "name": "Cook Islands Māori",
+                "iso639_1": "mi",
+                "iso639_2": "mri"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "NZD",
+                "name": "New Zealand dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Dominican Republic",
+        "alpha2Code": "DO",
+        "alpha3Code": "DOM",
+        "capital": "Santo Domingo",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 10847910,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "DOP",
+                "name": "Dominican peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Dominica",
+        "alpha2Code": "DM",
+        "alpha3Code": "DMA",
+        "capital": "Roseau",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 71808,
+        "languages": [
+            {
+                "name": "English",
+                "iso639_1": "en",
+                "iso639_2": "eng"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "XCD",
+                "name": "East Caribbean dollar",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Cuba",
+        "alpha2Code": "CU",
+        "alpha3Code": "CUB",
+        "capital": "Havana",
+        "region": "Americas",
+        "subregion": "Caribbean",
+        "population": 11338138,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "CUP",
+                "name": "Cuban peso",
+                "symbol": "$"
+            },
+            {
+                "code": "CUC",
+                "name": "Cuban convertible peso",
+                "symbol": "$"
+            }
+        ]
+    },
+    {
+        "name": "Ecuador",
+        "alpha2Code": "EC",
+        "alpha3Code": "ECU",
+        "capital": "Quito",
+        "region": "Americas",
+        "subregion": "South America",
+        "population": 17643060,
+        "languages": [
+            {
+                "name": "Spanish",
+                "iso639_1": "es",
+                "iso639_2": "spa"
+            },
+            {
+                "name": "Kichwa",
+                "iso639_1": null,
+                "iso639_2": "que"
+            },
+            {
+                "name": "Shuar",
+                "iso639_1": null,
+                "iso639_2": "jiv"
+            }
+        ],
+        "currencies": [
+            {
+                "code": "USD",
+                "name": "United States dollar",
+                "symbol": "$"
+            }
+        ]
+    }
+]
