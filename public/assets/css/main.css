@@ -254,6 +254,7 @@ main.cms > article:nth-child(3) > hr {
 }
 
 .nav-item a:hover {
+  color: ghostwhite;
   text-decoration: none;
 }
 
