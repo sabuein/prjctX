@@ -64,7 +64,7 @@ class AppNav extends HTMLElement {
                 </figure>    
             </div>
             <ul class="flexy row wrap gap-x1 nav-item">
-                <li data-page-slug="cms"><a href="cms.html">CMS</a></li>
+                <li data-page-slug="cms"><a href="cms.html">CMS</li></a>
                 <li data-page-slug="plans"><a href="plans.html">Plans</a></li>
                 <li data-page-slug="admin"><a href="admin.html">Admin</a></li>
                 <li data-page-slug="members"><a href="members.html">Members</a></li>
