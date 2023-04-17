@@ -239,7 +239,7 @@ main.cms > article:nth-child(3) > hr {
   align-items: center;
 }
 
-.nav-item > *:hover {
+.nav-item > li:has(a):hover {
   background-color: darkblue;
   cursor: pointer;
 }
@@ -254,8 +254,7 @@ main.cms > article:nth-child(3) > hr {
 }
 
 .nav-item a:hover {
-  color: ghostwhite;
-  text-decoration-color: ghostwhite;
+  text-decoration: none;
 }
 
 .members-table {
