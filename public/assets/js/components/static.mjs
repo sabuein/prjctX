@@ -64,16 +64,16 @@ class AppNav extends HTMLElement {
                 </figure>    
             </div>
             <ul class="flexy row wrap gap-x1 nav-item">
-                <li class="active-nav-item"><a href="cms.html">CMS</a></li>
-                <li><a href="plans.html">Plans</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="members.html">Members</a></li>
-                <li><a href="dropzone.html">Dropzone</a></li>
+                <li data-page-slug="cms"><a href="cms.html">CMS</a></li>
+                <li data-page-slug="plans"><a href="plans.html">Plans</a></li>
+                <li data-page-slug="admin"><a href="admin.html">Admin</a></li>
+                <li data-page-slug="members"><a href="members.html">Members</a></li>
+                <li data-page-slug="dropzone"><a href="dropzone.html">Dropzone</a></li>
             </ul>
             <ul class="flexy row wrap gap-x1 nav-item">
-                <li><a href="subscribe.html"><span>x</span> Subscribe</a></li>
-                <li><a href="signup.html"><span>x</span> Sign up</a></li>
-                <li><a href="signin.html"><span>x</span> Sign in</a></li>
+                <li data-page-slug="subscribe"><a href="subscribe.html"><span>x</span> Subscribe</a></li>
+                <li data-page-slug="signup"><a href="signup.html"><span>x</span> Sign up</a></li>
+                <li data-page-slug="signin"><a href="signin.html"><span>x</span> Sign in</a></li>
             </ul>
         </nav>`;
     }

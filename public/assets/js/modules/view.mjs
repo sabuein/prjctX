@@ -47,6 +47,41 @@ const renderMembers = (json, table) => {
   }
 };
 
+const setImportMap = () => {
+  try {
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports("importmap")) {
+      clAlert(`Creating the import map...`);
+    
+      const importMap = {
+        imports: {
+          Collector: "./assets/js/classes/Collector.mjs",
+          User: "./assets/js/classes/User.mjs",
+          communication: "./assets/js/components/communication.mjs",
+          static: "./assets/js/components/static.mjs",
+          bluetooth: "./assets/js/modules/bluetooth.mjs",
+          cache: "./assets/js/modules/cache.mjs",
+          helpers: "./assets/js/modules/helpers.mjs",
+          hints: "./assets/js/modules/hints.mjs",
+          members: "./assets/js/modules/members.mjs",
+          posts: "./assets/js/modules/posts.mjs",
+          process: "./assets/js/modules/process.mjs",
+          push: "./assets/js/modules/push.mjs",
+          pwa: "./assets/js/modules/pwa.mjs",
+          storage: "./assets/js/modules/storage.mjs",
+          testing: "./assets/js/modules/testing.mjs",
+          utilities: "./assets/js/modules/utilities.mjs",
+          view: "./assets/js/modules/view.mjs",
+        }
+      }, script = document.createElement("script");
+      script.type = "importmap";
+      script.textContent = JSON.stringify(importMap);
+      document.currentScript.after(script);
+    } else {
+      throw new Error(`The browser does not support Import maps`);
+    }
+  } catch (error) { responseError(error); }
+};
+
 const setCustomComponent = (className, elementName) => {
   try {
     if (!window.customElements.get(elementName)) {
@@ -70,14 +105,12 @@ const handlebars = (source, data) => {
 
 const startApp = () => {
   try {
-    if (HTMLScriptElement.supports("importmap")) {
-      cl(`The importmap feature is supported.`);
-    }
     // checkBluetoothDevices();
     setCustomComponent(AppHeader, "app-header");
     setCustomComponent(AppNav, "app-nav");
     setCustomComponent(AppFooter, "app-footer");
     setCustomComponent(MailToForm, "app-communication");
+    checkActivePage();
     const pwaSupported =
       window.isSecureContext &&
       typeof navigator === "object" &&
@@ -385,6 +418,20 @@ const renderCountries = async (input, output) => {
   }
 
 }
+
+const checkActivePage = () => {
+  try {
+    if (typeof meta !== "undefined") {
+      const slug = meta.document.slug,
+        items = document.querySelectorAll("ul.nav-item li");
+      for (let item of items) {
+        if (item.dataset.pageSlug === slug) item.classList.toggle("active-nav-item");
+      }
+    } else {
+      throw new Error(`There is no slug attached to this page`);
+    }
+  } catch (error) { responseError(error); }
+};
 
 export {
   renderMembers,
