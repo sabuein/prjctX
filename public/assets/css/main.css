@@ -60,7 +60,8 @@ body > header {
 
 main {
   padding: 1rem;
-  width: var(--app-max-width);
+  width: 100%;
+  max-width: var(--app-max-width);
 }
 
 main ul,
@@ -311,6 +312,7 @@ main.cms > article:nth-child(3) > hr {
 
 .full-width {
   width: 100%;
+  max-width: inherit;
 }
 
 .space {
