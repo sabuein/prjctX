@@ -8,7 +8,7 @@
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "orientation": "landscape",
-    "display": "standalone",
+    "display": "fullscreen",
     "protocol_handlers": [
         {
             "protocol": "web+name",
