@@ -52,15 +52,16 @@
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
     <main id="main" class="flexy">
-        <header class="flexy row">
+        <header class="flexy">
             <figure>
                 <img src="/favicon-32x32.png" />
             </figure>
+            <h1>Signin</h1>
         </header>
         <section class="full-width">
-            <form id="formSignin" method="post">
-                <fieldset class="flexy start gap-half signin">
-                    <legend><h1>Signin</h1></legend>
+            <form id="formSignin" action="http://localhost:7654/apis/collectors/signin" method="post">
+                <fieldset class="flexy start gap-half">
+                    <legend><h2>Credentials needed</h2></legend>
                     <p>Your session has expired&period; Please enter your credentials again to continue&hellip;</p>
                     <label for="identity"><span class="requiredInput">*</span>Username:</label>
                     <input type="text" name="id" id="identity" autocomplete="username" placeholder="sabuein@gmail.com" class="full-width" required />

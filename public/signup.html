@@ -52,34 +52,42 @@
         <noscript>Your browser does not support JavaScript&excl;</noscript>
     </header>
     <main id="main" class="flexy">
-        <header><h1>Signup</h1></header>
+        <header class="flexy">
+            <figure>
+                <img src="/favicon-32x32.png" />
+            </figure>
+            <h1>Signup</h1>
+        </header>
         <section class="full-width">
-            <header><h2>Please enter your details&hellip;</h2></header>
-            <div>
-                <form id="formSignup" method="post" action="http://localhost:7654/apis/collectors/register">
-                    <fieldset>
-                        <legend><h3>Ahlan wa sahlan&excl;</h3></legend>
-                        <label for="identity"><span class="requiredInput">*</span>Username:</label>
-                        <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
-                        <label for="fullname"><span class="requiredInput">*</span>Fullname:</label>
-                        <input type="text" name="name" id="fullname" autocomplete="name" value="Salaheddin AbuEin" required />
-                        <label for="mail"><span class="requiredInput">*</span>Email:</label>
-                        <input type="email" name="email" id="mail" autocomplete="email" value="sabuein@gmail.com" required />
-                        <label for="pwd"><span class="requiredInput">*</span>Password:</label>
-                        <input type="password" name="password" id="pwd" autocomplete="new-password" value="123456789" minlength="8" required />
-                        <label for="pwdAgain"><span class="requiredInput">*</span>Retype password:</label>
-                        <input type="password" name="duplicate" id="pwdAgain" autocomplete="new-password" value="123456789" minlength="8" required />
-                        <label for="pin">PIN:</label>
-                        <input id="pin" type="password" inputmode="numeric" />
-                        <label for="url">IconURL:</label>
-                        <input type="text" name="iconURL" id="url" autocomplete="photo" value="https://sabuein.github.io/assets/images/salaheddin-abuein-moustache.jpg" />
-                        <input type="hidden" name="csrf_token" value="*****" />
-                        <br /><br />
+            <form id="formSignup" action="http://localhost:7654/apis/collectors/register" method="post">
+                <fieldset class="flexy start gap-half">
+                    <legend><h2>Please enter your details</h2></legend>
+                    <p>Welcome to prjctX&period; Please enter your details to register&hellip;</p>
+                    <label for="identity"><span class="requiredInput">*</span>Username:</label>
+                    <input type="text" name="id" id="identity" autocomplete="username" value="sabuein" required />
+                    <label for="fullname"><span class="requiredInput">*</span>Fullname:</label>
+                    <input type="text" name="name" id="fullname" autocomplete="name" value="Salaheddin AbuEin" required />
+                    <label for="mail"><span class="requiredInput">*</span>Email:</label>
+                    <input type="email" name="email" id="mail" autocomplete="email" value="sabuein@gmail.com" required />
+                    <label for="pwd"><span class="requiredInput">*</span>Password:</label>
+                    <input type="password" name="password" id="pwd" autocomplete="new-password" value="123456789" minlength="8" required />
+                    <label for="pwdAgain"><span class="requiredInput">*</span>Retype password:</label>
+                    <input type="password" name="duplicate" id="pwdAgain" autocomplete="new-password" value="123456789" minlength="8" required />
+                    <label for="pin">PIN:</label>
+                    <input id="pin" type="password" inputmode="numeric" />
+                    <label for="url">IconURL:</label>
+                    <input type="text" name="iconURL" id="url" autocomplete="photo" value="https://sabuein.github.io/assets/images/salaheddin-abuein-moustache.jpg" />
+                    <input type="hidden" name="csrf_token" value="*****" />
+                    <div class="flexy row gap-x2 full-width">
                         <input type="submit" value="Sign up" />
                         <input type="reset" value="Reset" />
-                    </fieldset>
-                </form>
-            </div>
+                    </div>
+                    <p class="flexy row gap-x1 nowrap full-width">
+                        <span><a href="signin.html">Login to your account</a></span>
+                        <span><a href="#">User agreement</a></span>
+                    </p>
+                </fieldset>
+            </form>
         </section>
     </main>
     <footer>
