@@ -75,7 +75,8 @@ const handleTextFile = (file) => {
 const handleUploadedImages = (files, output) => {
     const accepted = [...files].filter((file) => ["image/jpeg", "image/png"].includes(file.type));
     accepted.forEach(image => renderImage(image, output));
-    sendAcceptedImages(accepted);
+    //sendAcceptedImages(accepted);
+    clOk(`Uploading ${accepted.length} image(s) to the server...`)
 };
 
 const renderImage = (image, output) => {
