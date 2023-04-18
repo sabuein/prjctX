@@ -64,8 +64,8 @@
             <header><h2>Members list</h2></header>
             <div>
                 <form action="http://localhost:8888/collectors/add/all" method="post" enctype="multipart/form-data" >
-                    <label for="json">Add file (single): </label>
-                    <input type="file" name="file" id="json" />
+                    <label for="json">Upload a <span style="color: red;"><strong>&period;JSON</strong></span> file&colon; </label>
+                    <input type="file" name="file" id="json" accept="application/json" />
                     <input type="submit" />
                 </form>
             </div>
