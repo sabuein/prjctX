@@ -47,8 +47,8 @@ const startLocalStorage = () => {
 const clearLocalStorage = () => {
     try {
         if (typeof Storage !== "undefined") {
+            window.localStorage.clear();
             clAlert(`Clearing local storage...`);
-            return window.localStorage.clear();
         } else {
             throw new Error(`There is no local storage support`);
         }
@@ -60,8 +60,8 @@ const clearLocalStorage = () => {
 const clearSessionStorage = () => {
     try {
         if (typeof Storage !== "undefined") {
+            window.sessionStorage.clear();
             clAlert(`Clearing session storage...`);
-            return window.sessionStorage.clear();
         } else {
             throw new Error(`There is no session storage support`);
         }
@@ -226,7 +226,7 @@ const checkServiceWorkerState = () => {
     }
 }
 
-const logServiceWorkerState = async () => {
+const logServiceWorkerState = () => {
     try {
         navigator.serviceWorker.addEventListener("statechange", (e) => {
             clNew(e.target.state);
@@ -235,20 +235,26 @@ const logServiceWorkerState = async () => {
         responseError(error);
     }
 };
-const unregisterServiceWorker = () => {
+const unregisterServiceWorker = async () => {
     try {
         if (window.isSecureContext && "serviceWorker" in navigator) {
-            clAlert(`TODO: Unregistering service worker...`);
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for (let registration of registrations) {
+                let x = await registration.unregister();
+                clAlert(`Unregistering service worker: ${x}...`);
+            }
+        } else {
+            throw new Error(`The broswer does not support service workers`);
         }
     } catch (error) {
         responseError(error);
     }
 };
 
-const clearSiteData = () => {
+const clearSiteData = async () => {
     try {
         // Application
-        unregisterServiceWorker();
+        await unregisterServiceWorker();
         // Local and session storage
         clearLocalStorage();
         clearSessionStorage();
